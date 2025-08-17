@@ -163,6 +163,42 @@ export const DATA = {
       "A selection of my recent projects showcasing full stack development and API work",
     work: [
       {
+        id: 1,
+        title: "MintSurvey Research Organization",
+        description:
+          "Production-grade survey and insights platform. Implemented dashboards, authentication, and internal tooling to speed up survey operations.",
+        image: "/mint1.png",
+        gallery: ["/mint1.png", "/mint2.png", "/mint3.png", "/mint4.png"],
+        category: "Full Stack Application",
+        details:
+          "Built and maintained features using React.js, Node.js/Express, and MongoDB. Added analytics widgets, export utilities, and integrated third‑party services. Improved performance with memoization and API pagination.",
+        github: "",
+        live: "https://mintsurvey.com",
+        tech: [
+          { name: "Next.js", icon: "skill-icons:nextjs-dark" },
+          { name: "TailwindCSS", icon: "logos:tailwindcss-icon" },
+          { name: "MongoDB", icon: "simple-icons:mongodb" },
+        ],
+      },
+      {
+        id: 2,
+        title: "Shreerang Associates – Rent Agreement Service",
+        description:
+          "In-progress web platform to digitize rent agreement creation with guided forms, e‑signature workflow, and PDF generation.",
+        image: "/shree1.png",
+        gallery: ["/shree1.png", "/shree3.png", "/shree2.png"],
+        category: "Full Stack Application",
+        details:
+          "Next.js app with server actions for form handling, secure file upload, and role-based dashboard. Generates stamped PDFs, supports Aadhaar KYC integration (planned).",
+        github: "https://github.com/ShubhamChaudhary26/Shreerang",
+        live: "https://rentagreementwithus.com",
+        tech: [
+          { name: "Next.js", icon: "skill-icons:nextjs-dark" },
+          { name: "TailwindCSS", icon: "logos:tailwindcss-icon" },
+          { name: "MongoDB", icon: "simple-icons:mongodb" },
+        ],
+      },
+      {
         id: 0,
         title: "Job Portal Web App",
         description:
@@ -183,47 +219,9 @@ export const DATA = {
           { name: "JWT", icon: "simple-icons:jsonwebtokens" },
         ],
       },
-      {
-        id: 1,
-        title: "MintSurvey Research Organization",
-        description:
-          "Production-grade survey and insights platform. Implemented dashboards, authentication, and internal tooling to speed up survey operations.",
-        image: "/mint1.png",
-        gallery: ["/mint1.png", "/mint2.png", "/mint3.png", "/mint4.png"],
-        category: "Full Stack Application",
-        details:
-          "Built and maintained features using React.js, Node.js/Express, and MongoDB. Added analytics widgets, export utilities, and integrated third‑party services. Improved performance with memoization and API pagination.",
-        github: "",
-        live: "https://mintsurvey.com",
-        tech: [
-          { name: "React", icon: "logos:react" },
-          { name: "TailwindCSS", icon: "logos:tailwindcss-icon" },
-          { name: "Node.js", icon: "logos:nodejs-icon" },
-          { name: "Express", icon: "simple-icons:express" },
-          { name: "MongoDB", icon: "simple-icons:mongodb" },
-        ],
-      },
-      {
-        id: 2,
-        title: "Shreerang Associates – Rent Agreement Service",
-        description:
-          "In-progress web platform to digitize rent agreement creation with guided forms, e‑signature workflow, and PDF generation.",
-        image: "/shree1.png",
-        gallery: ["/shree1.png", "/shree3.png", "/shree2.png"],
-        category: "Full Stack Application",
-        details:
-          "Next.js app with server actions for form handling, secure file upload, and role-based dashboard. Generates stamped PDFs, supports Aadhaar KYC integration (planned).",
-        github: "https://github.com/ShubhamChaudhary26/Shreerang",
-        live: "",
-        tech: [
-          { name: "Next.js", icon: "skill-icons:nextjs-dark" },
-          { name: "TailwindCSS", icon: "logos:tailwindcss-icon" },
-          { name: "MongoDB", icon: "simple-icons:mongodb" },
-        ],
-      },
 
       // ----------------- ORIGINAL SHOWCASE PROJECTS -----------------
-    
+
       {
         id: 5,
         title: "Automotive Survey Software",
@@ -244,7 +242,7 @@ export const DATA = {
           { name: "MongoDB", icon: "simple-icons:mongodb" },
         ],
       },
-       {
+      {
         id: 3,
         title: "Apple Vision Pro Clone",
         description:

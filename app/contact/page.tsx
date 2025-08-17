@@ -1,9 +1,9 @@
 "use client";
 
+import Head from "next/head";
 import React, { useState, useCallback } from "react";
 import { addToast } from "@heroui/react";
 import emailjs from "@emailjs/browser";
-
 import { ContactFormData, ContactPageState } from "@/components/contact/types";
 import { PageHeader } from "@/components/page-header";
 import { ContactCard } from "@/components/contact/contact-card";
@@ -24,68 +24,59 @@ const ContactPage: React.FC = () => {
     error: null,
   });
 
-  const handleSubmit = useCallback(
-    async (formData: ContactFormData): Promise<void> => {
-      setState((prev) => ({ ...prev, isSubmitting: true, error: null }));
+  const handleSubmit = useCallback(async (formData: ContactFormData): Promise<void> => {
+    setState((prev) => ({ ...prev, isSubmitting: true, error: null }));
 
-      const missingVars = Object.entries(EMAIL_CONFIG)
-        .filter(([_, value]) => !value)
-        .map(
-          ([key]) =>
-            `NEXT_PUBLIC_EMAILJS_${key.toUpperCase().replace(/([A-Z])/g, "_$1")}`
-        );
+    const missingVars = Object.entries(EMAIL_CONFIG)
+      .filter(([_, value]) => !value)
+      .map(([key]) => `NEXT_PUBLIC_EMAILJS_${key.toUpperCase().replace(/([A-Z])/g, "_$1")}`);
 
-      if (missingVars.length > 0) {
-        console.error("Email configuration is incomplete:", missingVars);
-        addToast({
-          title: "Failed to Send Message",
-          description:
-            "Email configuration is incomplete. Please check environment variables.",
-          color: "danger",
-        });
-        setState((prev) => ({ ...prev, isSubmitting: false }));
-        return;
-      }
+    if (missingVars.length > 0) {
+      console.error("Email configuration is incomplete:", missingVars);
+      addToast({
+        title: "Failed to Send Message",
+        description: "Email configuration is incomplete. Please check environment variables.",
+        color: "danger",
+      });
+      setState((prev) => ({ ...prev, isSubmitting: false }));
+      return;
+    }
 
-      try {
-        const templateParams = {
-          name: formData.name, // {{name}}
-          email: formData.email, // {{email}}
-          subject: formData.subject, // {{subject}}
-          message: formData.message, // {{message}}
-        };
+    try {
+      const templateParams = {
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+      };
 
-        await emailjs.send(
-          EMAIL_CONFIG.serviceId!,
-          EMAIL_CONFIG.templateId!,
-          templateParams,
-          EMAIL_CONFIG.publicKey!
-        );
+      await emailjs.send(
+        EMAIL_CONFIG.serviceId!,
+        EMAIL_CONFIG.templateId!,
+        templateParams,
+        EMAIL_CONFIG.publicKey!
+      );
 
-        setState((prev) => ({ ...prev, isSuccess: true }));
-        addToast({
-          title: "Message Sent Successfully",
-          description: "Thank you for your message! I'll get back to you soon.",
-          color: "success",
-        });
-      } catch (error) {
-        const errorMessage =
-          error instanceof Error
-            ? error.message
-            : "Failed to send message. Please try again later.";
+      setState((prev) => ({ ...prev, isSuccess: true }));
+      addToast({
+        title: "Message Sent Successfully",
+        description: "Thank you for your message! I'll get back to you soon.",
+        color: "success",
+      });
+    } catch (error) {
+      const errorMessage =
+        error instanceof Error ? error.message : "Failed to send message. Please try again later.";
 
-        setState((prev) => ({ ...prev, error: errorMessage }));
-        addToast({
-          title: "Failed to Send Message",
-          description: errorMessage,
-          color: "danger",
-        });
-      } finally {
-        setState((prev) => ({ ...prev, isSubmitting: false }));
-      }
-    },
-    []
-  );
+      setState((prev) => ({ ...prev, error: errorMessage }));
+      addToast({
+        title: "Failed to Send Message",
+        description: errorMessage,
+        color: "danger",
+      });
+    } finally {
+      setState((prev) => ({ ...prev, isSubmitting: false }));
+    }
+  }, []);
 
   const handleReset = useCallback(() => {
     setState({
@@ -95,27 +86,87 @@ const ContactPage: React.FC = () => {
     });
   }, []);
 
-  return (
-    <section className="py-20">
-      <PageHeader texts={DATA.morphingTexts.contact} />
-      <div className="container mx-auto px-4">
-        <ContactCard heading={DATA.contact.heading}>
-          <ContactMap src={DATA.contact.location.mapSrc} />
-          <ContactForm
-            isSubmitting={state.isSubmitting}
-            isSuccess={state.isSuccess}
-            onReset={handleReset}
-            onSubmit={handleSubmit}
-          />
-        </ContactCard>
+  // ✅ SEO Data
+  const description =
+    "Contact Shubham Chaudhary (Shubh26), Full Stack Developer. Get in touch via the form, email, or find location details.";
+  const pageUrl = "https://shubh26.com/contact";
+  const pageImage = "https://shubh26.com/shubham.jpg";
 
-        {state.error && (
-          <div className="mt-6 p-4 bg-danger-50 border border-danger-200 rounded-lg">
-            <p className="text-danger-700 text-sm">{state.error}</p>
-          </div>
-        )}
-      </div>
-    </section>
+  return (
+    <>
+      {/* ✅ SEO Meta Tags */}
+      <Head>
+        <title>Contact Shubham Chaudhary (Shubh26) | Full Stack Developer</title>
+        <meta name="description" content={description} />
+        <meta
+          name="keywords"
+          content="Contact Shubham Chaudhary, Contact Shubh26, Shubham Developer Contact, Full Stack Developer Contact, Shubham Portfolio Contact"
+        />
+        <meta name="author" content="Shubham Chaudhary" />
+        <meta name="robots" content="index, follow" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="Contact Shubham Chaudhary | Full Stack Developer" />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={pageImage} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={pageUrl} />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Contact Shubham Chaudhary (Shubh26)" />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={pageImage} />
+
+        {/* Canonical */}
+        <link rel="canonical" href={pageUrl} />
+
+        {/* ✅ Schema.org JSON-LD */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            mainEntity: {
+              "@type": "Person",
+              name: "Shubham Chaudhary",
+              alternateName: "Shubh26",
+              url: "https://shubh26.com",
+              image: pageImage,
+              jobTitle: "Full Stack Developer",
+              sameAs: [
+                "https://github.com/ShubhamChaudhary26",
+                "https://linkedin.com/in/shubham-chaudhary-react",
+                "https://x.com/Shubh26___?t=VBO8ygtdm3xjCi3KvfOhIQ&s=09",
+              ],
+            },
+          })}
+        </script>
+      </Head>
+
+      {/* ✅ Hidden h1 for SEO */}
+      <h1 className="sr-only">Contact Shubham Chaudhary (Shubh26) | Full Stack Developer</h1>
+
+      <section className="py-20">
+        <PageHeader texts={DATA.morphingTexts.contact} />
+        <div className="container mx-auto px-4">
+          <ContactCard heading={DATA.contact.heading}>
+            <ContactMap src={DATA.contact.location.mapSrc} />
+            <ContactForm
+              isSubmitting={state.isSubmitting}
+              isSuccess={state.isSuccess}
+              onReset={handleReset}
+              onSubmit={handleSubmit}
+            />
+          </ContactCard>
+
+          {state.error && (
+            <div className="mt-6 p-4 bg-danger-50 border border-danger-200 rounded-lg">
+              <p className="text-danger-700 text-sm">{state.error}</p>
+            </div>
+          )}
+        </div>
+      </section>
+    </>
   );
 };
 
