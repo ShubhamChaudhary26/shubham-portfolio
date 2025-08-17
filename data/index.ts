@@ -215,25 +215,7 @@ export const DATA = {
       },
 
       // ----------------- ORIGINAL SHOWCASE PROJECTS -----------------
-      {
-        id: 3,
-        title: "Apple Vision Pro Clone",
-        description:
-          "A sleek and immersive digital interface replicating Apple Vision Pro’s design principles, emphasizing clarity, speed, and intuitive interaction.",
-        image: "apple1.png",
-        gallery: ["apple1.png", "apple2.png"],
-        category: "Web Development",
-        details:
-          "An Apple Vision Pro-inspired app interface built with React and TailwindCSS, featuring smooth animations via Framer Motion. Fully mobile-first, modular, and type-safe using TypeScript and Vite for fast development.",
-        github: "https://github.com/ShubhamChaudhary26/AppleVisionCloneWebsite",
-        // live: "https://apple-vision-pro-clone.example.com",
-        tech: [
-          { name: "HTML", icon: "vscode-icons:file-type-html" },
-          { name: "CSS", icon: "vscode-icons:file-type-css" },
-          { name: "JavaScript", icon: "logos:javascript" },
-        ],
-      },
-
+    
       {
         id: 5,
         title: "Automotive Survey Software",
@@ -252,6 +234,23 @@ export const DATA = {
           { name: "Node.js", icon: "logos:nodejs-icon" },
           { name: "Express", icon: "simple-icons:express" },
           { name: "MongoDB", icon: "simple-icons:mongodb" },
+        ],
+      },
+       {
+        id: 3,
+        title: "Apple Vision Pro Clone",
+        description:
+          "A sleek and immersive digital interface replicating Apple Vision Pro’s design principles, emphasizing clarity, speed, and intuitive interaction.",
+        image: "apple1.png",
+        gallery: ["apple1.png", "apple2.png"],
+        category: "Web Development",
+        details:
+          "An Apple Vision Pro-inspired app interface built with React and TailwindCSS, featuring smooth animations via Framer Motion. Fully mobile-first, modular, and type-safe using TypeScript and Vite for fast development.",
+        github: "https://github.com/ShubhamChaudhary26/AppleVisionCloneWebsite",
+        tech: [
+          { name: "HTML", icon: "vscode-icons:file-type-html" },
+          { name: "CSS", icon: "vscode-icons:file-type-css" },
+          { name: "JavaScript", icon: "logos:javascript" },
         ],
       },
     ],
