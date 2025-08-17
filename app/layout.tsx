@@ -11,6 +11,7 @@ import { Navigation } from "@/components/navbar";
 import { PageWrapper } from "@/components/page-wrapper";
 import { Providers } from "@/app/providers";
 import { StarsBackground } from "@/components/backgrounds/stars";
+import Analytics from "@/components/Analytics"; // ✅ Analytics component import
 
 const inter = Inter({
   subsets: ["latin"],
@@ -103,9 +104,24 @@ export default function RootLayout({ children }: RootLayoutProps) {
           content="https://shubh26.com/shubham.jpg"
         />
 
-        {/* <link rel="icon" href="/favicon.png" /> */}
         <link rel="icon" href="/shubham.jpg" />
         <meta name="theme-color" content="#0f172a" />
+
+        {/* ✅ Google Analytics Script */}
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=G-812ETWW3RL`}
+        />
+        <Script id="ga-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-812ETWW3RL', {
+              page_path: window.location.pathname,
+            });
+          `}
+        </Script>
       </head>
 
       <body
@@ -120,6 +136,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
             defaultTheme: "dark",
           }}
         >
+          {/* ✅ Track route changes */}
+          <Analytics />
           <StarsBackground>{content}</StarsBackground>
         </Providers>
       </body>
