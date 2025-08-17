@@ -43,8 +43,8 @@ export const HeroSection = ({
             initial={{ opacity: 0, y: 20 }}
             transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            Hi, I'm Shubham Chaudhary Full Stack Developer Building Modern Web
-            Apps
+            Hi, I&apos;m Shubham Chaudhary Full Stack Developer Building Modern
+            Web Apps
           </motion.h1>
 
           <motion.p
