@@ -53,21 +53,21 @@ export const ProjectModal = ({
                 <h4 className="font-semibold mb-6 text-foreground">
                   Technologies Used:
                 </h4>
-                <AvatarGroup>
-                  {project.tech.map(({ name, icon }) => (
-                    <Tooltip key={name} content={name} showArrow={true}>
-                      <Avatar
-                        key={name}
-                        showFallback
-                        classNames={{
-                          base: "bg-transparent",
-                          icon: "text-foreground dark:text-foreground-dark",
-                        }}
-                        icon={<Icon icon={icon} width={25} />}
-                      />
-                    </Tooltip>
-                  ))}
-                </AvatarGroup>
+               <AvatarGroup max={project.tech.length}>
+  {project.tech.map(({ name, icon }) => (
+    <Tooltip key={name} content={name} showArrow={true}>
+      <Avatar
+        showFallback
+        classNames={{
+          base: "bg-transparent",
+          icon: "text-foreground dark:text-foreground-dark",
+        }}
+        icon={<Icon icon={icon} width={25} />}
+      />
+    </Tooltip>
+  ))}
+</AvatarGroup>
+
               </div>
             )}
           </ModalBody>

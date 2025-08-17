@@ -25,24 +25,23 @@ export const Skills = ({ tech }: SkillsProps) => (
         <h3 className="mb-2 text-lg font-semibold">{capitalize(category)}</h3>
         <p className="mb-4 text-sm text-muted-foreground">{description}</p>
 
-        <div className="relative h-[300px] w-full">
+        <div className="relative h-[350px] w-full">
           <OrbitingCircles
-  className="h-full w-full [&>div]:hover:scale-110 [&>div]:hover:text-primary-500"
-  duration={20}
-  radius={120}
->
-  {tools.map((tool) => (
-    <div key={tool.name}>
-      <Icon
-        className="transition-all duration-300"
-        height={41}  // bada size
-        width={41}   // bada size
-        icon={tool.icon}
-      />
-    </div>
-  ))}
-</OrbitingCircles>
-
+            className="h-full w-full [&>div]:hover:scale-110 [&>div]:hover:text-primary-500"
+            duration={20}
+            radius={140}
+          >
+            {tools.map((tool) => (
+              <div key={tool.name}>
+                <Icon
+                  className="transition-all duration-300"
+                  height={41} // bada size
+                  width={41} // bada size
+                  icon={tool.icon}
+                />
+              </div>
+            ))}
+          </OrbitingCircles>
         </div>
       </div>
     ))}
