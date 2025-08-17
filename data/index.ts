@@ -61,7 +61,7 @@ export const DATA = {
         },
         {
           id: 3,
-          name: "TechnoSoft",
+          name: "TechSeria",
           role: "Python Developer",
           content:
             "The user experience is smooth and modern. My team enjoyed how easy it was to integrate new workflows.",
@@ -69,11 +69,19 @@ export const DATA = {
         },
         {
           id: 4,
-          name: "Faluraa",
+          name: "Flauraa",
           role: "Full Stack Developer",
           content:
             "He quickly became a key contributor—clean components, smart state management, and solid problem-solving under deadlines.",
           avatar: "/amit.jpeg",
+        },
+        {
+          id: 4,
+          name: "NRJ Solution",
+          role: "Web Developer",
+          content:
+            "He emerged as a strong contributor, balancing clean architecture, efficient state management, and quick problem-solving.",
+          avatar: "/aman.jpeg",
         },
       ],
     },
