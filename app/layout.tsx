@@ -11,7 +11,9 @@ import { Navigation } from "@/components/navbar";
 import { PageWrapper } from "@/components/page-wrapper";
 import { Providers } from "@/app/providers";
 import { StarsBackground } from "@/components/backgrounds/stars";
-import Analytics from "@/components/Analytics"; // ✅ Analytics component import
+
+// ✅ Correct Vercel Analytics import
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -109,7 +111,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           content="https://shubh26.com/shubham.jpg"
         />
 
-        <link rel="icon" href="/shubham.ico" sizes="any"/>
+        <link rel="icon" href="/shubham.ico" sizes="any" />
         <meta name="theme-color" content="#0f172a" />
         <script type="application/ld+json">
           {JSON.stringify({
@@ -156,9 +158,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
             defaultTheme: "dark",
           }}
         >
-          {/* ✅ Track route changes */}
-          <Analytics />
           <StarsBackground>{content}</StarsBackground>
+
+          {/* ✅ Vercel Analytics */}
+          <Analytics />
         </Providers>
       </body>
     </html>
