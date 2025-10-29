@@ -5,7 +5,7 @@ This is a modern, animated, and fully responsive portfolio template built with *
 <br/>
 <p align="center">
   <a href="https://portfolio-template-seven-murex.vercel.app" target="_blank">
-    <img src="./public/github-cover.png" alt="portfolio-template" />
+    <img src="./public/shubham.png" alt="portfolio-template" />
   </a>
 </p>
 
