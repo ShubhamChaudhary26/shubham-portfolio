@@ -1,4 +1,5 @@
 import "@/app/globals.css";
+import ChatBot from "@/components/ChatBot";
 
 import { clsx } from "clsx";
 import { type Metadata } from "next";
@@ -11,9 +12,6 @@ import { Navigation } from "@/components/navbar";
 import { PageWrapper } from "@/components/page-wrapper";
 import { Providers } from "@/app/providers";
 import { StarsBackground } from "@/components/backgrounds/stars";
-
-// ✅ Correct Vercel Analytics import
-import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -84,11 +82,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
           name="description"
           content="I build fast, accessible and visually engaging web experiences that solve real problems."
         />
-        <meta
-          name="keywords"
-          content="Shubham Chaudhary, Shubh26, Full Stack Developer, React, Next.js, Node.js, MongoDB, Portfolio"
-        />
-        <link rel="canonical" href="https://shubh26.com/" />
 
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://shubh26.com/" />
@@ -111,39 +104,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
           content="https://shubh26.com/shubham.jpg"
         />
 
-        <link rel="icon" href="/shubham.ico" sizes="any" />
+        {/* <link rel="icon" href="/favicon.png" /> */}
+        <link rel="icon" href="/shubham.jpg" />
         <meta name="theme-color" content="#0f172a" />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Person",
-            name: "Shubham Chaudhary",
-            url: "https://shubh26.com",
-            image: "https://shubh26.com/shubham.jpg",
-            jobTitle: "Full Stack Developer",
-            sameAs: [
-              "https://github.com/ShubhamChaudhary26",
-              "https://linkedin.com/in/shubham-chaudhary-react",
-              "https://x.com/Shubh26___?t=VBO8ygtdm3xjCi3KvfOhIQ&s=09",
-            ],
-          })}
-        </script>
-
-        {/* ✅ Google Analytics Script */}
-        <Script
-          strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=G-812ETWW3RL`}
-        />
-        <Script id="ga-init" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-812ETWW3RL', {
-              page_path: window.location.pathname,
-            });
-          `}
-        </Script>
       </head>
 
       <body
@@ -158,10 +121,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
             defaultTheme: "dark",
           }}
         >
-          <StarsBackground>{content}</StarsBackground>
-
-          {/* ✅ Vercel Analytics */}
-          <Analytics />
+          <StarsBackground>
+            {content}
+            <ChatBot />
+          </StarsBackground>
         </Providers>
       </body>
     </html>
