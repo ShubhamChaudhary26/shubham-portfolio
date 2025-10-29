@@ -224,7 +224,7 @@ export const DATA = {
         description:
           "In-progress web platform to digitize rent agreement creation with guided forms, e‑signature workflow, and PDF generation.",
         image:
-          "https://img.heroui.chat/image/dashboard?w=600&h=400&u=rent-agreement",
+          "/shree1.png",
         gallery: [
           "/shree1.png","/shree2.png","/shree3.png",
         ],
