@@ -226,8 +226,7 @@ export const DATA = {
         image:
           "https://img.heroui.chat/image/dashboard?w=600&h=400&u=rent-agreement",
         gallery: [
-          "https://img.heroui.chat/image/dashboard?w=600&h=400&u=rent-agreement",
-          "https://img.heroui.chat/image/dashboard?w=600&h=400&u=rent-agreement-1",
+          "/shree1.png","/shree2.png","/shree3.png",
         ],
         category: "Full Stack Application",
         details:
