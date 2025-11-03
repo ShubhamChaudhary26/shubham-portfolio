@@ -198,26 +198,7 @@ export const DATA = {
           { name: "JWT", icon: "simple-icons:jsonwebtokens" },
         ],
       },
-      {
-        id: 1,
-        title: "MintSurvey Research Organization",
-        description:
-          "Production-grade survey and insights platform. Implemented dashboards, authentication, and internal tooling to speed up survey operations.",
-        image: "/mint1.png",
-        gallery: ["/mint1.png", "/mint2.png", "/mint3.png", "/mint4.png"],
-        category: "Full Stack Application",
-        details:
-          "Built and maintained features using React.js, Node.js/Express, and MongoDB. Added analytics widgets, export utilities, and integrated third‑party services. Improved performance with memoization and API pagination.",
-        github: "",
-        live: "https://mintsurvey.com",
-        tech: [
-          { name: "React", icon: "logos:react" },
-          { name: "TailwindCSS", icon: "logos:tailwindcss-icon" },
-          { name: "Node.js", icon: "logos:nodejs-icon" },
-          { name: "Express", icon: "simple-icons:express" },
-          { name: "MongoDB", icon: "logos:mongodb-icon" },
-        ],
-      },
+      
       {
         id: 2,
         title: "Shreerang Associates – Rent Agreement Service",
@@ -524,7 +505,7 @@ export const DATA = {
     services: [
       "Website Development",
       "Full Stack Development",
-      "API Development",
+      "API Development ",
     ],
   },
 } as const;
