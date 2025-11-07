@@ -111,7 +111,7 @@ export default function ChatBot() {
    📅 May 2025 – Oct 2025
    📝 Built production-grade survey platform features. Led API integrations, implemented role-based authentication, created analytics dashboards, and improved performance by 40%.
 
-3. React.js Intern — CODTECH IT SOLUTION
+3. React.js Intern — Divine Infotech
    📅 Sep 2024 – Mar 2025
    📝 Developed responsive components, optimized performance, integrated REST APIs, and collaborated in Agile sprints.
 
@@ -177,10 +177,10 @@ Excited to be contributing to innovative solutions at Soltech!`;
       cleanQuery.includes('codtech') ||
       cleanQuery.includes('first job')
     ) {
-      return `🎓 Internship at CODTECH IT SOLUTION:
+      return `🎓 Internship at Divine Infotech:
 
 📅 Duration: Sep 2024 – Mar 2025
-🏢 Company: CODTECH IT SOLUTION
+🏢 Company: Divine Infotech
 📍 Role: React.js Intern
 
 Internship Achievements:

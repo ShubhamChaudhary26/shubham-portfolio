@@ -116,14 +116,14 @@ export const DATA = {
       "Developing scalable web applications using React.js, Node.js, and MongoDB. Implementing secure APIs, dashboards, and real-time features for client projects.",
   },
   {
-    title: "Full Stack Developer",
+    title: "Full Stack Developer - MintSurvey",
     date: "May 2025 – Oct 2025",
     icon: "mdi:briefcase",
     description:
       "Built internal tools and customer-facing features with React.js, Node.js, and MongoDB. Led API integrations, role-based authentication, and dashboard analytics.",
   },
   {
-    title: "React.js Intern — CODTECH IT SOLUTION",
+    title: "React.js Intern — Divine Infotech",
     date: "Sep 2024 – Mar 2025",
     icon: "mdi:monitor-dashboard",
     description:
