@@ -172,39 +172,18 @@ export const DATA = {
       // },
     },
   },
- projects: {
+projects: {
   sectionTitle: "Featured Projects",
   sectionDescription:
     "A selection of my recent projects showcasing full stack development and API work",
   work: [
     {
       id: 0,
-      title: "Job Portal Web App",
-      description:
-        "Full-stack platform where candidates search/apply for jobs and recruiters post/manage openings with role-based access.",
-      image: "/jobportal1.png",
-      gallery: ["/jobportal1.png", "/jobportal2.png", "/jobportal3.png"],
-      category: "Full Stack Application",
-      details:
-        "React.js + Tailwind on the front-end, Node.js/Express + MongoDB on the back-end. Features JWT auth, recruiter/candidate roles, search & filters, and responsive design.",
-      github: "https://github.com/ShubhamChaudhary26",
-      live: "https://job-portal-b7a0.onrender.com/",
-      tech: [
-        { name: "React", icon: "logos:react" },
-        { name: "TailwindCSS", icon: "logos:tailwindcss-icon" },
-        { name: "Node.js", icon: "logos:nodejs-icon" },
-        { name: "Express", icon: "simple-icons:express" },
-        { name: "MongoDB", icon: "logos:mongodb-icon" },
-        { name: "JWT", icon: "simple-icons:jsonwebtokens" },
-      ],
-    },
-    {
-      id: 1,
       title: "Veltrix Gym – Membership & Fitness Website",
       description:
         "Complete gym website with user authentication, membership plans, trainer profiles, and responsive design for fitness businesses.",
       image: "/veltrix1.png",
-      gallery: ["/veltrix1.png", "/veltrix2.png", "/veltrix3.png", "/veltrix4.png", "/veltrix5.png", "/veltrix6.png"],
+      gallery: ["/veltrix1.png", "/veltrix2.png", "/veltrix3.png", "/veltrix4.png", "/veltrix5.png"],
       category: "Full Stack Application",
       details:
         "Developed a full-featured gym website with login/signup functionality, membership plans, trainer profiles, and gym information. Modern, fully responsive design optimized for mobile, tablet, and desktop. Features smooth UX, clean layout, and scalable front-end structure.",
@@ -219,7 +198,7 @@ export const DATA = {
       ],
     },
     {
-      id: 2,
+      id: 1,
       title: "Beyond Studio – Interior Design Business Website",
       description:
         "Modern, responsive website for an interior design firm showcasing services, portfolio, and client inquiry optimization.",
@@ -234,6 +213,25 @@ export const DATA = {
         { name: "Next.js", icon: "skill-icons:nextjs-dark" },
         { name: "TailwindCSS", icon: "logos:tailwindcss-icon" },
         { name: "React", icon: "logos:react" },
+        { name: "JavaScript", icon: "logos:javascript" },
+      ],
+    },
+    {
+      id: 2,
+      title: "7SevenStarTravel – Tours & Travels Booking Platform",
+      description:
+        "Complete cab booking and tours platform with fleet management, outstation routes, local packages, and 24/7 service booking.",
+      image: "/7star1.png",
+      gallery: ["/7star1.png", "/7star2.png", "/7star3.png", "/7star4.png", "/7star5.png"],
+      category: "Web Development",
+      details:
+        "Developed a comprehensive tours and travels website for Vapi's leading cab service provider. Features vehicle fleet showcase with pricing, outstation route booking to 100+ destinations, local 8hr/80km packages, airport transfers, and pilgrimage tour packages. Includes WhatsApp integration, call-to-action booking, GPS tracking info, and fully responsive design optimized for conversions.",
+      github: "https://github.com/ShubhamChaudhary26",
+      live: "https://7sevenstartravels.com",
+      tech: [
+        { name: "Next.js", icon: "skill-icons:nextjs-dark" },
+        { name: "React", icon: "logos:react" },
+        { name: "TailwindCSS", icon: "logos:tailwindcss-icon" },
         { name: "JavaScript", icon: "logos:javascript" },
       ],
     },
@@ -263,7 +261,7 @@ export const DATA = {
       description:
         "Fully responsive Apple Vision Pro clone featuring smooth transitions, interactive UI, and modern sleek design.",
       image: "/visionpro1.png",
-      gallery: ["/visionpro1.png", "/visionpro2.png", "/visionpro3.png", "/visionpro4.png"],
+      gallery: ["/visionpro1.png", "/visionpro2.png", "/visionpro3.png"],
       category: "Web Development",
       details:
         "Designed and developed a fully responsive Apple Vision Pro clone website from scratch. Features smooth transitions, interactive UI, and modern sleek design inspired by Apple. Focused on clean code, optimized performance, and cross-device compatibility.",
@@ -278,21 +276,23 @@ export const DATA = {
     },
     {
       id: 5,
-      title: "7SevenStarTravel – Tours & Travels Booking Platform",
+      title: "Job Portal Web App",
       description:
-        "Complete cab booking and tours platform with fleet management, outstation routes, local packages, and 24/7 service booking.",
-      image: "/7star1.png",
-      gallery: ["/7star1.png", "/7star2.png", "/7star3.png", "/7star4.png", ],
-      category: "Web Development",
+        "Full-stack platform where candidates search/apply for jobs and recruiters post/manage openings with role-based access.",
+      image: "/jobportal1.png",
+      gallery: ["/jobportal1.png", "/jobportal2.png", "/jobportal3.png"],
+      category: "Full Stack Application",
       details:
-        "Developed a comprehensive tours and travels website for Vapi's leading cab service provider. Features vehicle fleet showcase with pricing, outstation route booking to 100+ destinations, local 8hr/80km packages, airport transfers, and pilgrimage tour packages. Includes WhatsApp integration, call-to-action booking, GPS tracking info, and fully responsive design optimized for conversions.",
+        "React.js + Tailwind on the front-end, Node.js/Express + MongoDB on the back-end. Features JWT auth, recruiter/candidate roles, search & filters, and responsive design.",
       github: "https://github.com/ShubhamChaudhary26",
-      live: "https://7sevenstartravels.com",
+      live: "https://job-portal-b7a0.onrender.com/",
       tech: [
-        { name: "Next.js", icon: "skill-icons:nextjs-dark" },
         { name: "React", icon: "logos:react" },
         { name: "TailwindCSS", icon: "logos:tailwindcss-icon" },
-        { name: "JavaScript", icon: "logos:javascript" },
+        { name: "Node.js", icon: "logos:nodejs-icon" },
+        { name: "Express", icon: "simple-icons:express" },
+        { name: "MongoDB", icon: "logos:mongodb-icon" },
+        { name: "JWT", icon: "simple-icons:jsonwebtokens" },
       ],
     },
   ],
