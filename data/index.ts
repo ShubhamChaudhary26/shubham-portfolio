@@ -241,7 +241,7 @@ projects: {
       description:
         "Service-based platform for online rent agreement services with lead-focused design and user-friendly interface.",
       image: "/rentagreement1.png",
-      gallery: ["/rentagreement1.png", "/rentagreement2.png", "/rentagreement3.png", "/rentagreement4.png"],
+      gallery: ["/rentagreement1.png", "/rentagreement2.png", "/rentagreement3.png", ],
       category: "Full Stack Application",
       details:
         "Built a comprehensive legal service website for online rent agreements. Features informational pages for legal services, lead-focused design for customer inquiries, mobile-first responsive design, fast performance, and clean UI with registration functionality.",
@@ -261,7 +261,7 @@ projects: {
       description:
         "Fully responsive Apple Vision Pro clone featuring smooth transitions, interactive UI, and modern sleek design.",
       image: "/visionpro1.png",
-      gallery: ["/visionpro1.png", "/visionpro2.png", "/visionpro3.png"],
+      gallery: ["/visionpro1.png", "/visionpro2.png", "/visionpro3.png", "/visionpro4.png"],
       category: "Web Development",
       details:
         "Designed and developed a fully responsive Apple Vision Pro clone website from scratch. Features smooth transitions, interactive UI, and modern sleek design inspired by Apple. Focused on clean code, optimized performance, and cross-device compatibility.",
