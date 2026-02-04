@@ -222,7 +222,7 @@ projects: {
       description:
         "Complete cab booking and tours platform with fleet management, outstation routes, local packages, and 24/7 service booking.",
       image: "/7star1.png",
-      gallery: ["/7star1.png", "/7star2.png", "/7star3.png", "/7star4.png", "/7star5.png"],
+      gallery: ["/7star1.png", "/7star2.png", "/7star3.png", "/7star4.png"],
       category: "Web Development",
       details:
         "Developed a comprehensive tours and travels website for Vapi's leading cab service provider. Features vehicle fleet showcase with pricing, outstation route booking to 100+ destinations, local 8hr/80km packages, airport transfers, and pilgrimage tour packages. Includes WhatsApp integration, call-to-action booking, GPS tracking info, and fully responsive design optimized for conversions.",
