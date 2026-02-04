@@ -175,7 +175,7 @@ export const DATA = {
 projects: {
   sectionTitle: "Featured Projects",
   sectionDescription:
-    "A selection of my recent projects showcasing full stack development and API work",
+    "A selection of my recent projects showcasing full stack development and API work" ,
   work: [
     {
       id: 0,
