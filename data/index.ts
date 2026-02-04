@@ -43,14 +43,14 @@ export const DATA = {
       sectionDescription:
         "What clients and colleagues say about working with me",
       items: [
-        {
-          id: 1,
-          name: "DevStack",
-          role: "Software Developer",
-          content:
-            "Shubham consistently ships features ahead of schedule. His React and API integration work has streamlined our internal tools and improved survey operations.",
-          avatar: "/adu.jpeg",
-        },
+        // {
+        //   id: 1,
+        //   name: "DevStack",
+        //   role: "Software Developer",
+        //   content:
+        //     "Shubham consistently ships features ahead of schedule. His React and API integration work has streamlined our internal tools and improved survey operations.",
+        //   avatar: "/adu.jpeg",
+        // },
         {
           id: 2,
           name: "Creative",
@@ -172,270 +172,131 @@ export const DATA = {
       // },
     },
   },
-  projects: {
-    sectionTitle: "Featured Projects",
-    sectionDescription:
-      "A selection of my recent projects showcasing full stack development and API work",
-    work: [
-      {
-        id: 0,
-        title: "Job Portal Web App",
-        description:
-          "Full-stack platform where candidates search/apply for jobs and recruiters post/manage openings with role-based access.",
-        image: "/jobportal1.png", // local image
-        gallery: ["/jobportal1.png", "/jobportal2.png", "/jobportal3.png"],
-        category: "Full Stack Application",
-        details:
-          "React.js + Tailwind on the front-end, Node.js/Express + MongoDB on the back-end. Features JWT auth, recruiter/candidate roles, search & filters, and responsive design.",
-        github: "https://github.com/ShubhamChaudhary26",
-        live: "https://job-portal-b7a0.onrender.com/",
-        tech: [
-          { name: "React", icon: "logos:react" },
-          { name: "TailwindCSS", icon: "logos:tailwindcss-icon" },
-          { name: "Node.js", icon: "logos:nodejs-icon" },
-          { name: "Express", icon: "simple-icons:express" },
-          { name: "MongoDB", icon: "logos:mongodb-icon" },
-          { name: "JWT", icon: "simple-icons:jsonwebtokens" },
-        ],
-      },
-      
-      {
-        id: 2,
-        title: "Shreerang Associates – Rent Agreement Service",
-        description:
-          "In-progress web platform to digitize rent agreement creation with guided forms, e‑signature workflow, and PDF generation.",
-        image:
-          "/shree1.png",
-        gallery: [
-          "/shree1.png","/shree2.png","/shree3.png",
-        ],
-        category: "Full Stack Application",
-        details:
-          "Next.js app with server actions for form handling, secure file upload, and role-based dashboard. Generates stamped PDFs, supports Aadhaar KYC integration (planned).",
-        github: "",
-        live: "",
-        tech: [
-          { name: "Next.js", icon: "skill-icons:nextjs-dark" },
-          { name: "TailwindCSS", icon: "logos:tailwindcss-icon" },
-          { name: "Node.js", icon: "logos:nodejs-icon" },
-          { name: "MongoDB", icon: "logos:mongodb-icon" },
-        ],
-      },
-
-     
-      {
-        id: 4,
-        title: "E-commerce Platform",
-        description:
-          "Scalable and responsive online store with dynamic product filtering and intuitive cart management.",
-        image: "https://img.heroui.chat/image/dashboard?w=600&h=400&u=2",
-        gallery: [
-          "https://img.heroui.chat/image/dashboard?w=600&h=400&u=2",
-          "https://img.heroui.chat/image/dashboard?w=600&h=400&u=2-1",
-          "https://img.heroui.chat/image/dashboard?w=600&h=400&u=2-2",
-          "https://img.heroui.chat/image/dashboard?w=600&h=400&u=2-3",
-        ],
-        category: "Web Development",
-        details:
-          "A fully functional e-commerce platform built with React and TailwindCSS. Features product listings, advanced filters, cart and checkout system, and a modern UI with responsive design for all devices.",
-        github: "https://github.com",
-        live: "https://example.com",
-        tech: [
-          { name: "React", icon: "logos:react" },
-          { name: "TailwindCSS", icon: "logos:tailwindcss-icon" },
-          { name: "TypeScript", icon: "logos:typescript-icon" },
-          { name: "PostgreSQL", icon: "logos:postgresql" },
-        ],
-      },
-      {
-        id: 5,
-        title: "Travel Booking System",
-        description:
-          "Comprehensive booking platform for flights, hotels, and rentals with live availability.",
-        image: "https://img.heroui.chat/image/dashboard?w=600&h=400&u=3",
-        gallery: [
-          "https://img.heroui.chat/image/dashboard?w=600&h=400&u=3",
-          "https://img.heroui.chat/image/dashboard?w=600&h=400&u=3-1",
-          "https://img.heroui.chat/image/dashboard?w=600&h=400&u=3-2",
-          "https://img.heroui.chat/image/dashboard?w=600&h=400&u=3-3",
-        ],
-        category: "Web Development",
-        details:
-          "A modern travel booking system built with Next.js and TailwindCSS. Users can search and book flights, hotels, and car rentals with real-time availability and intuitive UI components powered by HeroUI.",
-        github: "https://github.com",
-        live: "https://example.com",
-        tech: [
-          { name: "Next.js", icon: "skill-icons:nextjs-dark" },
-          { name: "TailwindCSS", icon: "logos:tailwindcss-icon" },
-          { name: "TypeScript", icon: "logos:typescript-icon" },
-        ],
-      },
-      {
-        id: 6,
-        title: "AI Chat Assistant",
-        description:
-          "Smart customer support assistant with contextual awareness and real-time replies.",
-        image: "https://img.heroui.chat/image/dashboard?w=600&h=400&u=4",
-        gallery: [
-          "https://img.heroui.chat/image/dashboard?w=600&h=400&u=4",
-          "https://img.heroui.chat/image/dashboard?w=600&h=400&u=4-1",
-          "https://img.heroui.chat/image/dashboard?w=600&h=400&u=4-2",
-          "https://img.heroui.chat/image/dashboard?w=600&h=400&u=4-3",
-        ],
-        category: "Applications",
-        details:
-          "AI-powered chat assistant developed with React and TailwindCSS. Integrated with OpenAI’s GPT API for contextual conversations, deployed via Vercel with real-time response and adaptive UI.",
-        github: "https://github.com",
-        live: "https://example.com",
-        tech: [
-          { name: "React", icon: "logos:react" },
-          { name: "TailwindCSS", icon: "logos:tailwindcss-icon" },
-          { name: "OpenAI API", icon: "simple-icons:openai" },
-          { name: "Vercel", icon: "simple-icons:vercel" },
-        ],
-      },
-      {
-        id: 7,
-        title: "Portfolio API & CMS",
-        description:
-          "Headless API backend with admin-friendly CMS capabilities.",
-        image: "https://img.heroui.chat/image/dashboard?w=600&h=400&u=5",
-        gallery: [
-          "https://img.heroui.chat/image/dashboard?w=600&h=400&u=5",
-          "https://img.heroui.chat/image/dashboard?w=600&h=400&u=5-1",
-          "https://img.heroui.chat/image/dashboard?w=600&h=400&u=5-2",
-          "https://img.heroui.chat/image/dashboard?w=600&h=400&u=5-3",
-        ],
-        category: "Backend Services",
-        details:
-          "A modular REST API built with Node.js and Express, powering dynamic portfolio websites. Includes JWT auth, MySQL integration, and a Swagger-documented CMS interface for easy content management.",
-        github: "https://github.com",
-        tech: [
-          { name: "Node.js", icon: "logos:nodejs-icon" },
-          { name: "MySQL", icon: "logos:mysql-icon" },
-          { name: "JWT", icon: "simple-icons:jsonwebtokens" },
-          { name: "Swagger", icon: "simple-icons:swagger" },
-        ],
-      },
-      {
-        id: 8,
-        title: "Fitness Tracker App",
-        description:
-          "Monitor workouts, calorie intake, and goals in one place.",
-        image: "https://img.heroui.chat/image/dashboard?w=600&h=400&u=6",
-        gallery: [
-          "https://img.heroui.chat/image/dashboard?w=600&h=400&u=6",
-          "https://img.heroui.chat/image/dashboard?w=600&h=400&u=6-1",
-          "https://img.heroui.chat/image/dashboard?w=600&h=400&u=6-2",
-          "https://img.heroui.chat/image/dashboard?w=600&h=400&u=6-3",
-        ],
-        category: "Applications",
-        details:
-          "A cross-platform fitness application developed with React Native and styled using TailwindCSS via Expo. It offers calorie tracking, workout logging, analytics via charts, and custom goal-setting.",
-        github: "https://github.com",
-        live: "https://example.com",
-        tech: [
-          { name: "React Native", icon: "logos:react" },
-          { name: "TailwindCSS", icon: "logos:tailwindcss-icon" },
-          { name: "Expo", icon: "simple-icons:expo" },
-        ],
-      },
-      {
-        id: 9,
-        title: "Content Scheduler",
-        description:
-          "Plan, schedule, and automate your social media posts effortlessly.",
-        image: "https://img.heroui.chat/image/dashboard?w=600&h=400&u=7",
-        gallery: [
-          "https://img.heroui.chat/image/dashboard?w=600&h=400&u=7",
-          "https://img.heroui.chat/image/dashboard?w=600&h=400&u=7-1",
-          "https://img.heroui.chat/image/dashboard?w=600&h=400&u=7-2",
-          "https://img.heroui.chat/image/dashboard?w=600&h=400&u=7-3",
-        ],
-        category: "Applications",
-        details:
-          "A productivity app designed for content creators featuring calendar syncing, automated post publishing, rich media previews, and cloud synchronization for seamless cross-device access.",
-        github: "https://github.com",
-        live: "https://example.com",
-        tech: [
-          { name: "Next.js", icon: "skill-icons:nextjs-dark" },
-          { name: "MySQL", icon: "logos:mysql-icon" },
-          { name: "TailwindCSS", icon: "logos:tailwindcss-icon" },
-        ],
-      },
-      {
-        id: 10,
-        title: "Real Estate Dashboard",
-        description:
-          "Comprehensive dashboard to manage properties, leads, and sales pipelines effectively.",
-        image: "https://img.heroui.chat/image/dashboard?w=600&h=400&u=8",
-        gallery: [
-          "https://img.heroui.chat/image/dashboard?w=600&h=400&u=8",
-          "https://img.heroui.chat/image/dashboard?w=600&h=400&u=8-1",
-          "https://img.heroui.chat/image/dashboard?w=600&h=400&u=8-2",
-          "https://img.heroui.chat/image/dashboard?w=600&h=400&u=8-3",
-        ],
-        category: "Web Development",
-        details:
-          "An admin panel tailored for real estate professionals featuring interactive data visualizations, lead tracking, and CRM integrations to streamline client and property management.",
-        github: "https://github.com",
-        live: "https://example.com",
-        tech: [
-          { name: "React", icon: "logos:react" },
-          { name: "TailwindCSS", icon: "logos:tailwindcss-icon" },
-          { name: "Chart.js", icon: "simple-icons:chartdotjs" },
-        ],
-      },
-      {
-        id: 11,
-        title: "Crypto Wallet API",
-        description:
-          "Robust backend API for secure cryptocurrency operations and blockchain interactions.",
-        image: "https://img.heroui.chat/image/dashboard?w=600&h=400&u=9",
-        gallery: [
-          "https://img.heroui.chat/image/dashboard?w=600&h=400&u=9",
-          "https://img.heroui.chat/image/dashboard?w=600&h=400&u=9-1",
-          "https://img.heroui.chat/image/dashboard?w=600&h=400&u=9-2",
-          "https://img.heroui.chat/image/dashboard?w=600&h=400&u=9-3",
-        ],
-        category: "Backend Services",
-        details:
-          "Secure Node.js API supporting Ethereum and Bitcoin transactions. Features transaction signing, wallet address creation, and real-time blockchain event monitoring using Web3.js. HSM integration for secure key management.",
-        github: "https://github.com",
-        tech: [
-          { name: "Node.js", icon: "logos:nodejs-icon" },
-          { name: "Ethereum", icon: "logos:ethereum" },
-          { name: "Web3.js", icon: "simple-icons:web3dotjs" },
-          { name: "PostgreSQL", icon: "logos:postgresql" },
-          { name: "JWT", icon: "simple-icons:jsonwebtokens" },
-        ],
-      },
-      {
-        id: 12,
-        title: "SaaS Subscription API",
-        description:
-          "Backend API managing SaaS subscriptions, billing, and user accounts.",
-        image: "https://img.heroui.chat/image/dashboard?w=600&h=400&u=10",
-        gallery: [
-          "https://img.heroui.chat/image/dashboard?w=600&h=400&u=10",
-          "https://img.heroui.chat/image/dashboard?w=600&h=400&u=10-1",
-          "https://img.heroui.chat/image/dashboard?w=600&h=400&u=10-2",
-          "https://img.heroui.chat/image/dashboard?w=600&h=400&u=10-3",
-        ],
-        category: "Backend Services",
-        details:
-          "RESTful API with Stripe integration, usage metering, tiered pricing, webhook handling, trial periods, and analytics. Optimized with Redis caching.",
-        github: "https://github.com",
-        tech: [
-          { name: "Node.js", icon: "logos:nodejs-icon" },
-          { name: "Stripe", icon: "logos:stripe" },
-          { name: "PostgreSQL", icon: "logos:postgresql" },
-          { name: "Redis", icon: "logos:redis" },
-          { name: "JWT", icon: "simple-icons:jsonwebtokens" },
-        ],
-      },
-    ],
-  },
+ projects: {
+  sectionTitle: "Featured Projects",
+  sectionDescription:
+    "A selection of my recent projects showcasing full stack development and API work",
+  work: [
+    {
+      id: 0,
+      title: "Job Portal Web App",
+      description:
+        "Full-stack platform where candidates search/apply for jobs and recruiters post/manage openings with role-based access.",
+      image: "/jobportal1.png",
+      gallery: ["/jobportal1.png", "/jobportal2.png", "/jobportal3.png"],
+      category: "Full Stack Application",
+      details:
+        "React.js + Tailwind on the front-end, Node.js/Express + MongoDB on the back-end. Features JWT auth, recruiter/candidate roles, search & filters, and responsive design.",
+      github: "https://github.com/ShubhamChaudhary26",
+      live: "https://job-portal-b7a0.onrender.com/",
+      tech: [
+        { name: "React", icon: "logos:react" },
+        { name: "TailwindCSS", icon: "logos:tailwindcss-icon" },
+        { name: "Node.js", icon: "logos:nodejs-icon" },
+        { name: "Express", icon: "simple-icons:express" },
+        { name: "MongoDB", icon: "logos:mongodb-icon" },
+        { name: "JWT", icon: "simple-icons:jsonwebtokens" },
+      ],
+    },
+    {
+      id: 1,
+      title: "Veltrix Gym – Membership & Fitness Website",
+      description:
+        "Complete gym website with user authentication, membership plans, trainer profiles, and responsive design for fitness businesses.",
+      image: "/veltrix1.png",
+      gallery: ["/veltrix1.png", "/veltrix2.png", "/veltrix3.png", "/veltrix4.png", "/veltrix5.png", "/veltrix6.png"],
+      category: "Full Stack Application",
+      details:
+        "Developed a full-featured gym website with login/signup functionality, membership plans, trainer profiles, and gym information. Modern, fully responsive design optimized for mobile, tablet, and desktop. Features smooth UX, clean layout, and scalable front-end structure.",
+      github: "https://github.com/ShubhamChaudhary26",
+      live: "https://gymwebsite-gamma.vercel.app",
+      tech: [
+        { name: "React", icon: "logos:react" },
+        { name: "Next.js", icon: "skill-icons:nextjs-dark" },
+        { name: "Node.js", icon: "logos:nodejs-icon" },
+        { name: "MongoDB", icon: "logos:mongodb-icon" },
+        { name: "TailwindCSS", icon: "logos:tailwindcss-icon" },
+      ],
+    },
+    {
+      id: 2,
+      title: "Beyond Studio – Interior Design Business Website",
+      description:
+        "Modern, responsive website for an interior design firm showcasing services, portfolio, and client inquiry optimization.",
+      image: "/beyond1.png",
+      gallery: ["/beyond1.png", "/beyond2.png", "/beyond3.png", "/beyond4.png"],
+      category: "Web Development",
+      details:
+        "Designed and developed a professional website for an interior design firm. Features clean UI aligned with brand identity, mobile-first responsive design, optimized layout for client inquiries, fast performance, and cross-browser compatibility.",
+      github: "https://github.com/ShubhamChaudhary26",
+      live: "https://beyondistudio.com",
+      tech: [
+        { name: "Next.js", icon: "skill-icons:nextjs-dark" },
+        { name: "TailwindCSS", icon: "logos:tailwindcss-icon" },
+        { name: "React", icon: "logos:react" },
+        { name: "JavaScript", icon: "logos:javascript" },
+      ],
+    },
+    {
+      id: 3,
+      title: "RentAgreementWithUs – Legal Service Website",
+      description:
+        "Service-based platform for online rent agreement services with lead-focused design and user-friendly interface.",
+      image: "/rentagreement1.png",
+      gallery: ["/rentagreement1.png", "/rentagreement2.png", "/rentagreement3.png", "/rentagreement4.png"],
+      category: "Full Stack Application",
+      details:
+        "Built a comprehensive legal service website for online rent agreements. Features informational pages for legal services, lead-focused design for customer inquiries, mobile-first responsive design, fast performance, and clean UI with registration functionality.",
+      github: "https://github.com/ShubhamChaudhary26",
+      live: "https://rentagreementwithus.com",
+      tech: [
+        { name: "Next.js", icon: "skill-icons:nextjs-dark" },
+        { name: "React", icon: "logos:react" },
+        { name: "Node.js", icon: "logos:nodejs-icon" },
+        { name: "MongoDB", icon: "logos:mongodb-icon" },
+        { name: "JavaScript", icon: "logos:javascript" },
+      ],
+    },
+    {
+      id: 4,
+      title: "Apple Vision Pro Clone – Interactive Web Experience",
+      description:
+        "Fully responsive Apple Vision Pro clone featuring smooth transitions, interactive UI, and modern sleek design.",
+      image: "/visionpro1.png",
+      gallery: ["/visionpro1.png", "/visionpro2.png", "/visionpro3.png", "/visionpro4.png"],
+      category: "Web Development",
+      details:
+        "Designed and developed a fully responsive Apple Vision Pro clone website from scratch. Features smooth transitions, interactive UI, and modern sleek design inspired by Apple. Focused on clean code, optimized performance, and cross-device compatibility.",
+      github: "https://github.com/ShubhamChaudhary26",
+      live: "https://visionprobyshubham.netlify.app",
+      tech: [
+        { name: "HTML", icon: "logos:html-5" },
+        { name: "CSS", icon: "logos:css-3" },
+        { name: "JavaScript", icon: "logos:javascript" },
+        { name: "TailwindCSS", icon: "logos:tailwindcss-icon" },
+      ],
+    },
+    {
+      id: 5,
+      title: "7SevenStarTravel – Tours & Travels Booking Platform",
+      description:
+        "Complete cab booking and tours platform with fleet management, outstation routes, local packages, and 24/7 service booking.",
+      image: "/7star1.png",
+      gallery: ["/7star1.png", "/7star2.png", "/7star3.png", "/7star4.png", ],
+      category: "Web Development",
+      details:
+        "Developed a comprehensive tours and travels website for Vapi's leading cab service provider. Features vehicle fleet showcase with pricing, outstation route booking to 100+ destinations, local 8hr/80km packages, airport transfers, and pilgrimage tour packages. Includes WhatsApp integration, call-to-action booking, GPS tracking info, and fully responsive design optimized for conversions.",
+      github: "https://github.com/ShubhamChaudhary26",
+      live: "https://7sevenstartravels.com",
+      tech: [
+        { name: "Next.js", icon: "skill-icons:nextjs-dark" },
+        { name: "React", icon: "logos:react" },
+        { name: "TailwindCSS", icon: "logos:tailwindcss-icon" },
+        { name: "JavaScript", icon: "logos:javascript" },
+      ],
+    },
+  ],
+},
 
   contact: {
     heading:
