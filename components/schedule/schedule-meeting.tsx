@@ -13,7 +13,6 @@ import {
   BOOKING_TIMEZONE,
   Slot,
   Ymd,
-  buildCalendarInvite,
   buildSlots,
   daysInMonth,
   formatLongDate,
@@ -34,12 +33,9 @@ const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 type Step = "date" | "time" | "details" | "done";
 
 type Confirmation = {
-  googleUrl: string;
-  ics: string;
-  mailto: string;
-  emailSent: boolean;
-  emailNote: string;
+  email: string;
   start: Date;
+  end: Date;
 };
 
 const stepIndex: Record<Step, number> = {
@@ -109,8 +105,8 @@ export const ScheduleMeeting = () => {
     revealLocalZone();
   };
 
-  const submitDetails = async (event: FormEvent) => {
-    event.preventDefault();
+  const submitDetails = async (event?: FormEvent) => {
+    event?.preventDefault();
     setError(null);
 
     if (!activeSlot) {
@@ -142,62 +138,46 @@ export const ScheduleMeeting = () => {
       return;
     }
 
+    const zone = localTimeZone || Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const istStart = formatTime(activeSlot.start, BOOKING_TIMEZONE);
+    const istEnd = formatTime(activeSlot.end, BOOKING_TIMEZONE);
+    const localStart = formatTime(activeSlot.start, zone);
+    const localEnd = formatTime(activeSlot.end, zone);
+    const dateLabel = formatLongDate(activeSlot.start, BOOKING_TIMEZONE);
+
     setSubmitting(true);
 
-    const invite = buildCalendarInvite({
-      name: trimmedName,
-      email: trimmedEmail,
-      purpose: trimmedPurpose,
-      start: activeSlot.start,
-      end: activeSlot.end,
-    });
-
-    const when = `${formatLongDate(activeSlot.start, BOOKING_TIMEZONE)} · ${formatTime(activeSlot.start, BOOKING_TIMEZONE)}–${formatTime(activeSlot.end, BOOKING_TIMEZONE)} IST`;
     const emailResult = await sendPortfolioEmail({
       name: trimmedName,
       email: trimmedEmail,
-      subject: `Meeting request: ${trimmedName}`,
-      message: `${invite.details}\n\nWhen: ${when}\nGoogle Calendar: ${invite.googleUrl}`,
+      subject: "Meeting request",
+      message: [
+        "Meeting request",
+        "",
+        `Name: ${trimmedName}`,
+        `Email: ${trimmedEmail}`,
+        `Date: ${dateLabel}`,
+        `Time (IST, ${BOOKING_TIMEZONE}): ${istStart} – ${istEnd}`,
+        `Time (${zone}): ${localStart} – ${localEnd}`,
+        "",
+        `Purpose: ${trimmedPurpose}`,
+      ].join("\n"),
     });
 
-    let emailSent = false;
-    let emailNote =
-      "Email delivery is not configured on this site yet. Add the event to Google Calendar so Shubham receives the invite, or email the details directly.";
+    setSubmitting(false);
 
-    if (emailResult.ok) {
-      emailSent = true;
-      emailNote =
-        "A copy of this request was also sent through the site contact email.";
-    } else if (emailResult.reason === "failed") {
-      emailNote =
-        "The contact email could not be sent. Add the event to Google Calendar so Shubham still receives the invite.";
+    if (!emailResult.ok) {
+      setError("Something went wrong sending your request. Please try again.");
+
+      return;
     }
 
     setConfirmation({
-      googleUrl: invite.googleUrl,
-      ics: invite.ics,
-      mailto: invite.mailto,
-      emailSent,
-      emailNote,
+      email: trimmedEmail,
       start: activeSlot.start,
+      end: activeSlot.end,
     });
     setStep("done");
-    setSubmitting(false);
-  };
-
-  const downloadIcs = () => {
-    if (!confirmation) return;
-
-    const blob = new Blob([confirmation.ics], {
-      type: "text/calendar;charset=utf-8",
-    });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-
-    link.href = url;
-    link.download = "meeting-with-shubham.ics";
-    link.click();
-    URL.revokeObjectURL(url);
   };
 
   const reset = () => {
@@ -483,19 +463,40 @@ export const ScheduleMeeting = () => {
                   onChange={(event) => setPurpose(event.target.value)}
                 />
               </label>
-              {error ? <p className="text-sm text-danger">{error}</p> : null}
-              <Button
-                className="w-full sm:w-auto"
-                color="primary"
-                isLoading={submitting}
-                type="submit"
-              >
-                Confirm meeting
-              </Button>
+              {error ? (
+                <p className="text-sm text-danger" role="alert">
+                  {error}
+                </p>
+              ) : null}
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <Button
+                  className="w-full sm:w-auto"
+                  color="primary"
+                  isDisabled={submitting}
+                  isLoading={submitting}
+                  type="submit"
+                >
+                  Confirm meeting
+                </Button>
+                {error ? (
+                  <Button
+                    className="w-full sm:w-auto"
+                    isDisabled={submitting}
+                    isLoading={submitting}
+                    type="button"
+                    variant="bordered"
+                    onPress={() => {
+                      void submitDetails();
+                    }}
+                  >
+                    Try again
+                  </Button>
+                ) : null}
+              </div>
             </motion.form>
           )}
 
-          {step === "done" && confirmation && activeSlot && (
+          {step === "done" && confirmation && (
             <motion.div
               key="done"
               animate={{ opacity: 1, y: 0 }}
@@ -506,40 +507,20 @@ export const ScheduleMeeting = () => {
               <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
                 <Icon className="h-6 w-6" icon="lucide:check" />
               </div>
-              <h2 className="font-display text-3xl font-semibold">You are booked</h2>
-              <p className="mt-3 text-foreground-500">
-                {formatLongDate(confirmation.start, BOOKING_TIMEZONE)} ·{" "}
-                {formatTime(activeSlot.start, BOOKING_TIMEZONE)}–
-                {formatTime(activeSlot.end, BOOKING_TIMEZONE)} IST
-                {localTimeZone && localTimeZone !== BOOKING_TIMEZONE
-                  ? ` (${formatTime(activeSlot.start, localTimeZone)}–${formatTime(activeSlot.end, localTimeZone)} ${localTimeZone})`
-                  : ""}
+              <h2 className="font-display text-3xl font-semibold">Meeting confirmed!</h2>
+              <p className="mt-3 text-base leading-relaxed text-foreground">
+                I&apos;ll get back to you at {confirmation.email} shortly.
               </p>
-              <p className="mt-3 text-sm leading-relaxed text-foreground-600">
-                {confirmation.emailNote} Shubham is included as{" "}
-                <span className="font-medium">{DATA.booking.guestEmail}</span>.
+              <p className="mt-4 text-foreground-500">
+                {formatLongDate(confirmation.start, BOOKING_TIMEZONE)}
+                <span className="mt-1 block">
+                  {formatTime(confirmation.start, BOOKING_TIMEZONE)} –{" "}
+                  {formatTime(confirmation.end, BOOKING_TIMEZONE)} IST
+                  {localTimeZone && localTimeZone !== BOOKING_TIMEZONE
+                    ? ` · ${formatTime(confirmation.start, localTimeZone)} – ${formatTime(confirmation.end, localTimeZone)} your time`
+                    : ""}
+                </span>
               </p>
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <Button
-                  as="a"
-                  color="primary"
-                  href={confirmation.googleUrl}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  Add to Google Calendar
-                </Button>
-                <Button variant="bordered" onPress={downloadIcs}>
-                  Download .ics
-                </Button>
-                <Button
-                  as="a"
-                  href={confirmation.mailto}
-                  variant="light"
-                >
-                  Email the details
-                </Button>
-              </div>
               <button
                 className="mt-6 text-sm text-primary"
                 type="button"

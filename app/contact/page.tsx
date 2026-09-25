@@ -40,10 +40,7 @@ const ContactPage: React.FC = () => {
       return;
     }
 
-    const description =
-      result.reason === "unconfigured"
-        ? "Email configuration is incomplete. Please check environment variables."
-        : result.message;
+    const description = "Something went wrong sending your message. Please try again.";
 
     setState((prev) => ({ ...prev, isSubmitting: false, error: description }));
     addToast({

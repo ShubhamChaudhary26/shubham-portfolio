@@ -1,5 +1,4 @@
 import { DATA } from "@/data";
-import { SITE_URL } from "@/lib/site";
 
 /**
  * Point this at a Cal.com or Calendly URL to replace the custom scheduler
@@ -147,70 +146,4 @@ export function monthLabel(date: Ymd) {
     year: "numeric",
     timeZone: BOOKING_TIMEZONE,
   }).format(anchor);
-}
-
-function toCalendarUtc(date: Date) {
-  return date.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}Z$/, "Z");
-}
-
-function icsEscape(value: string) {
-  return value
-    .replace(/\\/g, "\\\\")
-    .replace(/\r?\n/g, "\\n")
-    .replace(/,/g, "\\,")
-    .replace(/;/g, "\\;");
-}
-
-export function buildCalendarInvite(input: {
-  name: string;
-  email: string;
-  purpose: string;
-  start: Date;
-  end: Date;
-}) {
-  const title = `Meeting with ${DATA.booking.hostName}`;
-  const details = [
-    `Purpose: ${input.purpose}`,
-    `Booked by: ${input.name} (${input.email})`,
-    `Offered hours are weekdays 10:00–19:00 India Standard Time (${BOOKING_TIMEZONE}).`,
-    `Portfolio: ${SITE_URL}/schedule`,
-  ].join("\n");
-
-  const params = new URLSearchParams({
-    action: "TEMPLATE",
-    text: title,
-    dates: `${toCalendarUtc(input.start)}/${toCalendarUtc(input.end)}`,
-    details,
-    location: "Online call",
-    add: DATA.booking.guestEmail,
-    ctz: BOOKING_TIMEZONE,
-  });
-
-  const googleUrl = `https://calendar.google.com/calendar/render?${params.toString()}`;
-  const uid = `${input.start.getTime()}-${input.email.replace(/[^a-z0-9]/gi, "")}@shubh.work`;
-  const ics = [
-    "BEGIN:VCALENDAR",
-    "VERSION:2.0",
-    "PRODID:-//shubh.work//Schedule//EN",
-    "CALSCALE:GREGORIAN",
-    "METHOD:REQUEST",
-    "BEGIN:VEVENT",
-    `UID:${uid}`,
-    `DTSTAMP:${toCalendarUtc(new Date())}`,
-    `DTSTART:${toCalendarUtc(input.start)}`,
-    `DTEND:${toCalendarUtc(input.end)}`,
-    `SUMMARY:${icsEscape(title)}`,
-    `DESCRIPTION:${icsEscape(details)}`,
-    "LOCATION:Online call",
-    `ORGANIZER;CN=${icsEscape(DATA.booking.hostName)}:mailto:${DATA.booking.guestEmail}`,
-    `ATTENDEE;CN=${icsEscape(DATA.booking.hostName)};RSVP=TRUE:mailto:${DATA.booking.guestEmail}`,
-    `ATTENDEE;CN=${icsEscape(input.name)};RSVP=TRUE:mailto:${input.email}`,
-    "END:VEVENT",
-    "END:VCALENDAR",
-    "",
-  ].join("\r\n");
-
-  const mailto = `mailto:${DATA.booking.guestEmail}?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(details)}`;
-
-  return { googleUrl, ics, title, details, mailto };
 }

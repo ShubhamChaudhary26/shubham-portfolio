@@ -14,7 +14,7 @@ function scheduleAnswer() {
     `You can book a meeting with Shubham here: ${SITE_URL}/schedule`,
     "",
     "Weekday slots run from 10:00 to 19:00 India Standard Time (Asia/Kolkata), in 30-minute steps. The page also shows that time in your local timezone.",
-    "Add your name, email, and what you want to talk about. The confirmation screen gives you a Google Calendar invite — Shubham is added as a guest — and a downloadable calendar file.",
+    "Add your name, email, and what you want to talk about. Shubham gets the request by email and will reply to the address you enter.",
   ].join("\n");
 }
 
