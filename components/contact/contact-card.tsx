@@ -11,10 +11,12 @@ export const ContactCard = ({ heading, children }: ContactCardProps) => (
     viewport={{ once: true }}
     whileInView={{ opacity: 1, y: 0 }}
   >
-    <Card className="border-none shadow-xl bg-white/90 dark:bg-black/60">
-      <CardBody className="p-8">
-        <div className="text-center mb-8">
-          <h1 className="text-foreground-600">{heading}</h1>
+    <Card className="border border-divider bg-content1/80 shadow-sm">
+      <CardBody className="p-6 sm:p-8">
+        <div className="mb-8 text-center">
+          <h2 className="font-display text-2xl font-semibold text-foreground md:text-3xl">
+            {heading}
+          </h2>
         </div>
         {children}
       </CardBody>

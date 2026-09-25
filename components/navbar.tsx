@@ -40,11 +40,11 @@ export const Navigation = () => {
             transition={{ duration: 0.5 }}
           >
             <Link
-              className="font-bold text-inherit text-xl bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent"
+              className="font-display text-xl font-semibold tracking-tight text-foreground"
               href="/"
               onClick={() => setIsMenuOpen(false)}
             >
-              Portfolio
+              Shubham
             </Link>
           </motion.div>
         </NavbarBrand>
@@ -58,14 +58,19 @@ export const Navigation = () => {
                 transition={{ delay: index * 0.1, duration: 0.5 }}
               >
                 <Link
-                  className={`flex items-center gap-2 transition-colors ${
-                    pathname === item.href
-                      ? "text-primary-500 font-semibold"
-                      : "text-foreground hover:text-primary-500"
+                  className={`flex items-center gap-2 rounded-full px-3 py-1.5 transition-colors ${
+                    item.href === "/schedule"
+                      ? "bg-primary font-medium text-primary-foreground"
+                      : pathname === item.href
+                        ? "font-semibold text-primary"
+                        : "text-foreground hover:text-primary"
                   }`}
                   href={item.href}
                 >
-                  <Icon className="w-5 h-5 text-primary-500" icon={item.icon} />
+                  <Icon
+                    className={`h-4 w-4 ${item.href === "/schedule" ? "text-primary-foreground" : "text-primary"}`}
+                    icon={item.icon}
+                  />
                   {item.name}
                 </Link>
               </motion.div>
@@ -94,11 +99,18 @@ export const Navigation = () => {
                 transition={{ delay: index * 0.1, duration: 0.5 }}
               >
                 <Link
-                  className="w-full flex items-center gap-3 py-3 px-4 rounded-medium hover:bg-content1 transition-colors"
+                  className={`flex w-full items-center gap-3 rounded-2xl px-4 py-3 transition-colors ${
+                    item.href === "/schedule"
+                      ? "bg-primary font-medium text-primary-foreground"
+                      : "hover:bg-content1"
+                  }`}
                   href={item.href}
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  <Icon className="w-5 h-5 text-primary-500" icon={item.icon} />
+                  <Icon
+                    className={`h-5 w-5 ${item.href === "/schedule" ? "text-primary-foreground" : "text-primary"}`}
+                    icon={item.icon}
+                  />
                   {item.name}
                 </Link>
               </motion.div>

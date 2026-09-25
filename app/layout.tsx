@@ -1,51 +1,65 @@
 import "@/app/globals.css";
-import ChatBot from "@/components/ChatBot";
 
 import { clsx } from "clsx";
-import { type Metadata } from "next";
-import { Inter } from "next/font/google";
-import Script from "next/script";
+import { type Metadata, type Viewport } from "next";
+import { Manrope, Syne } from "next/font/google";
 
 import { DATA } from "@/data";
 import { Footer } from "@/components/footer";
 import { Navigation } from "@/components/navbar";
 import { PageWrapper } from "@/components/page-wrapper";
 import { Providers } from "@/app/providers";
-import { StarsBackground } from "@/components/backgrounds/stars";
+import ChatBot from "@/components/ChatBot";
+import { SITE_URL } from "@/lib/site";
 
-const inter = Inter({
+const sans = Manrope({
   subsets: ["latin"],
   variable: "--font-sans",
+  display: "swap",
 });
 
+const display = Syne({
+  subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const title = `${DATA.home.hero.name} | ${DATA.home.hero.title}`;
+const description = DATA.home.hero.subtitle;
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://shubh26.com"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: DATA.home.hero.name,
+    default: title,
     template: `%s | ${DATA.home.hero.name}`,
   },
-  description: DATA.home.hero.subtitle,
+  description,
+  applicationName: DATA.home.hero.name,
+  authors: [{ name: DATA.home.hero.name, url: SITE_URL }],
+  alternates: {
+    canonical: SITE_URL,
+  },
   openGraph: {
-    title: DATA.home.hero.name,
-    description: DATA.home.hero.subtitle,
-    url: "https://shubh26.com",
-    siteName: DATA.home.hero.name,
+    title,
+    description,
+    url: SITE_URL,
+    siteName: "shubh.work",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "https://shubh26.com/shubham.jpg",
+        url: "/shubham.jpg",
         width: 1200,
         height: 630,
-        alt: `${DATA.home.hero.name} Preview`,
+        alt: `${DATA.home.hero.name}, full stack developer`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: DATA.home.hero.name,
-    description: DATA.home.hero.subtitle,
-    images: ["https://shubh26.com/shubham.jpg"],
+    title,
+    description,
+    images: ["/shubham.jpg"],
   },
   robots: {
     index: true,
@@ -58,6 +72,16 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  icons: {
+    icon: "/favicon.png",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f3f1eb" },
+    { media: "(prefers-color-scheme: dark)", color: "#07080c" },
+  ],
 };
 
 type RootLayoutProps = {
@@ -65,66 +89,34 @@ type RootLayoutProps = {
 };
 
 export default function RootLayout({ children }: RootLayoutProps) {
-  const content = (
-    <main className="bg-background min-h-screen bg-gradient-to-b from-background to-content2">
-      <Navigation />
-      <PageWrapper>{children}</PageWrapper>
-      <Footer />
-    </main>
-  );
-
   return (
     <html suppressHydrationWarning lang="en">
-      <head>
-        <title>Shubham Chaudhary</title>
-        <meta name="title" content="Shubham Chaudhary" />
-        <meta
-          name="description"
-          content="I build fast, accessible and visually engaging web experiences that solve real problems."
-        />
-
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://shubh26.com/" />
-        <meta property="og:title" content="Shubham Chaudhary" />
-        <meta
-          property="og:description"
-          content="I build fast, accessible and visually engaging web experiences that solve real problems."
-        />
-        <meta property="og:image" content="https://shubh26.com/shubham.jpg" />
-
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://shubh26.com/" />
-        <meta property="twitter:title" content="Shubham Chaudhary" />
-        <meta
-          property="twitter:description"
-          content="I build fast, accessible and visually engaging web experiences that solve real problems."
-        />
-        <meta
-          property="twitter:image"
-          content="https://shubh26.com/shubham.jpg"
-        />
-
-        {/* <link rel="icon" href="/favicon.png" /> */}
-        <link rel="icon" href="/shubham.jpg" />
-        <meta name="theme-color" content="#0f172a" />
-      </head>
-
       <body
         className={clsx(
           "min-h-screen bg-background font-sans antialiased",
-          inter.variable
+          sans.variable,
+          display.variable,
         )}
       >
         <Providers
           themeProps={{
             attribute: "class",
             defaultTheme: "dark",
+            enableSystem: false,
           }}
         >
-          <StarsBackground>
-            {content}
-            <ChatBot />
-          </StarsBackground>
+          <a
+            className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[80] focus:rounded-full focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
+            href="#content"
+          >
+            Skip to content
+          </a>
+          <div className="min-h-screen bg-background">
+            <Navigation />
+            <PageWrapper>{children}</PageWrapper>
+            <Footer />
+          </div>
+          <ChatBot />
         </Providers>
       </body>
     </html>

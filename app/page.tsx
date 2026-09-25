@@ -1,91 +1,94 @@
-import { HeroSection } from "@/components/home/hero";
-import { SkillsOverviewSection } from "@/components/home/skills-overview";
-import { WorkSection } from "@/components/home/work";
-import { TestimonialsSection } from "@/components/home/testimonials";
 import type { Metadata } from "next";
 
-const pageUrl = "https://shubh26.com";
-const pageImage = "https://shubh26.com/shubham.jpg";
-const description =
-  "Official portfolio website of Shubham Chaudhary (Shubh26) – Full Stack Developer skilled in React, Next.js, Node.js, and MongoDB. Explore my projects, skills, work experience, and testimonials.";
+import { FocusSection } from "@/components/home/focus";
+import { HeroSection } from "@/components/home/hero";
+import { SkillsOverviewSection } from "@/components/home/skills-overview";
+import { TestimonialsSection } from "@/components/home/testimonials";
+import { WorkSection } from "@/components/home/work";
+import { DATA } from "@/data";
+import { SITE_URL } from "@/lib/site";
+
+const description = DATA.home.hero.subtitle;
 
 export const metadata: Metadata = {
-  title:
-    "Shubham Chaudhary | Full Stack Developer Portfolio Website",
+  title: {
+    absolute: `${DATA.home.hero.name} | ${DATA.home.hero.title}`,
+  },
   description,
-  keywords:
-    "Shubham Chaudhary, Shubh26, Shubham, Full Stack Developer, Shubham Portfolio, Shubham Chaudhary Portfolio, React Developer, Next.js Developer, Node.js Developer, MongoDB Developer, Web Developer Portfolio",
-  authors: [{ name: "Shubham Chaudhary" }],
-  robots: "index, follow",
+  keywords: [
+    "Shubham Chaudhary",
+    "Full Stack Developer",
+    "AI calling agents",
+    "voice AI",
+    "AI bots",
+    "chatbots",
+    "web apps",
+    "mobile apps",
+    "Pune",
+    "NR Agrawal",
+    "shubh.work",
+  ],
   alternates: {
-    canonical: pageUrl,
+    canonical: SITE_URL,
   },
   openGraph: {
-    title:
-      "Shubham Chaudhary (Shubh26) | Full Stack Developer & Portfolio Website",
+    title: `${DATA.home.hero.name} | AI calling agents, bots, and apps`,
     description,
-    url: pageUrl,
-    type: "website",
+    url: SITE_URL,
+    siteName: "shubh.work",
     images: [
       {
-        url: pageImage,
+        url: "/shubham.jpg",
         width: 1200,
         height: 630,
-        alt: "Shubham Chaudhary Portfolio",
+        alt: "Shubham Chaudhary",
       },
     ],
-    siteName: "Shubh26",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Shubham Chaudhary | Full Stack Developer Portfolio",
-    description,
-    images: [pageImage],
+};
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: DATA.about.profile.name,
+  url: SITE_URL,
+  image: `${SITE_URL}/shubham.jpg`,
+  jobTitle: "Full Stack Developer",
+  description,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Pune",
+    addressRegion: "Maharashtra",
+    addressCountry: "IN",
   },
-  other: {
-    // ✅ Schema.org Person (Rich Snippet)
-    "ld+json": JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Person",
-      name: "Shubham Chaudhary",
-      alternateName: "Shubh26",
-      url: pageUrl,
-      image: pageImage,
-      jobTitle: "Full Stack Developer",
-      description: description,
-      worksFor: {
-        "@type": "Organization",
-        name: "Freelance / Open Source",
-      },
-      knowsAbout: [
-        "Full Stack Development",
-        "React",
-        "Next.js",
-        "Node.js",
-        "MongoDB",
-        "JavaScript",
-        "TypeScript",
-        "Web Development",
-      ],
-      sameAs: [
-        "https://github.com/ShubhamChaudhary26",
-        "https://linkedin.com/in/shubham-chaudhary-react",
-        "https://x.com/Shubh26___?t=VBO8ygtdm3xjCi3KvfOhIQ&s=09",
-        "https://shubh26.com",
-      ],
-    }),
+  worksFor: {
+    "@type": "Organization",
+    name: "NR Agrawal",
   },
+  email: DATA.footer.contact.email,
+  knowsAbout: [
+    "AI calling agents",
+    "Voice AI",
+    "Chatbots",
+    "Web applications",
+    "Mobile applications",
+    "React",
+    "Next.js",
+    "Node.js",
+    "TypeScript",
+  ],
+  sameAs: DATA.footer.socialLinks.map((link) => link.url),
 };
 
 export default function HomePage() {
   return (
     <>
-      {/* ✅ h1 tag SEO ke liye zaroori hai */}
-      <h1 className="sr-only">
-        Shubham Chaudhary (Shubh26) | Full Stack Developer Portfolio
-      </h1>
-
+      <script
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        type="application/ld+json"
+      />
       <HeroSection />
+      <FocusSection />
       <SkillsOverviewSection />
       <WorkSection />
       <TestimonialsSection />

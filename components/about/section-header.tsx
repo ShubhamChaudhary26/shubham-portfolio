@@ -13,6 +13,6 @@ export const SectionHeader = ({
     <div className="bg-primary-100 text-primary-500 p-2 rounded-full">
       <Icon className="text-xl" icon={icon} />
     </div>
-    <h2 className="text-2xl font-bold text-primary-500">{title}</h2>
+    <h2 className="font-display text-2xl font-semibold text-foreground md:text-3xl">{title}</h2>
   </div>
 );

@@ -81,3 +81,29 @@
 .animate-fade-in {
   animation: fade-in 0.3s ease-in-out;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(165, 176, 255, 0.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .motion-safe-only,
+  .animate-float,
+  .animate-float-delayed,
+  .animate-ping,
+  .animate-spin-slow {
+    animation: none !important;
+  }
+}

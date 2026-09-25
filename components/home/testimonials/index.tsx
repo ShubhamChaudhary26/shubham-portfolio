@@ -26,8 +26,8 @@ export const TestimonialsSection = () => {
   const currentTestimonial = items[currentIndex] || items[0];
 
   return (
-    <section className="py-20 bg-background bg-gradient-to-b from-background to-content2">
-      <div className="container mx-auto px-4">
+    <section className="scroll-mt-24 bg-gradient-to-b from-background to-content2 px-4 py-20 md:py-28">
+      <div className="mx-auto max-w-6xl">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}

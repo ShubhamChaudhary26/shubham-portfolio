@@ -4,6 +4,7 @@ import type { ThemeProviderProps } from "next-themes";
 
 import * as React from "react";
 import { HeroUIProvider } from "@heroui/system";
+import { MotionConfig } from "framer-motion";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import { ToastProvider } from "@heroui/react";
@@ -32,8 +33,10 @@ export function Providers({ children, themeProps }: ProvidersProps) {
 
   return (
     <HeroUIProvider navigate={router.push}>
-      <ToastProvider />
-      <NextThemesProvider {...themeProps}>{children}</NextThemesProvider>
+      <MotionConfig reducedMotion="user">
+        <ToastProvider />
+        <NextThemesProvider {...themeProps}>{children}</NextThemesProvider>
+      </MotionConfig>
     </HeroUIProvider>
   );
 }

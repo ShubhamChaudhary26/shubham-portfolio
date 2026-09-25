@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { ContactMapProps } from "../types";
+
 import { MapSkeleton } from "@/components/contact/contact-map/map-skeleton";
 
 export const ContactMap: React.FC<ContactMapProps> = ({

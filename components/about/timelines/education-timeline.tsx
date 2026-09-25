@@ -18,19 +18,19 @@ export const EducationTimeline = ({ education }: EducationTimelineProps) => (
     <motion.ol
       className="relative ml-6"
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
       variants={containerVariants}
+      viewport={{ once: true, amount: 0.2 }}
+      whileInView="visible"
     >
       <div className="absolute top-2 left-2 bottom-0 w-px bg-primary-500" />
       {education.map((item, idx) => (
         <TimelineItem
           key={idx}
-          title={item.title}
           date={item.date}
-          description={item.description}
-          variants={itemVariants}
           delay={idx * 300}
+          description={item.description}
+          title={item.title}
+          variants={itemVariants}
         />
       ))}
     </motion.ol>

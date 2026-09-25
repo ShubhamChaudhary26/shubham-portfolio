@@ -4,6 +4,7 @@ import React, { useCallback } from "react";
 import { Input, Textarea, Button } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { motion, AnimatePresence } from "framer-motion";
+
 import { ContactFormProps } from "@/components/contact/types";
 import { useContactForm } from "@/hooks/use-contact-form";
 import { SuccessMessage } from "@/components/contact/contact-form/success-message";
@@ -83,7 +84,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
             isInvalid={!!errors.email}
             label="Email"
             name="email"
-            placeholder="shubh26062001@gmail.com"
+            placeholder="you@email.com"
             startContent={<Icon icon="lucide:mail" />}
             type="email"
             value={formData.email}

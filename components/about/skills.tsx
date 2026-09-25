@@ -36,8 +36,8 @@ export const Skills = ({ tech }: SkillsProps) => (
                 <Icon
                   className="transition-all duration-300"
                   height={41} // bada size
-                  width={41} // bada size
                   icon={tool.icon}
+                  width={41} // bada size
                 />
               </div>
             ))}

@@ -12,12 +12,7 @@ export const ProjectCard = memo(function ProjectCard({
     <Card
       isFooterBlurred
       isHoverable
-      className="
-        border-none bg-white/90 dark:bg-black/70
-        shadow-md dark:shadow-cyan-900/40
-        rounded-xl overflow-hidden h-full w-full
-        transition-colors
-      "
+      className="h-full w-full overflow-hidden rounded-3xl border border-divider bg-content1/90 shadow-sm transition-transform duration-300 hover:-translate-y-1"
       radius="lg"
     >
       <CardBody className="p-0 flex flex-col h-full">
@@ -60,7 +55,7 @@ export const ProjectCard = memo(function ProjectCard({
           </p>
           <Button
             aria-label="View Details"
-            className="w-full md:w-auto border-cyan-400 text-cyan-300 hover:bg-cyan-400/10 transition-colors"
+            className="w-full transition-colors md:w-auto"
             color="primary"
             endContent={<Icon icon="lucide:arrow-right" />}
             variant="bordered"

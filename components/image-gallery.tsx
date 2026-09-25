@@ -20,18 +20,18 @@ const ImageGallery = memo(({ images }: ImageGalleryProps) => {
       <AnimatePresence mode="wait">
         <motion.div
           key={images[activeIndex]}
-          className="w-full max-w-xl h-65 md:h-80 overflow-hidden rounded-xl"
-          initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
+          className="w-full max-w-xl h-65 md:h-80 overflow-hidden rounded-xl"
           exit={{ opacity: 0 }}
+          initial={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <Skeleton isLoaded={imageLoaded} className="w-full h-full rounded-lg">
+          <Skeleton className="w-full h-full rounded-lg" isLoaded={imageLoaded}>
             <img
-              loading="lazy"
-              src={images[activeIndex]}
               alt={`Project image ${activeIndex + 1}`}
               className="w-full h-full object-cover"
+              loading="lazy"
+              src={images[activeIndex]}
               onLoad={() => setImageLoaded(true)}
             />
           </Skeleton>
@@ -46,15 +46,15 @@ const ImageGallery = memo(({ images }: ImageGalleryProps) => {
               ? "border-blue-500"
               : "border-transparent"
               }`}
-            onClick={() => handleThumbnailClick(index)}
-            whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
+            whileHover={{ scale: 1.05 }}
+            onClick={() => handleThumbnailClick(index)}
           >
             <img
-              loading="lazy"
-              src={img}
               alt={`Thumbnail ${index + 1}`}
               className="w-full h-full object-cover"
+              loading="lazy"
+              src={img}
             />
           </motion.div>
         ))}

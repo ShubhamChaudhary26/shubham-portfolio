@@ -1,68 +1,65 @@
 "use client";
 
+import { Button } from "@heroui/react";
+import { Icon } from "@iconify/react";
+import NextLink from "next/link";
 import { useState } from "react";
-import { motion } from "framer-motion";
 
+import { GradientText } from "@/components/textAnimations/gradient-text";
 import { ProjectCard } from "@/components/project-card";
 import { ProjectModal } from "@/components/project-modal";
-import { GradientText } from "@/components/textAnimations/gradient-text";
+import { Reveal } from "@/components/motion/reveal";
 import { Project } from "@/components/projects/types";
 import { DATA } from "@/data";
 
 export const WorkSection = () => {
   const { work } = DATA.projects;
   const { sectionTitle, sectionDescription } = DATA.projects;
-
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  const handleOpenModal = (project: Project) => setSelectedProject(project);
-  const handleCloseModal = () => setSelectedProject(null);
-
   return (
-    <section className="py-20 bg-background" id="work-section">
-      <div className="max-w-7xl mx-auto px-4">
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          viewport={{ once: true }}
-          whileInView={{ opacity: 1, y: 0 }}
-        >
+    <section className="scroll-mt-24 px-4 py-20 md:py-28" id="work-section">
+      <div className="mx-auto max-w-6xl">
+        <Reveal className="mx-auto mb-12 max-w-2xl text-center md:mb-16">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-primary">
+            Work
+          </p>
           <GradientText
-            className="text-3xl md:text-4xl font-bold mb-4"
+            className="font-display text-3xl font-semibold md:text-5xl"
             text={sectionTitle}
           />
-          <p className="text-foreground-600 text-lg max-w-2xl mx-auto">
+          <p className="mt-4 text-base leading-relaxed text-foreground-500 md:text-lg">
             {sectionDescription}
           </p>
-        </motion.div>
+        </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {work.slice(0, 3).map((project, index) => (
-            <motion.div
-              key={project.id}
-              className="w-full md:max-w-none"
-              initial={{ opacity: 0, y: 20 }}
-              transition={{
-                delay: index * 0.2,
-                duration: 0.8,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              viewport={{ once: true }}
-              whileInView={{ opacity: 1, y: 0 }}
-            >
+            <Reveal key={project.id} delay={index * 0.08}>
               <ProjectCard
                 project={project}
-                onViewDetails={() => handleOpenModal(project)}
+                onViewDetails={() => setSelectedProject(project)}
               />
-            </motion.div>
+            </Reveal>
           ))}
+        </div>
+
+        <div className="mt-12 text-center">
+          <Button
+            as={NextLink}
+            color="primary"
+            endContent={<Icon icon="lucide:arrow-right" />}
+            href="/projects"
+            variant="bordered"
+          >
+            All projects
+          </Button>
         </div>
 
         <ProjectModal
           isOpen={!!selectedProject}
           project={selectedProject}
-          onClose={handleCloseModal}
+          onClose={() => setSelectedProject(null)}
         />
       </div>
     </section>

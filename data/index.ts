@@ -1,40 +1,59 @@
 export const DATA = {
   home: {
     hero: {
-      name: "Shubham Chaudhary | Full Stack Developer Portfolio",
+      name: "Shubham Chaudhary",
       title: "Full Stack Developer",
+      headline: "I build AI calling agents, bots, and apps.",
       subtitle:
-        "I build fast, accessible and visually engaging web experiences that solve real problems.",
+        "Full stack developer in Pune, at NR Agrawal — shipping voice AI for phone calls, chatbots, and mobile and web apps.",
+      role: "Full Stack Developer at NR Agrawal",
+      location: "Pune, Maharashtra",
     },
-    
-    skills: {
-      sectionTitle: "Skills & Expertise",
+    focus: {
+      sectionTitle: "What I build",
       sectionDescription:
-        "Specialized in building modern, scalable web apps and APIs with a strong focus on performance and UX.",
-      overview: [
+        "Voice agents, conversational bots, and the products around them.",
+      items: [
         {
-          name: "React.js / Next.js",
-          level: 95,
-          icon: "logos:react",
-          color: "primary",
+          title: "AI Calling Agents",
+          description:
+            "Voice AI agents that place and answer phone calls, hold a real conversation, and hand off when a person should take over.",
+          icon: "lucide:phone-call",
         },
         {
-          name: "Frontend Development",
-          level: 92,
-          icon: "lucide:code",
-          color: "secondary",
+          title: "AI Bots",
+          description:
+            "Chatbots and assistants that answer questions, guide people through a task, and stay useful inside a product.",
+          icon: "lucide:bot",
         },
         {
-          name: "Backend (Node.js / Express)",
-          level: 82,
-          icon: "logos:nodejs-icon",
-          color: "success",
+          title: "Apps",
+          description:
+            "Mobile and web apps with clear interfaces, reliable backends, and the kind of polish people notice.",
+          icon: "lucide:layout-grid",
+        },
+      ],
+    },
+    skills: {
+      sectionTitle: "Skills",
+      sectionDescription:
+        "A full stack toolkit, used for voice agents, chatbots, and the apps around them.",
+      groups: [
+        {
+          name: "AI & Voice",
+          items: ["AI calling agents", "Voice AI", "Chatbots", "Conversation design"],
         },
         {
-          name: "Databases (MongoDB / SQL)",
-          level: 86,
-          icon: "logos:mongodb-icon",
-          color: "warning",
+          name: "Apps",
+          items: ["Web apps", "Mobile apps", "Product UI", "Responsive design"],
+        },
+        {
+          name: "Frontend",
+          items: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+        },
+        {
+          name: "Backend",
+          items: ["Node.js", "Express", "MongoDB", "REST APIs"],
         },
       ],
     },
@@ -83,12 +102,9 @@ export const DATA = {
       name: "Shubham Chaudhary",
       image: "/shubham.jpg",
       description: [
-        "Results-driven Full Stack Developer experienced in React.js, Node.js, and modern tooling.",
-        "Currently working in IT Solutions—shipping production features, building APIs, and crafting dashboards that support business operations.",
-        "Strong focus on clean code, DX, and performance with a user-first mindset.",
-        "Proficient in designing scalable architectures, integrating third-party APIs, and optimizing database performance.",
-        "Passionate about creating seamless user experiences through modern UI/UX principles and accessibility standards.",
-        "Continuously exploring emerging technologies like Next.js, TypeScript, and cloud-native development to stay ahead in the industry.",
+        "I am a full stack developer based in Pune, Maharashtra, currently working at NR Agrawal.",
+        "My focus is AI calling agents — voice AI that makes and takes phone calls — along with AI bots and mobile and web apps.",
+        "I work with React, Next.js, Node.js, and TypeScript, and I care about software that feels clear, fast, and dependable.",
       ],
     },
     education: [
@@ -107,31 +123,51 @@ export const DATA = {
           "Rofel Shri G.M. Bilakhia College, Vapi — Built foundations in programming, data structures, and CS fundamentals.",
       },
     ],
-   experience: [
-  {
-    title: "Full Stack Developer — Soltech",
-    date: "Nov 2025 – Present",
-    icon: "mdi:laptop",
-    description:
-      "Developing scalable web applications using React.js, Node.js, and MongoDB. Implementing secure APIs, dashboards, and real-time features for client projects.",
-  },
-  {
-    title: "Full Stack Developer - MintSurvey",
-    date: "May 2025 – Oct 2025",
-    icon: "mdi:briefcase",
-    description:
-      "Built internal tools and customer-facing features with React.js, Node.js, and MongoDB. Led API integrations, role-based authentication, and dashboard analytics.",
-  },
-  {
-    title: "React.js Intern — Divine Infotech",
-    date: "Sep 2024 – Mar 2025",
-    icon: "mdi:monitor-dashboard",
-    description:
-      "Developed responsive components, optimized performance, integrated REST APIs, and collaborated in Agile sprints.",
-  },
-],
+    experience: [
+      {
+        title: "Full Stack Developer — NR Agrawal",
+        date: "Feb 2026 – Present",
+        icon: "mdi:laptop",
+        current: true,
+        description: "Full stack development at NR Agrawal.",
+      },
+      {
+        title: "Full Stack Developer — Soltech",
+        date: "Nov 2025",
+        icon: "mdi:briefcase",
+        current: false,
+        description:
+          "Previous role. Developing scalable web applications using React.js, Node.js, and MongoDB. Implementing secure APIs, dashboards, and real-time features for client projects.",
+      },
+      {
+        title: "Full Stack Developer - MintSurvey",
+        date: "May 2025 – Oct 2025",
+        icon: "mdi:briefcase",
+        current: false,
+        description:
+          "Built internal tools and customer-facing features with React.js, Node.js, and MongoDB. Led API integrations, role-based authentication, and dashboard analytics.",
+      },
+      {
+        title: "React.js Intern — Divine Infotech",
+        date: "Sep 2024 – Mar 2025",
+        icon: "mdi:monitor-dashboard",
+        current: false,
+        description:
+          "Developed responsive components, optimized performance, integrated REST APIs, and collaborated in Agile sprints.",
+      },
+    ],
 
     technologies: {
+      focus: {
+        description:
+          "Voice agents that make and take phone calls, chatbots, and the apps around them.",
+        tools: [
+          { name: "Calling agents", icon: "lucide:phone-call" },
+          { name: "Chatbots", icon: "lucide:bot" },
+          { name: "Web apps", icon: "lucide:app-window" },
+          { name: "Mobile apps", icon: "lucide:smartphone" },
+        ],
+      },
       frontend: {
         description:
           "Dynamic, responsive UIs using React.js, Next.js, Tailwind CSS, and modern JS.",
@@ -175,7 +211,7 @@ export const DATA = {
 projects: {
   sectionTitle: "Featured Projects",
   sectionDescription:
-    "A selection of my recent projects showcasing full stack development and API work" ,
+    "Selected web apps and product sites, from booking platforms to full stack tools.",
   work: [
     {
       id: 0,
@@ -300,7 +336,7 @@ projects: {
 
   contact: {
     heading:
-      "Have a project in mind? Get in touch and let's create something amazing.",
+      "Send a note, or schedule a meeting if you would rather talk it through.",
     location: {
       mapSrc:
         "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d122070.9566600788!2d73.7805662!3d18.5245649!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c06d9772b6ab%3A0x5b8b3b3e6f2a0a4!2sPune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1715701234567!5m2!1sen!2sin",
@@ -308,19 +344,21 @@ projects: {
     },
   },
   morphingTexts: {
-    about: ["Creative", "Passionate", "Developer"] as const,
-    projects: ["My Work", "Creations", "Experiments", "Innovations"] as const,
-    contact: ["Let's", "Build", "Together"] as const,
+    about: ["About", "Shubham"] as const,
+    projects: ["Selected", "Work"] as const,
+    contact: ["Get", "in touch"] as const,
   },
   navigation: [
     { name: "Home", href: "/", icon: "lucide:home" },
     { name: "About", href: "/about", icon: "lucide:user" },
     { name: "Projects", href: "/projects", icon: "lucide:folder-code" },
+    { name: "Schedule", href: "/schedule", icon: "lucide:calendar" },
     { name: "Contact", href: "/contact", icon: "lucide:send" },
   ],
   footer: {
     name: "Shubham Chaudhary",
-    description: "Always interested in new projects and collaborations.",
+    description:
+      "Full stack developer in Pune, building AI calling agents, bots, and apps.",
     contact: {
       email: "shubhamchaudhary9974@gmail.com",
       phone: "+91 7777909218",
@@ -337,12 +375,28 @@ projects: {
         url: "https://linkedin.com/in/shubham-chaudhary-0a8a1a166",
         icon: "mdi:linkedin",
       },
-      { platform: "X", url: "https://x.com", icon: "simple-icons:x" },
+      {
+        platform: "X",
+        url: "https://x.com/Shubh26___",
+        icon: "simple-icons:x",
+      },
     ],
     services: [
-      "Website Development",
-      "Full Stack Development",
-      "API Development ",
+      "AI Calling Agents",
+      "AI Bots",
+      "Web & Mobile Apps",
     ],
+  },
+  booking: {
+    hostName: "Shubham Chaudhary",
+    guestEmail: "sc3617378@gmail.com",
+    durationMinutes: 30,
+    timezone: "Asia/Kolkata",
+    workStartHour: 10,
+    workEndHour: 19,
+    slotMinutes: 30,
+    heading: "Schedule a meeting",
+    description:
+      "Pick a weekday and a 30-minute slot. Hours are 10:00 to 19:00 India Standard Time, and each time is also shown in your local timezone.",
   },
 } as const;
