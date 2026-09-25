@@ -391,7 +391,7 @@ projects: {
     description:
       "Full stack developer in Vapi, Gujarat, building AI calling agents, AI chatbots, CRM apps, and web and mobile apps.",
     contact: {
-      email: "shubhamchaudhary9974@gmail.com",
+      email: "contact@shubh.work",
       phone: "+91 7777909218",
       location: "Vapi, Gujarat, India",
     },

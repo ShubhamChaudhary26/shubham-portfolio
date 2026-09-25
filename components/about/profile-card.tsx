@@ -7,6 +7,7 @@ import { SpinningBadge } from "@/components/home/spinning-badge";
 import { HighlightText } from "@/components/textAnimations/highlight-text";
 import { SplittingText } from "@/components/textAnimations/splitting-text";
 import { ProfileCardProps } from "@/components/about/types";
+import { DATA } from "@/data";
 
 export const ProfileCard = memo(function ProfileCard({
   image,
@@ -23,6 +24,12 @@ export const ProfileCard = memo(function ProfileCard({
           <div className="mt-4 text-center">
             <HighlightText className="text-lg font-semibold" text={name} />
             <p className="text-sm text-foreground-500">{title}</p>
+            <a
+              className="mt-2 inline-flex max-w-full break-all text-sm font-medium text-primary hover:underline"
+              href={`mailto:${DATA.footer.contact.email}`}
+            >
+              {DATA.footer.contact.email}
+            </a>
           </div>
         </div>
 

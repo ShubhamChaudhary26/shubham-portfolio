@@ -277,6 +277,7 @@ export function getBotResponse(raw: string): string {
     includesAny(query, [
       "contact",
       "email",
+      "gmail",
       "phone",
       "linkedin",
       "reach",

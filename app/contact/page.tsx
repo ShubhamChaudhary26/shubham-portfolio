@@ -65,10 +65,19 @@ const ContactPage: React.FC = () => {
       <div className="mx-auto max-w-3xl">
         <ScheduleCta />
         <ContactCard heading={DATA.contact.heading}>
-          <p className="mb-4 flex items-center justify-center gap-2 text-sm text-foreground-500">
-            <Icon icon="lucide:map-pin" />
-            {DATA.contact.location.address}
-          </p>
+          <div className="mb-4 flex flex-col items-center gap-2 text-sm text-foreground-500">
+            <a
+              className="inline-flex max-w-full items-center gap-2 break-all font-medium text-foreground hover:text-primary"
+              href={`mailto:${DATA.footer.contact.email}`}
+            >
+              <Icon icon="lucide:mail" />
+              {DATA.footer.contact.email}
+            </a>
+            <p className="inline-flex items-center gap-2">
+              <Icon icon="lucide:map-pin" />
+              {DATA.contact.location.address}
+            </p>
+          </div>
           <ContactMap
             src={DATA.contact.location.mapSrc}
             title={`Map of ${DATA.contact.location.address}`}
