@@ -10,7 +10,7 @@ import { aboutJsonLd, OG_IMAGE } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
 
 const description =
-  "Shubham Chaudhary is a full stack developer in Vapi, Gujarat, currently at NR Agrawal. He builds AI calling agents, AI chatbots, CRM apps, and web and mobile apps, and is working on Stampzo.";
+  "Shubham Chaudhary is a full stack developer in Vapi, Gujarat, and an Executive at NR Agrawal. He builds AI calling agents, AI chatbots, CRM apps, and web and mobile apps, and is working on Stampzo.";
 
 export const metadata: Metadata = {
   title: "About",
@@ -47,7 +47,7 @@ export default function AboutPage() {
         description={profile.description}
         image={profile.image}
         name={profile.name}
-        title="Full Stack Developer at NR Agrawal"
+        title={DATA.home.hero.role}
       />
       <EducationTimeline education={education} />
       <ExperienceTimeline experience={experience} />

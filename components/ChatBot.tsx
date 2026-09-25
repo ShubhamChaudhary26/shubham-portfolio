@@ -23,7 +23,7 @@ export default function ChatBot() {
   const [messages, setMessages] = useState<Message[]>([
     {
       sender: "bot",
-      text: "Hi. I can tell you about Shubham's role at NR Agrawal, his work on AI calling agents, AI chatbots, CRM apps, and apps, Stampzo, or how to schedule a meeting.",
+      text: "Hi. I can tell you about Shubham's role as Executive at NR Agrawal, his work on AI calling agents, AI chatbots, CRM apps, and apps, Stampzo, or how to schedule a meeting.",
     },
   ]);
   const [input, setInput] = useState("");

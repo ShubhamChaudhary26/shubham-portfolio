@@ -16,6 +16,7 @@ export const SEO_KEYWORDS = [
   "Vapi",
   "Gujarat",
   "India",
+  "Executive",
   "NR Agrawal",
   "Stampzo",
   "shubh.work",
@@ -34,7 +35,7 @@ const person = {
   name: DATA.about.profile.name,
   url: SITE_URL,
   image: `${SITE_URL}/shubham.jpg`,
-  jobTitle: "Full Stack Developer",
+  jobTitle: "Executive",
   description: SITE_DESCRIPTION,
   address: {
     "@type": "PostalAddress",

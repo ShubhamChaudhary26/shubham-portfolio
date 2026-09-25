@@ -5,8 +5,8 @@ export const DATA = {
       title: "Full Stack Developer",
       headline: "I build calling agents, chatbots, CRM, and apps.",
       subtitle:
-        "Full stack developer in Vapi, Gujarat, at NR Agrawal. I work across AI calling agents, AI chatbots, CRM apps, and web and mobile apps, and I'm currently working on Stampzo.",
-      role: "Full Stack Developer at NR Agrawal",
+        "Full stack developer in Vapi, Gujarat, and Executive at NR Agrawal. I work across AI calling agents, AI chatbots, CRM apps, and web and mobile apps, and I'm currently working on Stampzo.",
+      role: "Executive at NR Agrawal",
       location: "Vapi, Gujarat, India",
       stampzoLabel: "Currently working on Stampzo",
       stampzoUrl: "https://stampzo.in",
@@ -114,7 +114,7 @@ export const DATA = {
       name: "Shubham Chaudhary",
       image: "/shubham.jpg",
       description: [
-        "I am a full stack developer based in Vapi, Gujarat, India, currently working at NR Agrawal.",
+        "I am a full stack developer based in Vapi, Gujarat, India, and an Executive at NR Agrawal.",
         "I build a mix of AI calling agents, AI chatbots, CRM apps, and web and mobile apps.",
         "I'm currently working on Stampzo, a digital stamp card for local shops in India.",
         "I work with React, Next.js, Node.js, and TypeScript, and I care about software that feels clear, fast, and dependable.",
@@ -138,11 +138,12 @@ export const DATA = {
     ],
     experience: [
       {
-        title: "Full Stack Developer — NR Agrawal",
+        title: "Executive — NR Agrawal",
         date: "Feb 2026 – Present",
         icon: "mdi:laptop",
         current: true,
-        description: "Full stack development at NR Agrawal.",
+        description:
+          "Full stack development at NR Agrawal across AI calling agents, AI chatbots, CRM apps, and web and mobile apps.",
       },
       {
         title: "Full Stack Developer — Soltech",

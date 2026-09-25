@@ -25,7 +25,7 @@ function currentRoleAnswer() {
     `${DATA.about.profile.name} currently works at NR Agrawal.`,
     current
       ? `${current.title} (${current.date}).`
-      : "The current title on the site is Full Stack Developer.",
+      : "The current title is Executive.",
     current?.description ?? "",
     "",
     "His current focus is a mix of AI calling agents, AI chatbots, CRM apps, and web and mobile apps.",
@@ -48,7 +48,7 @@ function experienceAnswer() {
     "",
     lines.join("\n\n"),
     "",
-    "NR Agrawal is the current role. Soltech, MintSurvey, and Divine Infotech are previous roles.",
+    "Executive at NR Agrawal is the current role. Soltech, MintSurvey, and Divine Infotech are previous roles.",
   ].join("\n");
 }
 
@@ -144,7 +144,7 @@ export function getBotResponse(raw: string): string {
     ) &&
     words.length < 5
   ) {
-    return `Hello. ${DATA.about.profile.name} is a full stack developer in ${DATA.footer.contact.location}, currently at NR Agrawal. He builds AI calling agents, AI chatbots, CRM apps, and web and mobile apps, and is currently working on Stampzo. Ask about his work, projects, or scheduling a meeting.`;
+    return `Hello. ${DATA.about.profile.name} is a full stack developer in ${DATA.footer.contact.location}, and an Executive at NR Agrawal. He builds AI calling agents, AI chatbots, CRM apps, and web and mobile apps, and is currently working on Stampzo. Ask about his work, projects, or scheduling a meeting.`;
   }
 
   const asksAboutAssistant =
@@ -156,7 +156,7 @@ export function getBotResponse(raw: string): string {
         words.some((word) => ["who", "what", "you"].includes(word))));
 
   if (asksAboutAssistant) {
-    return `I am the assistant on Shubham Chaudhary's portfolio at ${SITE_URL}. I can cover his role at NR Agrawal, his work on AI calling agents, AI chatbots, CRM apps, and apps, Stampzo, plus projects, experience, contact details, and how to schedule a meeting.`;
+    return `I am the assistant on Shubham Chaudhary's portfolio at ${SITE_URL}. I can cover his role as Executive at NR Agrawal, his work on AI calling agents, AI chatbots, CRM apps, and apps, Stampzo, plus projects, experience, contact details, and how to schedule a meeting.`;
   }
 
   if (
@@ -170,6 +170,8 @@ export function getBotResponse(raw: string): string {
       "where do you work",
       "employer",
       "company",
+      "executive",
+      "job title",
       "feb 2026",
       "february",
     ]) ||
@@ -330,7 +332,7 @@ export function getBotResponse(raw: string): string {
 
   return [
     "I can help with:",
-    "• Current role at NR Agrawal",
+    "• Current role as Executive at NR Agrawal",
     "• AI calling agents, AI chatbots, CRM apps, and web and mobile apps",
     "• Stampzo (https://stampzo.in)",
     "• Experience (Soltech is a past role)",
