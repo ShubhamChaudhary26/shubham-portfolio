@@ -49,7 +49,7 @@ export const Navigation = () => {
           </motion.div>
         </NavbarBrand>
 
-        <NavbarContent className="hidden sm:flex justify-center gap-6 flex-grow">
+        <NavbarContent className="hidden flex-grow justify-center gap-4 lg:flex">
           {menuItems.map((item, index) => (
             <NavbarItem key={item.name}>
               <motion.div
@@ -84,12 +84,12 @@ export const Navigation = () => {
 
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          className="sm:hidden"
+          className="lg:hidden"
         />
       </NavbarContent>
 
       {/* Mobile Menu */}
-      <NavbarMenu className="bg-background/80 backdrop-blur-lg pt-6 sm:hidden">
+      <NavbarMenu className="bg-background/80 pt-6 backdrop-blur-lg lg:hidden">
         <div className="mx-auto max-w-lg space-y-4">
           {menuItems.map((item, index) => (
             <NavbarMenuItem key={item.name}>

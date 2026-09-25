@@ -1,6 +1,7 @@
 "use client";
 
 import { addToast } from "@heroui/react";
+import { Icon } from "@iconify/react";
 import React, { useCallback, useState } from "react";
 
 import { ContactCard } from "@/components/contact/contact-card";
@@ -64,7 +65,14 @@ const ContactPage: React.FC = () => {
       <div className="mx-auto max-w-3xl">
         <ScheduleCta />
         <ContactCard heading={DATA.contact.heading}>
-          <ContactMap src={DATA.contact.location.mapSrc} />
+          <p className="mb-4 flex items-center justify-center gap-2 text-sm text-foreground-500">
+            <Icon icon="lucide:map-pin" />
+            {DATA.contact.location.address}
+          </p>
+          <ContactMap
+            src={DATA.contact.location.mapSrc}
+            title={`Map of ${DATA.contact.location.address}`}
+          />
           <ContactForm
             isSubmitting={state.isSubmitting}
             isSuccess={state.isSuccess}
@@ -73,8 +81,8 @@ const ContactPage: React.FC = () => {
           />
         </ContactCard>
         {state.error ? (
-          <div className="mt-6 rounded-2xl border border-danger-200 bg-danger-50 p-4">
-            <p className="text-sm text-danger-700">{state.error}</p>
+          <div className="mt-6 rounded-2xl border border-danger/30 bg-danger/10 p-4">
+            <p className="text-sm text-danger">{state.error}</p>
           </div>
         ) : null}
       </div>

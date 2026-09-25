@@ -5,6 +5,7 @@ export interface ContactCardProps {
 
 export interface ContactMapProps {
   src: string;
+  title?: string;
   className?: string;
 }
 

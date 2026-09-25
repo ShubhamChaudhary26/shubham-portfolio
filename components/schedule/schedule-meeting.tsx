@@ -436,7 +436,7 @@ export const ScheduleMeeting = () => {
                 <input
                   required
                   autoComplete="name"
-                  className="w-full rounded-2xl border border-divider bg-background px-4 py-3 outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+                  className="w-full rounded-2xl border border-divider bg-background px-4 py-3 text-base outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
                   value={name}
                   onChange={(event) => setName(event.target.value)}
                 />
@@ -446,7 +446,7 @@ export const ScheduleMeeting = () => {
                 <input
                   required
                   autoComplete="email"
-                  className="w-full rounded-2xl border border-divider bg-background px-4 py-3 outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+                  className="w-full rounded-2xl border border-divider bg-background px-4 py-3 text-base outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
                   type="email"
                   value={email}
                   onChange={(event) => setEmail(event.target.value)}
@@ -458,7 +458,7 @@ export const ScheduleMeeting = () => {
                 </span>
                 <textarea
                   required
-                  className="min-h-28 w-full rounded-2xl border border-divider bg-background px-4 py-3 outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+                  className="min-h-28 w-full rounded-2xl border border-divider bg-background px-4 py-3 text-base outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
                   value={purpose}
                   onChange={(event) => setPurpose(event.target.value)}
                 />

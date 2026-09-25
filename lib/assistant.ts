@@ -28,7 +28,8 @@ function currentRoleAnswer() {
       : "The current title on the site is Full Stack Developer.",
     current?.description ?? "",
     "",
-    "His current focus is AI calling agents (voice AI that makes and takes phone calls), AI bots and chatbots, and mobile and web apps.",
+    "His current focus is a mix of AI calling agents, AI chatbots, CRM apps, and web and mobile apps.",
+    "He is also currently working on Stampzo (https://stampzo.in), a digital stamp card for local shops in India.",
     "Soltech is a previous role, not his current one.",
   ]
     .filter(Boolean)
@@ -60,6 +61,18 @@ function skillsAnswer() {
     .join("\n");
 
   return `Current focus:\n${focus}\n\nSkills:\n${groups}`;
+}
+
+function stampzoAnswer() {
+  const project = DATA.projects.work.find((item) =>
+    item.title.toLowerCase().includes("stampzo"),
+  );
+
+  return [
+    project?.description ??
+      "Stampzo is a digital stamp card for local shops in India. Shubham is currently working on it.",
+    project && "live" in project && project.live ? `Site: ${project.live}` : "Site: https://stampzo.in",
+  ].join("\n");
 }
 
 function projectsAnswer() {
@@ -131,7 +144,7 @@ export function getBotResponse(raw: string): string {
     ) &&
     words.length < 5
   ) {
-    return "Hello. Shubham Chaudhary is a full stack developer in Pune, currently at NR Agrawal. He builds AI calling agents, AI bots, and apps. Ask about his work, projects, or scheduling a meeting.";
+    return `Hello. ${DATA.about.profile.name} is a full stack developer in ${DATA.footer.contact.location}, currently at NR Agrawal. He builds AI calling agents, AI chatbots, CRM apps, and web and mobile apps, and is currently working on Stampzo. Ask about his work, projects, or scheduling a meeting.`;
   }
 
   const asksAboutAssistant =
@@ -143,7 +156,7 @@ export function getBotResponse(raw: string): string {
         words.some((word) => ["who", "what", "you"].includes(word))));
 
   if (asksAboutAssistant) {
-    return `I am the assistant on Shubham Chaudhary's portfolio at ${SITE_URL}. I can cover his role at NR Agrawal, his focus on AI calling agents, AI bots, and apps, plus projects, experience, contact details, and how to schedule a meeting.`;
+    return `I am the assistant on Shubham Chaudhary's portfolio at ${SITE_URL}. I can cover his role at NR Agrawal, his work on AI calling agents, AI chatbots, CRM apps, and apps, Stampzo, plus projects, experience, contact details, and how to schedule a meeting.`;
   }
 
   if (
@@ -243,9 +256,15 @@ export function getBotResponse(raw: string): string {
       "what do you do",
       "ai agent",
       "apps",
+      "crm",
+      "full stack",
     ])
   ) {
     return skillsAnswer();
+  }
+
+  if (includesAny(query, ["stampzo", "stamp card", "loyalty card"])) {
+    return stampzoAnswer();
   }
 
   if (includesAny(query, ["project", "portfolio piece", "case stud", "built", "github"])) {
@@ -274,7 +293,11 @@ export function getBotResponse(raw: string): string {
     return educationAnswer();
   }
 
-  if (includesAny(query, ["pune", "location", "based", "maharashtra", "where"])) {
+  if (includesAny(query, ["pune", "maharashtra"])) {
+    return `${DATA.about.profile.name} is based in ${DATA.footer.contact.location}. His MCA is from Sri Balaji University, Pune. That is the school, not his current city.`;
+  }
+
+  if (includesAny(query, ["vapi", "gujarat", "location", "based", "address", "where"])) {
     return `${DATA.about.profile.name} is based in ${DATA.footer.contact.location}.`;
   }
 
@@ -308,7 +331,8 @@ export function getBotResponse(raw: string): string {
   return [
     "I can help with:",
     "• Current role at NR Agrawal",
-    "• AI calling agents, AI bots, and apps",
+    "• AI calling agents, AI chatbots, CRM apps, and web and mobile apps",
+    "• Stampzo (https://stampzo.in)",
     "• Experience (Soltech is a past role)",
     "• Projects",
     "• Contact details",

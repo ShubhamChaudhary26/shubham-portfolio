@@ -10,6 +10,7 @@ import { Navigation } from "@/components/navbar";
 import { PageWrapper } from "@/components/page-wrapper";
 import { Providers } from "@/app/providers";
 import ChatBot from "@/components/ChatBot";
+import { OG_IMAGE, SEO_KEYWORDS, SITE_DESCRIPTION } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
 
 const sans = Manrope({
@@ -24,8 +25,8 @@ const display = Syne({
   display: "swap",
 });
 
-const title = `${DATA.home.hero.name} | ${DATA.home.hero.title}`;
-const description = DATA.home.hero.subtitle;
+const title = `${DATA.home.hero.name} | ${DATA.home.hero.title} in Vapi`;
+const description = SITE_DESCRIPTION;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -34,6 +35,7 @@ export const metadata: Metadata = {
     template: `%s | ${DATA.home.hero.name}`,
   },
   description,
+  keywords: SEO_KEYWORDS,
   applicationName: DATA.home.hero.name,
   authors: [{ name: DATA.home.hero.name, url: SITE_URL }],
   alternates: {
@@ -46,20 +48,13 @@ export const metadata: Metadata = {
     siteName: "shubh.work",
     locale: "en_US",
     type: "website",
-    images: [
-      {
-        url: "/shubham.jpg",
-        width: 1200,
-        height: 630,
-        alt: `${DATA.home.hero.name}, full stack developer`,
-      },
-    ],
+    images: [OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title,
     description,
-    images: ["/shubham.jpg"],
+    images: [OG_IMAGE.url],
   },
   robots: {
     index: true,

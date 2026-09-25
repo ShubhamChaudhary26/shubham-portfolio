@@ -66,6 +66,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Input
             isRequired
+            classNames={{ input: "text-base" }}
             errorMessage={errors.name}
             isInvalid={!!errors.name}
             label="Name"
@@ -80,6 +81,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
 
           <Input
             isRequired
+            classNames={{ input: "text-base" }}
             errorMessage={errors.email}
             isInvalid={!!errors.email}
             label="Email"
@@ -96,6 +98,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
 
         <Input
           isRequired
+          classNames={{ input: "text-base" }}
           errorMessage={errors.subject}
           isInvalid={!!errors.subject}
           label="Subject"
@@ -110,6 +113,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
 
         <Textarea
           isRequired
+          classNames={{ input: "text-base" }}
           errorMessage={errors.message}
           isInvalid={!!errors.message}
           label="Message"

@@ -5,9 +5,12 @@ export interface Project {
   readonly description: string;
   readonly details: string;
   readonly image: string;
+  readonly wordmark?: string;
   readonly github?: string;
   readonly live?: string;
   readonly gallery: readonly string[];
+  readonly featured?: boolean;
+  readonly imageFit?: "contain" | "cover";
   tech: readonly {
     name: string;
     icon: string;

@@ -3,16 +3,18 @@ export const DATA = {
     hero: {
       name: "Shubham Chaudhary",
       title: "Full Stack Developer",
-      headline: "I build AI calling agents, bots, and apps.",
+      headline: "I build calling agents, chatbots, CRM, and apps.",
       subtitle:
-        "Full stack developer in Pune, at NR Agrawal — shipping voice AI for phone calls, chatbots, and mobile and web apps.",
+        "Full stack developer in Vapi, Gujarat, at NR Agrawal. I work across AI calling agents, AI chatbots, CRM apps, and web and mobile apps, and I'm currently working on Stampzo.",
       role: "Full Stack Developer at NR Agrawal",
-      location: "Pune, Maharashtra",
+      location: "Vapi, Gujarat, India",
+      stampzoLabel: "Currently working on Stampzo",
+      stampzoUrl: "https://stampzo.in",
     },
     focus: {
       sectionTitle: "What I build",
       sectionDescription:
-        "Voice agents, conversational bots, and the products around them.",
+        "A balanced mix of AI calling agents, AI chatbots, CRM apps, and web and mobile apps.",
       items: [
         {
           title: "AI Calling Agents",
@@ -21,15 +23,21 @@ export const DATA = {
           icon: "lucide:phone-call",
         },
         {
-          title: "AI Bots",
+          title: "AI Chatbots",
           description:
             "Chatbots and assistants that answer questions, guide people through a task, and stay useful inside a product.",
           icon: "lucide:bot",
         },
         {
+          title: "CRM Apps",
+          description:
+            "CRM apps for day-to-day customer work: records, follow-ups, and dashboards that stay clear for the people using them.",
+          icon: "lucide:users",
+        },
+        {
           title: "Apps",
           description:
-            "Mobile and web apps with clear interfaces, reliable backends, and the kind of polish people notice.",
+            "Web and mobile apps with clear interfaces, reliable backends, and the kind of polish people notice.",
           icon: "lucide:layout-grid",
         },
       ],
@@ -37,23 +45,27 @@ export const DATA = {
     skills: {
       sectionTitle: "Skills",
       sectionDescription:
-        "A full stack toolkit, used for voice agents, chatbots, and the apps around them.",
+        "Full stack development across calling agents, chatbots, CRM apps, and web and mobile apps.",
       groups: [
         {
-          name: "AI & Voice",
-          items: ["AI calling agents", "Voice AI", "Chatbots", "Conversation design"],
+          name: "Full Stack",
+          items: ["React", "Next.js", "TypeScript", "Node.js", "MongoDB", "REST APIs"],
         },
         {
-          name: "Apps",
+          name: "AI Calling Agents",
+          items: ["Voice AI", "Phone conversations", "Call handoff"],
+        },
+        {
+          name: "AI Chatbots",
+          items: ["Chatbots", "Assistants", "Conversation design"],
+        },
+        {
+          name: "CRM Apps",
+          items: ["Customer records", "Follow-ups", "Dashboards"],
+        },
+        {
+          name: "Web & Mobile Apps",
           items: ["Web apps", "Mobile apps", "Product UI", "Responsive design"],
-        },
-        {
-          name: "Frontend",
-          items: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
-        },
-        {
-          name: "Backend",
-          items: ["Node.js", "Express", "MongoDB", "REST APIs"],
         },
       ],
     },
@@ -102,8 +114,9 @@ export const DATA = {
       name: "Shubham Chaudhary",
       image: "/shubham.jpg",
       description: [
-        "I am a full stack developer based in Pune, Maharashtra, currently working at NR Agrawal.",
-        "My focus is AI calling agents — voice AI that makes and takes phone calls — along with AI bots and mobile and web apps.",
+        "I am a full stack developer based in Vapi, Gujarat, India, currently working at NR Agrawal.",
+        "I build a mix of AI calling agents, AI chatbots, CRM apps, and web and mobile apps.",
+        "I'm currently working on Stampzo, a digital stamp card for local shops in India.",
         "I work with React, Next.js, Node.js, and TypeScript, and I care about software that feels clear, fast, and dependable.",
       ],
     },
@@ -160,10 +173,11 @@ export const DATA = {
     technologies: {
       focus: {
         description:
-          "Voice agents that make and take phone calls, chatbots, and the apps around them.",
+          "AI calling agents, AI chatbots, CRM apps, and web and mobile apps.",
         tools: [
           { name: "Calling agents", icon: "lucide:phone-call" },
           { name: "Chatbots", icon: "lucide:bot" },
+          { name: "CRM apps", icon: "lucide:users" },
           { name: "Web apps", icon: "lucide:app-window" },
           { name: "Mobile apps", icon: "lucide:smartphone" },
         ],
@@ -211,8 +225,24 @@ export const DATA = {
 projects: {
   sectionTitle: "Featured Projects",
   sectionDescription:
-    "Selected web apps and product sites, from booking platforms to full stack tools.",
+    "Selected work, including Stampzo, plus web apps and full stack tools.",
   work: [
+    {
+      id: 6,
+      title: "Stampzo – Digital Stamp Card",
+      description:
+        "Stampzo is a digital stamp card for local shops in India. One QR at the counter. Customers scan, collect stamps on their phone, and redeem a free reward when the card is full. The card opens in the browser, with no app store download. I'm currently working on Stampzo.",
+      image: "/stampzo-logo.png",
+      wordmark: "/stampzo-wordmark.png",
+      gallery: ["/stampzo-logo.png", "/stampzo-wordmark.png"],
+      category: "Product",
+      featured: true,
+      imageFit: "contain",
+      details:
+        "Stampzo keeps a digital stamp card on the phone for local shops in India, including cafes, salons, gyms, and counters. Paper cards get lost. One QR at the counter: customers scan, collect stamps, and redeem a free reward when the card is full. The card opens in the browser, so there is no app store download. The first program is free. I'm currently working on Stampzo.",
+      live: "https://stampzo.in",
+      tech: [],
+    },
     {
       id: 0,
       title: "Veltrix Gym – Membership & Fitness Website",
@@ -339,8 +369,8 @@ projects: {
       "Send a note, or schedule a meeting if you would rather talk it through.",
     location: {
       mapSrc:
-        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d122070.9566600788!2d73.7805662!3d18.5245649!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c06d9772b6ab%3A0x5b8b3b3e6f2a0a4!2sPune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1715701234567!5m2!1sen!2sin",
-      address: "Pune, Maharashtra, India",
+        "https://maps.google.com/maps?q=Vapi,+Gujarat,+India&hl=en&z=13&output=embed",
+      address: "Vapi, Gujarat, India",
     },
   },
   morphingTexts: {
@@ -358,11 +388,11 @@ projects: {
   footer: {
     name: "Shubham Chaudhary",
     description:
-      "Full stack developer in Pune, building AI calling agents, bots, and apps.",
+      "Full stack developer in Vapi, Gujarat, building AI calling agents, AI chatbots, CRM apps, and web and mobile apps.",
     contact: {
       email: "shubhamchaudhary9974@gmail.com",
       phone: "+91 7777909218",
-      location: "Pune, Maharashtra, India",
+      location: "Vapi, Gujarat, India",
     },
     socialLinks: [
       {
@@ -383,8 +413,10 @@ projects: {
     ],
     services: [
       "AI Calling Agents",
-      "AI Bots",
+      "AI Chatbots",
+      "CRM Apps",
       "Web & Mobile Apps",
+      "Full Stack Development",
     ],
   },
   booking: {

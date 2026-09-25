@@ -9,6 +9,7 @@ import { MapSkeleton } from "@/components/contact/contact-map/map-skeleton";
 
 export const ContactMap: React.FC<ContactMapProps> = ({
   src,
+  title = "Map of Vapi, Gujarat, India",
   className = "",
 }) => {
 
@@ -64,14 +65,14 @@ export const ContactMap: React.FC<ContactMapProps> = ({
             key="map"
             allowFullScreen
             animate={{ opacity: isLoaded ? 1 : 0 }}
-            className="w-full h-full border-none filter grayscale invert"
+            className="h-full w-full border-none dark:grayscale dark:invert"
             initial={{ opacity: 0 }}
             loading="lazy"
             src={src}
             style={{
               visibility: isLoaded ? "visible" : "hidden",
             }}
-            title="Location Map"
+            title={title}
             transition={{ duration: 0.5, ease: "easeOut" }}
             onError={handleError}
             onLoad={handleLoad}

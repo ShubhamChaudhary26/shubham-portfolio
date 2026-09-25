@@ -25,7 +25,6 @@ export const ExperienceTimeline = ({ experience }: ExperienceTimelineProps) => (
       {experience.map((item, idx) => (
         <TimelineItem
           key={idx}
-          current={item.current}
           date={item.date}
           delay={idx * 300}
           description={item.description}

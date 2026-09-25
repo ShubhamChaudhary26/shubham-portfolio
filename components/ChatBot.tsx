@@ -23,7 +23,7 @@ export default function ChatBot() {
   const [messages, setMessages] = useState<Message[]>([
     {
       sender: "bot",
-      text: "Hi. I can tell you about Shubham's role at NR Agrawal, his work on AI calling agents, bots, and apps, or how to schedule a meeting.",
+      text: "Hi. I can tell you about Shubham's role at NR Agrawal, his work on AI calling agents, AI chatbots, CRM apps, and apps, Stampzo, or how to schedule a meeting.",
     },
   ]);
   const [input, setInput] = useState("");
@@ -66,7 +66,7 @@ export default function ChatBot() {
       {isOpen ? (
         <div
           aria-label="Chat with Shubham's assistant"
-          className="fixed inset-x-3 bottom-24 z-[70] flex max-h-[min(70vh,560px)] flex-col overflow-hidden rounded-3xl border border-divider bg-content1 text-foreground shadow-2xl sm:inset-x-auto sm:right-5 sm:w-[400px]"
+          className="fixed bottom-24 right-3 z-[70] flex max-h-[min(70vh,560px)] w-[min(100vw-1.5rem,400px)] flex-col overflow-hidden rounded-3xl border border-divider bg-content1 text-foreground shadow-2xl"
           role="dialog"
         >
           <div className="flex items-center justify-between border-b border-divider px-4 py-3">
@@ -122,7 +122,7 @@ export default function ChatBot() {
               Message
             </label>
             <input
-              className="flex-1 rounded-2xl border border-divider bg-background px-3 py-2 text-sm outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+              className="min-w-0 flex-1 rounded-2xl border border-divider bg-background px-3 py-2 text-base outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
               id="assistant-input"
               placeholder="Ask about work, or book a meeting"
               value={input}

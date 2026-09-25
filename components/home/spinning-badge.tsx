@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 const RING_TEXT =
-  "AI CALLING AGENTS · VOICE AI · AI BOTS · CHATBOTS · APPS · FULL STACK · ";
+  "CALLING AGENTS · CHATBOTS · CRM APPS · WEB & MOBILE · FULL STACK · ";
 
 type SpinningBadgeProps = {
   id: string;
@@ -50,8 +50,8 @@ export const SpinningBadge = ({
       />
     </div>
     <p className="sr-only">
-      AI calling agents, voice AI, AI bots, chatbots, apps, and full stack
-      development.
+      AI calling agents, AI chatbots, CRM apps, web and mobile apps, and full
+      stack development.
     </p>
   </div>
 );

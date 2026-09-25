@@ -25,20 +25,24 @@ export const ProjectModal = ({
   return (
     <Modal
       backdrop="blur"
-      className="border border-black/10 dark:border-white/10 bg-white/90 dark:bg-black/70 shadow-md dark:shadow-cyan-900/40 rounded-xl overflow-hidden transition-colors"
+      className="overflow-hidden rounded-xl border border-divider bg-content1 shadow-md"
       isOpen={isOpen}
       scrollBehavior="inside"
       size="xl"
       onClose={onClose}
     >
       <ModalContent>
-        <ModalHeader className="text-xl font-bold text-primary-700 border-b  border-white/20">
+        <ModalHeader className="border-b border-divider text-xl font-bold text-foreground">
           {project.title}
         </ModalHeader>
         <ScrollShadow hideScrollBar size={60}>
           <ModalBody>
             {project.gallery && project.gallery.length > 0 && (
-              <ImageGallery images={project.gallery} />
+              <ImageGallery
+                fit={project.imageFit}
+                images={project.gallery}
+                title={project.title}
+              />
             )}
 
             <p className="text-sm text-primary-500 mb-3 font-medium uppercase tracking-wide">
@@ -48,7 +52,7 @@ export const ProjectModal = ({
             <div className="text-foreground-600 leading-relaxed mb-6 whitespace-pre-line">
               {project.details}
             </div>
-            {project.tech && (
+            {project.tech.length > 0 && (
               <div className="mb-6">
                 <h4 className="font-semibold mb-6 text-foreground">
                   Technologies Used:
@@ -99,7 +103,7 @@ export const ProjectModal = ({
           </div>
         )}
 
-        <ModalFooter className="flex flex-wrap gap-3 justify-end border-t border-white/20">
+        <ModalFooter className="flex flex-wrap justify-end gap-3 border-t border-divider">
           <Button
             className="text-foreground-500"
             color="danger"

@@ -25,7 +25,12 @@ export const TestimonialCard = memo(function TestimonialCard({
           </p>
         </div>
         <div className="flex items-center gap-4 mt-auto">
-          <Avatar className="ring-2 ring-primary-200" size="lg" src={avatar} />
+          <Avatar
+            className="ring-2 ring-primary/30"
+            name={name}
+            size="lg"
+            src={avatar}
+          />
           <div>
             <h4 className="font-semibold">{name}</h4>
             <p className="text-sm text-foreground-500">{role}</p>

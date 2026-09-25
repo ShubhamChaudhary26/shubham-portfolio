@@ -25,7 +25,7 @@ export const Skills = ({ tech }: SkillsProps) => (
         <h3 className="mb-2 text-lg font-semibold">{capitalize(category)}</h3>
         <p className="mb-4 text-sm text-muted-foreground">{description}</p>
 
-        <div className="relative h-[350px] w-full">
+        <div className="relative mx-auto h-[320px] w-full max-w-lg overflow-hidden sm:h-[350px]">
           <OrbitingCircles
             className="h-full w-full [&>div]:hover:scale-110 [&>div]:hover:text-primary-500"
             duration={20}

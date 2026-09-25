@@ -19,7 +19,8 @@ const fade = {
 
 export const HeroSection = () => {
   const reduce = useReducedMotion();
-  const { headline, location, role, subtitle } = DATA.home.hero;
+  const { headline, location, role, stampzoLabel, stampzoUrl, subtitle } =
+    DATA.home.hero;
 
   return (
     <section className="relative isolate overflow-hidden">
@@ -64,11 +65,9 @@ export const HeroSection = () => {
             initial={reduce ? undefined : "hidden"}
             variants={fade}
           >
-            I build{" "}
             <span className="bg-gradient-to-r from-primary to-teal-400 bg-clip-text text-transparent">
-              AI calling agents
+              {headline}
             </span>
-            , bots, and apps.
           </motion.p>
 
           <motion.p
@@ -80,8 +79,6 @@ export const HeroSection = () => {
           >
             {subtitle}
           </motion.p>
-          <p className="sr-only">{headline}</p>
-
           <motion.div
             animate={reduce ? undefined : "show"}
             className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap"
@@ -135,6 +132,19 @@ export const HeroSection = () => {
             <Icon icon="lucide:map-pin" />
             {location}
           </motion.p>
+          <motion.a
+            animate={reduce ? undefined : "show"}
+            className="mt-2 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
+            custom={6}
+            href={stampzoUrl}
+            initial={reduce ? undefined : "hidden"}
+            rel="noopener noreferrer"
+            target="_blank"
+            variants={fade}
+          >
+            {stampzoLabel}
+            <Icon icon="lucide:arrow-up-right" />
+          </motion.a>
         </div>
 
         <motion.div

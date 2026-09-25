@@ -18,7 +18,7 @@ export const FocusSection = () => {
           eyebrow="Focus"
           title={sectionTitle}
         />
-        <div className="grid gap-5 md:grid-cols-3">
+        <div className="grid gap-5 sm:grid-cols-2">
           {items.map((item, index) => (
             <Reveal key={item.title} delay={index * 0.08}>
               <motion.article

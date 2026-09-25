@@ -4,11 +4,14 @@ import { Skeleton } from "@heroui/react";
 
 interface ImageGalleryProps {
   images: readonly string[];
+  title: string;
+  fit?: "contain" | "cover";
 }
 
-const ImageGallery = memo(({ images }: ImageGalleryProps) => {
+const ImageGallery = memo(({ images, title, fit = "cover" }: ImageGalleryProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const fitClass = fit === "contain" ? "object-contain" : "object-cover";
 
   const handleThumbnailClick = (index: number) => {
     setActiveIndex(index);
@@ -16,47 +19,49 @@ const ImageGallery = memo(({ images }: ImageGalleryProps) => {
   };
 
   return (
-    <div className="w-full flex flex-col items-center gap-4 mb-6">
+    <div className="mb-6 flex w-full flex-col items-center gap-4">
       <AnimatePresence mode="wait">
         <motion.div
           key={images[activeIndex]}
           animate={{ opacity: 1 }}
-          className="w-full max-w-xl h-65 md:h-80 overflow-hidden rounded-xl"
+          className="h-64 w-full max-w-xl overflow-hidden rounded-xl bg-content2/60 md:h-80"
           exit={{ opacity: 0 }}
           initial={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <Skeleton className="w-full h-full rounded-lg" isLoaded={imageLoaded}>
+          <Skeleton className="h-full w-full rounded-lg" isLoaded={imageLoaded}>
             <img
-              alt={`Project image ${activeIndex + 1}`}
-              className="w-full h-full object-cover"
+              alt={`${title} image ${activeIndex + 1}`}
+              className={`h-full w-full ${fitClass}`}
+              height={640}
               loading="lazy"
               src={images[activeIndex]}
+              width={1024}
               onLoad={() => setImageLoaded(true)}
             />
           </Skeleton>
         </motion.div>
       </AnimatePresence>
 
-      <div className="flex gap-3">
+      <div className="flex flex-wrap justify-center gap-3">
         {images.map((img, index) => (
-          <motion.div
+          <button
             key={img}
-            className={`w-15 h-19 md:w-20 md:h-20 rounded-lg overflow-hidden cursor-pointer border-2 ${index === activeIndex
-              ? "border-blue-500"
-              : "border-transparent"
-              }`}
-            transition={{ duration: 0.3 }}
-            whileHover={{ scale: 1.05 }}
+            className={`h-16 w-16 overflow-hidden rounded-lg border-2 bg-content2/60 md:h-20 md:w-20 ${
+              index === activeIndex ? "border-primary" : "border-transparent"
+            }`}
+            type="button"
             onClick={() => handleThumbnailClick(index)}
           >
             <img
-              alt={`Thumbnail ${index + 1}`}
-              className="w-full h-full object-cover"
+              alt={`${title} thumbnail ${index + 1}`}
+              className={`h-full w-full ${fitClass}`}
+              height={160}
               loading="lazy"
               src={img}
+              width={160}
             />
-          </motion.div>
+          </button>
         ))}
       </div>
     </div>

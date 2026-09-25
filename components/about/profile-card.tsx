@@ -15,11 +15,11 @@ export const ProfileCard = memo(function ProfileCard({
   description,
 }: ProfileCardProps) {
   return (
-    <Card className="w-full max-w-6xl mx-auto p-0 md:p-0 mb-12 rounded-2xl dark:shadow-neutral-700 shadow-md overflow-hidden bg-white/90 dark:bg-black/60">
-      <div className="flex flex-col mdplus:flex-row items-center md:items-start gap-8">
+    <Card className="mx-auto mb-12 w-full max-w-6xl overflow-hidden rounded-2xl border border-divider bg-content1/80 p-0 shadow-sm md:p-0">
+      <div className="flex flex-col items-center gap-8 mdplus:flex-row mdplus:items-start">
         {/* Left image card */}
         <div className="w-full shrink-0 px-4 py-6 md:w-[340px]">
-          <SpinningBadge alt={name} id="profile-ring" src={image} />
+          <SpinningBadge alt={`Portrait of ${name}`} id="profile-ring" src={image} />
           <div className="mt-4 text-center">
             <HighlightText className="text-lg font-semibold" text={name} />
             <p className="text-sm text-foreground-500">{title}</p>

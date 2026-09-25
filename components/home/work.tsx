@@ -16,6 +16,12 @@ export const WorkSection = () => {
   const { work } = DATA.projects;
   const { sectionTitle, sectionDescription } = DATA.projects;
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const featured = work.filter(
+    (project) => "featured" in project && project.featured,
+  );
+  const others = work
+    .filter((project) => !("featured" in project && project.featured))
+    .slice(0, 3);
 
   return (
     <section className="scroll-mt-24 px-4 py-20 md:py-28" id="work-section">
@@ -34,7 +40,15 @@ export const WorkSection = () => {
         </Reveal>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {work.slice(0, 3).map((project, index) => (
+          {featured.map((project) => (
+            <Reveal key={project.id} className="md:col-span-2 lg:col-span-3">
+              <ProjectCard
+                project={project}
+                onViewDetails={() => setSelectedProject(project)}
+              />
+            </Reveal>
+          ))}
+          {others.map((project, index) => (
             <Reveal key={project.id} delay={index * 0.08}>
               <ProjectCard
                 project={project}

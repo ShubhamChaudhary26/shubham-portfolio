@@ -32,7 +32,7 @@ export const ProjectsGrid = ({
           fade
           inView
           zoom
-          className="w-full md:max-w-none"
+          className={`w-full md:max-w-none ${project.featured ? "md:col-span-2 lg:col-span-3" : ""}`}
           delay={0.1 + index * 0.1}
           resetKey={animationKey}
           slide={{ direction: "down" }}

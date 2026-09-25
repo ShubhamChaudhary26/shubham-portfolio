@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { motion } from "framer-motion";
 
 import { SplittingText } from "@/components/textAnimations/splitting-text";
@@ -10,31 +10,22 @@ export const TimelineItem = ({
   description,
   variants,
   delay = 0,
-  current = false,
-}: TimelineItemProps & { current?: boolean }) => {
+}: TimelineItemProps) => {
   return (
-    <motion.li
-      className={`relative mb-10 pl-8 ${current ? "rounded-3xl border border-primary/30 bg-primary/5 p-5 pl-8" : ""}`}
-      variants={variants}
-    >
-      <span className="absolute left-0 top-1 z-10 h-4 w-4 rounded-full border-2 border-background bg-primary" />
-      <div className="flex flex-wrap items-center gap-2">
-        <h3 className="text-lg font-semibold">{title}</h3>
-        {current ? (
-          <span className="rounded-full bg-primary px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-primary-foreground">
-            Current
-          </span>
-        ) : null}
+    <motion.li className="relative mb-6 pl-8" variants={variants}>
+      <span className="absolute left-0 top-6 z-10 h-3.5 w-3.5 rounded-full border-2 border-background bg-primary" />
+      <div className="rounded-2xl border border-divider bg-content1/70 p-5">
+        <h3 className="text-lg font-semibold text-foreground">{title}</h3>
+        <time className="mb-2 mt-1 block text-sm text-primary">{date}</time>
+        <SplittingText
+          className="text-sm leading-relaxed text-foreground-500"
+          delay={delay}
+          inView={true}
+          inViewOnce={true}
+          text={description}
+          type="words"
+        />
       </div>
-      <time className="mb-1 block text-sm text-primary">{date}</time>
-      <SplittingText
-        className="text-sm text-muted-foreground"
-        delay={delay}
-        inView={true}
-        inViewOnce={true}
-        text={description}
-        type="words"
-      />
     </motion.li>
   );
 };
