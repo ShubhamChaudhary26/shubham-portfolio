@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import NextLink from "next/link";
 import { notFound } from "next/navigation";
 
+import { BlogBookingCTA } from "@/components/blog/blog-booking-cta";
 import { DATA } from "@/data";
 import { BLOG_POSTS, formatBlogDate, getBlogPost } from "@/data/blog";
 import { OG_IMAGE } from "@/lib/seo";
@@ -59,7 +60,6 @@ export default async function BlogArticlePage({ params }: ArticlePageProps) {
   }
 
   const url = `${SITE_URL}/blog/${post.slug}`;
-  const email = DATA.footer.contact.email;
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -151,43 +151,7 @@ export default async function BlogArticlePage({ params }: ArticlePageProps) {
           </section>
         ))}
 
-        <section>
-          <h2 className="font-display text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
-            Free demo ya reel pe comment
-          </h2>
-          <div className="mt-4 space-y-4">
-            <p>
-              Agar aap ye flow apni dukaan pe lagwana chahte ho, do raaste hain.
-            </p>
-            <p>
-              Instagram pe{" "}
-              <a
-                className="font-medium text-primary hover:underline"
-                href="https://www.instagram.com/aiautomation.hindi/"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                @aiautomation.hindi
-              </a>{" "}
-              ke reel pe comment karo <span className="font-semibold text-foreground">AUTOMATE</span>.
-            </p>
-            <p>
-              Ya Shubham se free demo ke liye seedha baat karo.{" "}
-              <NextLink className="font-medium text-primary hover:underline" href="/contact">
-                Contact form
-              </NextLink>{" "}
-              use karo,{" "}
-              <NextLink className="font-medium text-primary hover:underline" href="/schedule">
-                meeting schedule
-              </NextLink>{" "}
-              karo, ya email karo{" "}
-              <a className="break-all font-medium text-primary hover:underline" href={`mailto:${email}`}>
-                {email}
-              </a>
-              .
-            </p>
-          </div>
-        </section>
+        <BlogBookingCTA slug={post.slug} />
       </div>
     </article>
   );
