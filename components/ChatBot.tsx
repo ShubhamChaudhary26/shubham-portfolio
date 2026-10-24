@@ -20,6 +20,7 @@ const PROMPTS = [
   { label: "Experience", query: "What is your experience?" },
   { label: "Focus", query: "What do you build?" },
   { label: "Projects", query: "Show your projects" },
+  { label: "Blog", query: "Show the udhaar WhatsApp reminder guide" },
   { label: "Schedule", query: "Schedule a meeting" },
   { label: "Contact", query: "How can I contact you?" },
 ];

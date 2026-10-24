@@ -383,6 +383,7 @@ projects: {
     { name: "Home", href: "/", icon: "lucide:home" },
     { name: "About", href: "/about", icon: "lucide:user" },
     { name: "Projects", href: "/projects", icon: "lucide:folder-code" },
+    { name: "Blog", href: "/blog", icon: "lucide:newspaper" },
     { name: "Schedule", href: "/schedule", icon: "lucide:calendar" },
     { name: "Contact", href: "/contact", icon: "lucide:send" },
   ],

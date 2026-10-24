@@ -24,16 +24,20 @@ export const Footer = () => {
           <div className="col-span-1 md:col-span-2">
             <h2 className="mb-3 font-display text-2xl font-semibold">Let&apos;s talk</h2>
             <p className="mb-4 max-w-md text-foreground-500">{description}</p>
-            <Button
-              as={NextLink}
-              className="mb-4"
-              color="primary"
-              href="/schedule"
-              size="sm"
-              variant="flat"
-            >
-              Schedule a meeting
-            </Button>
+            <div className="mb-4 flex flex-wrap items-center gap-4">
+              <Button
+                as={NextLink}
+                color="primary"
+                href="/schedule"
+                size="sm"
+                variant="flat"
+              >
+                Schedule a meeting
+              </Button>
+              <NextLink className="text-sm font-medium text-primary hover:underline" href="/blog">
+                Blog
+              </NextLink>
+            </div>
             <div className="flex gap-4">
               {socialLinks.map((social, index) => (
                 <a

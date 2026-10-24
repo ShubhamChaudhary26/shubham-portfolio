@@ -1,3 +1,4 @@
+import { BLOG_POSTS } from "@/data/blog";
 import { DATA } from "@/data";
 import { SITE_URL } from "@/lib/site";
 
@@ -72,6 +73,20 @@ function stampzoAnswer() {
     project?.description ??
       "Stampzo is a digital stamp card for local shops in India. Shubham is currently working on it.",
     project && "live" in project && project.live ? `Site: ${project.live}` : "Site: https://stampzo.in",
+  ].join("\n");
+}
+
+function blogAnswer() {
+  const posts = BLOG_POSTS.map(
+    (post) => `• ${post.title}\n  ${SITE_URL}/blog/${post.slug}`,
+  ).join("\n\n");
+
+  return [
+    `Shubham's blog is at ${SITE_URL}/blog.`,
+    "",
+    posts,
+    "",
+    "The current guide is for kirana and dairy shop owners: how to collect udhaar on time with polite WhatsApp reminders.",
   ].join("\n");
 }
 
@@ -269,6 +284,20 @@ export function getBotResponse(raw: string): string {
     return stampzoAnswer();
   }
 
+  if (
+    includesAny(query, [
+      "blog",
+      "article",
+      "guide",
+      "udhaar",
+      "khata",
+      "whatsapp reminder",
+      "automatic reminder",
+    ])
+  ) {
+    return blogAnswer();
+  }
+
   if (includesAny(query, ["project", "portfolio piece", "case stud", "built", "github"])) {
     return projectsAnswer();
   }
@@ -338,6 +367,7 @@ export function getBotResponse(raw: string): string {
     "• Stampzo (https://stampzo.in)",
     "• Experience (Soltech is a past role)",
     "• Projects",
+    "• Blog and the udhaar WhatsApp reminder guide",
     "• Contact details",
     `• Scheduling a meeting (${SITE_URL}/schedule)`,
     "",

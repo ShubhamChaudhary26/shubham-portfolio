@@ -49,7 +49,7 @@ export const Navigation = () => {
           </motion.div>
         </NavbarBrand>
 
-        <NavbarContent className="hidden flex-grow justify-center gap-4 lg:flex">
+        <NavbarContent className="hidden flex-grow justify-center gap-2 lg:flex">
           {menuItems.map((item, index) => (
             <NavbarItem key={item.name}>
               <motion.div
@@ -58,10 +58,11 @@ export const Navigation = () => {
                 transition={{ delay: index * 0.1, duration: 0.5 }}
               >
                 <Link
-                  className={`flex items-center gap-2 rounded-full px-3 py-1.5 transition-colors ${
+                  className={`flex items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 py-1.5 text-sm transition-colors ${
                     item.href === "/schedule"
                       ? "bg-primary font-medium text-primary-foreground"
-                      : pathname === item.href
+                      : pathname === item.href ||
+                          (item.href !== "/" && pathname.startsWith(`${item.href}/`))
                         ? "font-semibold text-primary"
                         : "text-foreground hover:text-primary"
                   }`}
