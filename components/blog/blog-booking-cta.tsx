@@ -20,7 +20,7 @@ import {
 import { sendPortfolioEmail } from "@/lib/email";
 import { SITE_URL } from "@/lib/site";
 
-const BUSINESS_TYPES = [
+const DEFAULT_BUSINESS_TYPES = [
   { value: "kirana", label: "Kirana" },
   { value: "dairy", label: "Dairy" },
   { value: "other", label: "Other" },
@@ -34,14 +34,26 @@ const secondaryClass =
 
 type BlogBookingCTAProps = {
   slug: string;
+  heading?: string;
+  source?: string;
+  pagePath?: string;
+  businessTypes?: readonly { value: string; label: string }[];
 };
 
 function phoneDigits(value: string) {
   return value.replace(/\D/g, "");
 }
 
-export function BlogBookingCTA({ slug }: BlogBookingCTAProps) {
+export function BlogBookingCTA({
+  slug,
+  heading = "Free demo meeting book karo",
+  source,
+  pagePath,
+  businessTypes = DEFAULT_BUSINESS_TYPES,
+}: BlogBookingCTAProps) {
   const emailAddress = DATA.footer.contact.email;
+  const bookingSource = source ?? `blog: ${slug}`;
+  const bookingPath = pagePath ?? `/blog/${slug}`;
   const whatsAppNumber = phoneDigits(DATA.footer.contact.phone);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -137,16 +149,17 @@ export function BlogBookingCTA({ slug }: BlogBookingCTAProps) {
     const result = await sendPortfolioEmail({
       name: trimmedName,
       email: digits,
-      subject: `Demo booking (blog: ${slug})`,
+      subject: `Demo booking (${bookingSource})`,
       message: [
-        `Demo booking (blog: ${slug})`,
+        `Demo booking (${bookingSource})`,
         "",
         `Name: ${trimmedName}`,
         `Phone/WhatsApp: ${phone.trim()}`,
         `Business type: ${businessLabel}`,
         `Preferred date: ${dateLabel}`,
         `Time slot (IST, ${BOOKING_TIMEZONE}): ${startLabel} – ${endLabel}`,
-        `Page: ${SITE_URL}/blog/${slug}`,
+        `Source: ${bookingSource}`,
+        `Page: ${SITE_URL}${bookingPath}`,
       ].join("\n"),
     });
 
@@ -169,7 +182,7 @@ export function BlogBookingCTA({ slug }: BlogBookingCTAProps) {
   return (
     <section className="rounded-3xl border border-divider bg-content1/90 p-5 shadow-sm md:p-8">
       <h2 className="font-display text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
-        Free demo meeting book karo
+        {heading}
       </h2>
       <p className="mt-3 text-base leading-relaxed text-foreground-500">
         Weekday slots, 10:00 to 19:00 IST. Shubham gets the request by email and
@@ -217,7 +230,7 @@ export function BlogBookingCTA({ slug }: BlogBookingCTAProps) {
               onChange={(event) => setBusinessType(event.target.value)}
             >
               <option value="">Select</option>
-              {BUSINESS_TYPES.map((type) => (
+              {businessTypes.map((type) => (
                 <option key={type.value} value={type.value}>
                   {type.label}
                 </option>

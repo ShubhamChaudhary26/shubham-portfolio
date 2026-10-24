@@ -18,6 +18,7 @@ type MobileFrame = {
 
 const PROMPTS = [
   { label: "Experience", query: "What is your experience?" },
+  { label: "Calling", query: "What is the AI calling agent?" },
   { label: "Focus", query: "What do you build?" },
   { label: "Projects", query: "Show your projects" },
   { label: "Blog", query: "Show the udhaar WhatsApp reminder guide" },

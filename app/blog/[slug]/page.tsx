@@ -151,6 +151,13 @@ export default async function BlogArticlePage({ params }: ArticlePageProps) {
           </section>
         ))}
 
+        <p>
+          Calls bhi cover karni hain?{" "}
+          <NextLink className="font-medium text-primary hover:underline" href="/ai-calling-agent">
+            AI Calling Agent
+          </NextLink>{" "}
+          Hindi mein call uthata hai, sawal jawab karta hai, aur appointment note kar sakta hai.
+        </p>
         <BlogBookingCTA slug={post.slug} />
       </div>
     </article>

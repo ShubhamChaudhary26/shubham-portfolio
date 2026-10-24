@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { CallingAgentCta } from "@/components/home/calling-agent-cta";
 import { FocusSection } from "@/components/home/focus";
 import { HeroSection } from "@/components/home/hero";
 import { SkillsOverviewSection } from "@/components/home/skills-overview";
@@ -43,6 +44,7 @@ export default function HomePage() {
         type="application/ld+json"
       />
       <HeroSection />
+      <CallingAgentCta />
       <FocusSection />
       <SkillsOverviewSection />
       <WorkSection />

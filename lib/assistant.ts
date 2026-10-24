@@ -76,6 +76,15 @@ function stampzoAnswer() {
   ].join("\n");
 }
 
+function callingAgentAnswer() {
+  return [
+    "Shubham's AI calling agent picks up calls, answers questions in Hindi, qualifies leads, books visits and appointments, makes follow-up calls, and sends the owner a WhatsApp summary.",
+    "",
+    `The page is ${SITE_URL}/ai-calling-agent.`,
+    "A free demo can be booked on that page.",
+  ].join("\n");
+}
+
 function blogAnswer() {
   const posts = BLOG_POSTS.map(
     (post) => `• ${post.title}\n  ${SITE_URL}/blog/${post.slug}`,
@@ -262,6 +271,18 @@ export function getBotResponse(raw: string): string {
 
   if (
     includesAny(query, [
+      "calling agent",
+      "ai calling",
+      "voice agent",
+      "phone agent",
+      "missed call",
+    ])
+  ) {
+    return callingAgentAnswer();
+  }
+
+  if (
+    includesAny(query, [
       "calling",
       "voice",
       "chatbot",
@@ -363,7 +384,8 @@ export function getBotResponse(raw: string): string {
   return [
     "I can help with:",
     "• Current role as Executive at NR Agrawal",
-    "• AI calling agents, AI chatbots, CRM apps, and web and mobile apps",
+    `• AI calling agent (${SITE_URL}/ai-calling-agent)`,
+    "• AI chatbots, CRM apps, and web and mobile apps",
     "• Stampzo (https://stampzo.in)",
     "• Experience (Soltech is a past role)",
     "• Projects",

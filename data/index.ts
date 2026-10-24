@@ -384,6 +384,7 @@ projects: {
     { name: "About", href: "/about", icon: "lucide:user" },
     { name: "Projects", href: "/projects", icon: "lucide:folder-code" },
     { name: "Blog", href: "/blog", icon: "lucide:newspaper" },
+    { name: "AI Calling", href: "/ai-calling-agent", icon: "lucide:phone-call" },
     { name: "Schedule", href: "/schedule", icon: "lucide:calendar" },
     { name: "Contact", href: "/contact", icon: "lucide:send" },
   ],
