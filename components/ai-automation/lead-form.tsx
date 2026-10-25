@@ -67,6 +67,7 @@ export function LeadForm({ pagePath, selectedBusiness, defaultBusinessType = "" 
   const [declined, setDeclined] = useState(false);
   const [callsManually, setCallsManually] = useState<"Yes" | "No" | "">("");
   const [businessType, setBusinessType] = useState(BUSINESS_ALIAS[defaultBusinessType] ?? "");
+  const [otherBusiness, setOtherBusiness] = useState("");
   const [teamSize, setTeamSize] = useState("");
   const [callProblem, setCallProblem] = useState("");
   const [problemNote, setProblemNote] = useState("");
@@ -114,12 +115,21 @@ export function LeadForm({ pagePath, selectedBusiness, defaultBusinessType = "" 
       return;
     }
 
+    const resolvedBusinessType =
+      businessType === "Other" ? otherBusiness.replace(/[\r\n]+/g, " ").trim() : businessType;
+
+    if (resolvedBusinessType.length < 2) {
+      setError("Apna business likho.");
+
+      return;
+    }
+
     const lead = {
       name: trimmedName,
       phone: `+91 ${digits}`,
       email: trimmedEmail,
       businessName: "",
-      businessType,
+      businessType: resolvedBusinessType,
       services: [] as string[],
       city: "",
       message: callProblem === "Other" ? problemNote.trim() : "",
@@ -131,7 +141,7 @@ export function LeadForm({ pagePath, selectedBusiness, defaultBusinessType = "" 
       page: pagePath,
       query,
     };
-    const subject = leadSubject(businessType, pagePath);
+    const subject = leadSubject(resolvedBusinessType, pagePath);
     const body = formatLeadMessage(lead);
 
     setSubmitting(true);
@@ -223,6 +233,12 @@ export function LeadForm({ pagePath, selectedBusiness, defaultBusinessType = "" 
     if (step === 1) {
       if (!businessType) {
         setError("Business type chuno.");
+
+        return;
+      }
+
+      if (businessType === "Other" && otherBusiness.trim().length < 2) {
+        setError("Apna business likho.");
 
         return;
       }
@@ -366,8 +382,9 @@ export function LeadForm({ pagePath, selectedBusiness, defaultBusinessType = "" 
                   </Choice>
                 </>
               ) : null}
-              {step === 1
-                ? LEAD_BUSINESSES.map((option) => (
+              {step === 1 ? (
+                <>
+                  {LEAD_BUSINESSES.map((option) => (
                     <Choice
                       key={option}
                       pressed={businessType === option}
@@ -375,8 +392,21 @@ export function LeadForm({ pagePath, selectedBusiness, defaultBusinessType = "" 
                     >
                       {option}
                     </Choice>
-                  ))
-                : null}
+                  ))}
+                  {businessType === "Other" ? (
+                    <label className="block pt-2 text-sm">
+                      <span className="mb-1 block font-medium">Apna business likho</span>
+                      <input
+                        required
+                        className={fieldClass}
+                        maxLength={80}
+                        value={otherBusiness}
+                        onChange={(event) => setOtherBusiness(event.target.value)}
+                      />
+                    </label>
+                  ) : null}
+                </>
+              ) : null}
               {step === 2
                 ? TEAM_SIZES.map((option) => (
                     <Choice key={option} pressed={teamSize === option} onClick={() => setTeamSize(option)}>

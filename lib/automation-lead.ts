@@ -3,7 +3,6 @@ import {
   BUSINESS_TYPES,
   CALL_PROBLEMS,
   CALL_TIMES,
-  LEAD_BUSINESSES,
   TEAM_SIZES,
 } from "@/data/ai-automation";
 import { SITE_URL } from "@/lib/site";
@@ -59,8 +58,9 @@ export function isEmail(value: string) {
   return value.length <= 120 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
 
-export function isLeadBusiness(value: string) {
-  return (LEAD_BUSINESSES as readonly string[]).includes(value);
+/** A listed type, or the name typed when the form choice is Other. */
+export function isSubmittedLeadBusiness(value: string) {
+  return value.length >= 2 && value.length <= 80;
 }
 
 export function isTeamSize(value: string) {

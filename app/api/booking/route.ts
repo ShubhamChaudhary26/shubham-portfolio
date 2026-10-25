@@ -5,7 +5,7 @@ import {
   indianMobileDigits,
   isCallProblem,
   isEmail,
-  isLeadBusiness,
+  isSubmittedLeadBusiness,
   isTeamSize,
   leadSubject,
   normalizeLeadServices,
@@ -120,7 +120,7 @@ export async function POST(request: Request) {
       name.length < 2 ||
       !digits ||
       !isEmail(email) ||
-      !isLeadBusiness(businessType) ||
+      !isSubmittedLeadBusiness(businessType) ||
       !isTeamSize(teamSize) ||
       callsManually !== "Yes" ||
       !isCallProblem(callProblem) ||
