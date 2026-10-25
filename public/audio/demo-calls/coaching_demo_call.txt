@@ -5,8 +5,8 @@ TTS: Sarvam bulbul:v4-flash, hi-IN, pace 1.1
 AI Receptionist (aayan_hi_conversational): नमस्ते! ब्राइट फ्यूचर क्लासेज़ में आपका स्वागत है। मैं इंस्टीट्यूट का ए आई असिस्टेंट बोल रहा हूँ। बताइए, मैं आपकी क्या मदद कर सकता हूँ?
 Customer (simran_hi_conversation): नमस्ते जी... मेरा बेटा दसवीं में है, उसके लिए मैथ्स और साइंस की कोचिंग देख रही थी।
 AI Receptionist (aayan_hi_conversational): बहुत अच्छा! दसवीं के लिए हमारा मैथ्स और साइंस का बैच है, हफ़्ते में पाँच दिन क्लास होती है।
-Customer (simran_hi_conversation): फीस कितनी है? और एक बैच में कितने बच्चे होते हैं?
-AI Receptionist (aayan_hi_conversational): Fees wahi hai jo aapne setup mein likhi hai. Ek batch mein sirf bees bache hote hain, taaki har bache par dhyaan diya ja sake.
+Customer (simran_hi_conversation): और एक बैच में कितने बच्चे होते हैं?
+AI Receptionist (aayan_hi_conversational): एक बैच में सिर्फ़ बीस बच्चे होते हैं, ताकि हर बच्चे पर ध्यान दिया जा सके।
 Customer (simran_hi_conversation): अच्छा। कोई डेमो क्लास मिल सकती है पहले?
 AI Receptionist (aayan_hi_conversational): जी बिलकुल, पहली डेमो क्लास बिलकुल फ़्री है। इस शनिवार शाम चार बजे या रविवार सुबह ग्यारह बजे का स्लॉट है।
 Customer (simran_hi_conversation): शनिवार चार बजे ठीक रहेगा। बेटे का नाम आरव गुप्ता है।

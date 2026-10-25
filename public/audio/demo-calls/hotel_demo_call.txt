@@ -4,7 +4,6 @@ TTS: Sarvam bulbul:v4-flash, hi-IN, pace 1.1
 
 AI Receptionist (ritu_hi_medical): नमस्ते! होटल कम्फ़र्ट इन में आपका स्वागत है। मैं होटल की ए आई रिसेप्शनिस्ट बोल रही हूँ। बताइए, मैं आपकी क्या मदद कर सकती हूँ?
 Customer (rahul_hi_conversational): हाँ जी नमस्ते... अगले शुक्रवार से दो रातों के लिए एक रूम चाहिए था, दो लोगों के लिए।
-AI Receptionist (ritu_hi_medical): ज़रूर! Deluxe room aur premium room, dono available hain. Rate wahi hai jo aapne setup mein likha hai.
 Customer (rahul_hi_conversational): ब्रेकफ़ास्ट शामिल है? और चेक-इन टाइम क्या है?
 AI Receptionist (ritu_hi_medical): जी हाँ, दोनों रूम में फ़्री ब्रेकफ़ास्ट और वाई-फ़ाई शामिल है। चेक-इन दोपहर बारह बजे और चेक-आउट सुबह ग्यारह बजे है।
 Customer (rahul_hi_conversational): ठीक है, डीलक्स रूम बुक कर दीजिए।

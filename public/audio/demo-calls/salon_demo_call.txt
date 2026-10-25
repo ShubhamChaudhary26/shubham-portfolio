@@ -3,10 +3,7 @@ Agent voice: kavya_hi_conversational | Customer voice: aayan_hi_conversational
 TTS: Sarvam bulbul:v4-flash, hi-IN, pace 1.1
 
 AI Receptionist (kavya_hi_conversational): नमस्ते! ग्लो सैलून में आपका स्वागत है। मैं सैलून की ए आई रिसेप्शनिस्ट बोल रही हूँ। बताइए, आज आपके लिए क्या कर सकती हूँ?
-Customer (aayan_hi_conversational): हाँ नमस्ते... मुझे हेयरकट और बियर्ड ट्रिम करवाना था। रेट क्या है?
-AI Receptionist (kavya_hi_conversational): Haircut aur beard trim dono available hain. Dono saath mein combo bhi ho sakta hai. Rate aapke setup se aata hai.
-Customer (aayan_hi_conversational): अच्छा, और हेयर स्पा कितने का है?
-AI Receptionist (kavya_hi_conversational): Hair spa available hai, lagbhag paintalees minute lagte hain. Rate aapke setup se aata hai.
+Customer (aayan_hi_conversational): हाँ नमस्ते... मुझे हेयरकट और बियर्ड ट्रिम करवाना था।
 Customer (aayan_hi_conversational): ठीक है, अभी कॉम्बो ही करवा लेता हूँ। कल शाम को टाइम मिलेगा?
 AI Receptionist (kavya_hi_conversational): जी हाँ। कल शाम पाँच बजे, छह बजे और सात बजे के स्लॉट खाली हैं। कौन सा ठीक रहेगा?
 Customer (aayan_hi_conversational): छह बजे वाला कर दीजिए। नाम है रोहित मेहरा।
