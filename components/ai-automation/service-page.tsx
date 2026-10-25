@@ -6,7 +6,6 @@ type ServicePageProps = {
   paragraphs: string[];
   pagePath: string;
   selectedBusiness: string;
-  defaultServices: string[];
 };
 
 export function ServicePage({
@@ -15,7 +14,6 @@ export function ServicePage({
   paragraphs,
   pagePath,
   selectedBusiness,
-  defaultServices,
 }: ServicePageProps) {
   return (
     <article className="mx-auto max-w-3xl px-4 py-8">
@@ -29,11 +27,7 @@ export function ServicePage({
         ))}
       </div>
       <section className="mt-10 scroll-mt-24" id="lead-form">
-        <LeadForm
-          defaultServices={defaultServices}
-          pagePath={pagePath}
-          selectedBusiness={selectedBusiness}
-        />
+        <LeadForm pagePath={pagePath} selectedBusiness={selectedBusiness} />
       </section>
     </article>
   );

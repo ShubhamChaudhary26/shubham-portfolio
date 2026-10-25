@@ -3,8 +3,10 @@ import { NextResponse } from "next/server";
 import { sendFormSubmitBooking, sendFormSubmitLead } from "@/lib/booking-fallback";
 import {
   indianMobileDigits,
-  isBusinessType,
-  isCallTime,
+  isCallProblem,
+  isEmail,
+  isLeadBusiness,
+  isTeamSize,
   leadSubject,
   normalizeLeadServices,
 } from "@/lib/automation-lead";
@@ -18,6 +20,7 @@ type BookingBody = {
   intent?: unknown;
   name?: unknown;
   phone?: unknown;
+  email?: unknown;
   business?: unknown;
   businessName?: unknown;
   businessType?: unknown;
@@ -25,6 +28,9 @@ type BookingBody = {
   city?: unknown;
   message?: unknown;
   bestTime?: unknown;
+  teamSize?: unknown;
+  callsManually?: unknown;
+  callProblem?: unknown;
   selectedBusiness?: unknown;
   query?: unknown;
   date?: unknown;
@@ -90,11 +96,15 @@ export async function POST(request: Request) {
   if (text(body.intent, 20) === "lead") {
     const name = cleanLine(text(body.name, 80));
     const digits = indianMobileDigits(text(body.phone, 40));
+    const email = cleanLine(text(body.email, 120));
     const businessName = cleanLine(text(body.businessName, 120));
     const businessType = cleanLine(text(body.businessType, 80));
     const city = cleanLine(text(body.city, 80));
-    const message = text(body.message, 2000).replace(/\r/g, "");
+    const message = text(body.message, 500).replace(/\r/g, "");
     const bestTime = cleanLine(text(body.bestTime, 20));
+    const teamSize = cleanLine(text(body.teamSize, 20));
+    const callsManually = cleanLine(text(body.callsManually, 10));
+    const callProblem = cleanLine(text(body.callProblem, 80));
     const selectedBusiness = cleanLine(text(body.selectedBusiness, 80));
     const page = cleanLine(text(body.page, 200));
     const query = cleanLine(text(body.query, 500));
@@ -103,14 +113,20 @@ export async function POST(request: Request) {
         ? body.services.filter((item): item is string => typeof item === "string")
         : [],
     );
+    const pageOk = page === "/" || page.startsWith("/ai-automation");
+    const otherOk = callProblem !== "Other" || message.trim().length >= 2;
 
     if (
       name.length < 2 ||
       !digits ||
-      !isBusinessType(businessType) ||
-      !isCallTime(bestTime) ||
+      !isEmail(email) ||
+      !isLeadBusiness(businessType) ||
+      !isTeamSize(teamSize) ||
+      callsManually !== "Yes" ||
+      !isCallProblem(callProblem) ||
+      !otherOk ||
       selectedBusiness.length < 2 ||
-      !page.startsWith("/ai-automation")
+      !pageOk
     ) {
       return NextResponse.json({ ok: false, reason: "invalid" }, { status: 400 });
     }
@@ -118,16 +134,20 @@ export async function POST(request: Request) {
     const lead = {
       name,
       phone: `+91 ${digits}`,
+      email,
       businessName,
       businessType,
       services,
       city,
-      message,
+      message: message.trim(),
       bestTime,
+      teamSize,
+      callsManually,
+      callProblem,
       selectedBusiness,
       page,
       query,
-      subject: leadSubject(services, page),
+      subject: leadSubject(businessType, page),
     };
     const upstream = await sendFormSubmitLead(lead);
 

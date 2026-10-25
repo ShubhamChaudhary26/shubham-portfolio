@@ -28,7 +28,6 @@ export default function AiChatbotPage() {
         type="application/ld+json"
       />
       <ServicePage
-        defaultServices={["AI Chatbot"]}
         eyebrow="AI Chatbot"
         pagePath={path}
         paragraphs={[

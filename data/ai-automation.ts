@@ -30,6 +30,30 @@ export const AUTOMATION_SERVICES = [
 
 export const CALL_TIMES = ["Morning", "Afternoon", "Evening"] as const;
 
+/** Public booking link. The success screen hides "Demo slot book karo" while this is empty. */
+export const DEMO_BOOKING_URL: string = "";
+
+export const LEAD_BUSINESSES = [
+  "Real estate",
+  "Clinic",
+  "Restaurant",
+  "Salon",
+  "Coaching",
+  "Gym",
+  "Hotel",
+  "Other",
+] as const;
+
+export const TEAM_SIZES = ["1-5", "6-20", "21-50", "50+"] as const;
+
+export const CALL_PROBLEMS = [
+  "Call miss ho jati hai",
+  "Follow-up reh jata hai",
+  "Staff busy rehta hai",
+  "Raat ko koi nahi uthata",
+  "Other",
+] as const;
+
 export const GENERAL_VOICEOVER = "/audio/voiceovers/general.mp3";
 
 export type AutomationImage = {

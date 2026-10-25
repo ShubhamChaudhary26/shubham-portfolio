@@ -9,7 +9,6 @@ type DemoCtaProps = {
   pagePath: string;
   selectedBusiness: string;
   defaultBusinessType: string;
-  defaultServices?: string[];
 };
 
 const FOCUSABLE =
@@ -19,7 +18,6 @@ export function DemoCta({
   pagePath,
   selectedBusiness,
   defaultBusinessType,
-  defaultServices = ["AI Calling Agent"],
 }: DemoCtaProps) {
   const [open, setOpen] = useState(false);
   const [formInView, setFormInView] = useState(false);
@@ -160,7 +158,6 @@ export function DemoCta({
                 <div className="overflow-y-auto px-4 pb-4">
                   <LeadForm
                     defaultBusinessType={defaultBusinessType}
-                    defaultServices={defaultServices}
                     pagePath={pagePath}
                     selectedBusiness={selectedBusiness}
                   />

@@ -4,13 +4,13 @@ TTS: Sarvam bulbul:v4-flash, hi-IN, pace 1.1
 
 AI Receptionist (kavya_hi_conversational): नमस्ते! ग्लो सैलून में आपका स्वागत है। मैं सैलून की ए आई रिसेप्शनिस्ट बोल रही हूँ। बताइए, आज आपके लिए क्या कर सकती हूँ?
 Customer (aayan_hi_conversational): हाँ नमस्ते... मुझे हेयरकट और बियर्ड ट्रिम करवाना था। रेट क्या है?
-AI Receptionist (kavya_hi_conversational): हेयरकट दो सौ निन्यानवे रुपये का है, और बियर्ड ट्रिम एक सौ पचास रुपये। दोनों साथ में कॉम्बो चार सौ रुपये में हो जाएगा।
+AI Receptionist (kavya_hi_conversational): Haircut aur beard trim dono available hain. Dono saath mein combo bhi ho sakta hai. Rate aapke setup se aata hai.
 Customer (aayan_hi_conversational): अच्छा, और हेयर स्पा कितने का है?
-AI Receptionist (kavya_hi_conversational): हेयर स्पा सात सौ निन्यानवे रुपये का है, लगभग पैंतालीस मिनट लगते हैं।
+AI Receptionist (kavya_hi_conversational): Hair spa available hai, lagbhag paintalees minute lagte hain. Rate aapke setup se aata hai.
 Customer (aayan_hi_conversational): ठीक है, अभी कॉम्बो ही करवा लेता हूँ। कल शाम को टाइम मिलेगा?
 AI Receptionist (kavya_hi_conversational): जी हाँ। कल शाम पाँच बजे, छह बजे और सात बजे के स्लॉट खाली हैं। कौन सा ठीक रहेगा?
 Customer (aayan_hi_conversational): छह बजे वाला कर दीजिए। नाम है रोहित मेहरा।
-AI Receptionist (kavya_hi_conversational): धन्यवाद रोहित जी। तो कल शाम छह बजे हेयरकट और बियर्ड ट्रिम का कॉम्बो, चार सौ रुपये में। क्या ये सही है?
+AI Receptionist (kavya_hi_conversational): धन्यवाद रोहित जी। तो कल शाम छह बजे हेयरकट और बियर्ड ट्रिम का कॉम्बो। क्या ये सही है?
 Customer (aayan_hi_conversational): हाँ जी, बिलकुल सही।
 AI Receptionist (kavya_hi_conversational): परफ़ेक्ट! आपका अपॉइंटमेंट बुक हो गया है। कन्फ़र्मेशन और सैलून का लोकेशन अभी आपको व्हाट्सऐप पर भेज रही हूँ।
 Customer (aayan_hi_conversational): बढ़िया, थैंक यू!

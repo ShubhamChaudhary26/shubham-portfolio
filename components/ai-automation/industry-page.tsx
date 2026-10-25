@@ -164,7 +164,6 @@ export function IndustryTemplate({ page }: { page: PresentedIndustry }) {
           <section className="mx-auto max-w-3xl scroll-mb-28 scroll-mt-24" id="lead-form">
             <LeadForm
               defaultBusinessType={page.name}
-              defaultServices={["AI Calling Agent"]}
               pagePath={page.path}
               selectedBusiness={page.name}
             />
@@ -173,7 +172,6 @@ export function IndustryTemplate({ page }: { page: PresentedIndustry }) {
       </div>
       <DemoCta
         defaultBusinessType={page.name}
-        defaultServices={["AI Calling Agent"]}
         pagePath={page.path}
         selectedBusiness={page.name}
       />

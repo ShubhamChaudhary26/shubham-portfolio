@@ -1,44 +1,74 @@
-import { AUTOMATION_SERVICES, BUSINESS_TYPES, CALL_TIMES } from "@/data/ai-automation";
+import {
+  AUTOMATION_SERVICES,
+  BUSINESS_TYPES,
+  CALL_PROBLEMS,
+  CALL_TIMES,
+  LEAD_BUSINESSES,
+  TEAM_SIZES,
+} from "@/data/ai-automation";
 import { SITE_URL } from "@/lib/site";
 
 export type LeadInput = {
   name: string;
   phone: string;
+  email: string;
   businessName: string;
   businessType: string;
   services: string[];
   city: string;
   message: string;
   bestTime: string;
+  teamSize: string;
+  callsManually: string;
+  callProblem: string;
   selectedBusiness: string;
   page: string;
   query: string;
 };
 
-export function leadSubject(services: string[], page: string) {
-  const service = services.length > 0 ? services.join(", ") : "General";
+export function leadSubject(businessType: string, page: string) {
+  const label = businessType || "General";
 
-  return `AI Automation lead (${service} / ${page})`;
+  return `AI Automation lead (${label} / ${page})`;
 }
 
 export function formatLeadMessage(input: LeadInput) {
   const pageUrl = input.page.startsWith("http") ? input.page : `${SITE_URL}${input.page}`;
+  const problem =
+    input.callProblem === "Other" && input.message
+      ? `${input.callProblem}: ${input.message}`
+      : input.callProblem || "-";
 
   return [
-    leadSubject(input.services, input.page),
+    leadSubject(input.businessType, input.page),
     "",
     `Name: ${input.name}`,
     `Phone/WhatsApp: ${input.phone}`,
-    `Business name: ${input.businessName || "-"}`,
+    `Email: ${input.email || "-"}`,
     `Business type: ${input.businessType || "-"}`,
-    `Services wanted: ${input.services.length ? input.services.join(", ") : "-"}`,
-    `City: ${input.city || "-"}`,
-    `Message: ${input.message || "-"}`,
-    `Best time to call: ${input.bestTime || "-"}`,
+    `Team size: ${input.teamSize || "-"}`,
+    `Manual customer calls: ${input.callsManually || "-"}`,
+    `Biggest call problem: ${problem}`,
     `Selected business: ${input.selectedBusiness || "-"}`,
     `Source page: ${pageUrl}`,
     `UTM / igsh: ${input.query || "-"}`,
   ].join("\n");
+}
+
+export function isEmail(value: string) {
+  return value.length <= 120 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+export function isLeadBusiness(value: string) {
+  return (LEAD_BUSINESSES as readonly string[]).includes(value);
+}
+
+export function isTeamSize(value: string) {
+  return (TEAM_SIZES as readonly string[]).includes(value);
+}
+
+export function isCallProblem(value: string) {
+  return (CALL_PROBLEMS as readonly string[]).includes(value);
 }
 
 export function indianMobileDigits(value: string) {

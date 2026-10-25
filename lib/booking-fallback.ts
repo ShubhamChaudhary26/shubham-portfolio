@@ -45,8 +45,12 @@ export async function sendFormSubmitLead(
       body: JSON.stringify({
         name: input.name,
         phone: input.phone,
+        email: input.email,
         business_name: input.businessName,
         business_type: input.businessType,
+        team_size: input.teamSize,
+        manual_calls: input.callsManually,
+        call_problem: input.callProblem,
         services,
         city: input.city,
         message,

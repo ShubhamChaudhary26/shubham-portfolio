@@ -6,7 +6,7 @@ AI Receptionist (shreya_hi_conversational): नमस्ते! स्पाइ�
 Customer (mohit_hi_conversational): हाँ जी नमस्ते... आज रात के लिए चार लोगों की टेबल बुक करनी थी।
 AI Receptionist (shreya_hi_conversational): ज़रूर! आज रात आठ बजे, साढ़े आठ बजे और नौ बजे की टेबल खाली हैं। कौन सा टाइम ठीक रहेगा?
 Customer (mohit_hi_conversational): साढ़े आठ वाला। वैसे दो लोगों का एवरेज खर्चा कितना आता है?
-AI Receptionist (shreya_hi_conversational): दो लोगों का खर्चा लगभग बारह सौ रुपये आता है। और आज रात हमारा स्पेशल डिनर बुफ़े सिर्फ़ छह सौ निन्यानवे रुपये प्रति व्यक्ति है।
+AI Receptionist (shreya_hi_conversational): खर्चा aapke menu se decide hota hai. Aaj raat dinner buffet bhi hai.
 Customer (mohit_hi_conversational): अच्छा। वेज और नॉन-वेज दोनों मिलते हैं? और पार्किंग है?
 AI Receptionist (shreya_hi_conversational): जी हाँ, वेज और नॉन-वेज दोनों मिलते हैं, और फ़्री पार्किंग भी है। अपना पूरा नाम बता दीजिए।
 Customer (mohit_hi_conversational): अमित वर्मा।

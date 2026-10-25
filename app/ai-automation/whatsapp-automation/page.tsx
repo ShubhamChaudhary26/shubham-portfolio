@@ -28,7 +28,6 @@ export default function WhatsAppAutomationPage() {
         type="application/ld+json"
       />
       <ServicePage
-        defaultServices={["WhatsApp Automation"]}
         eyebrow="WhatsApp Automation"
         pagePath={path}
         paragraphs={[
