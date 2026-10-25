@@ -7,10 +7,10 @@ const description =
   "AI calling agent in Hindi for a clinic, real estate, restaurant, salon, coaching, gym, or hotel. Hear a sample voice, then send your details for a callback.";
 const path = "/ai-automation";
 const image = {
-  src: "/og-ai-calling.png",
-  width: 1200,
-  height: 630,
-  alt: "AI Calling Agent. Hindi calls and CRM follow-up.",
+  src: "/images/ai-automation/general/01_hub_crm_dashboard_all_businesses_16x9.webp",
+  width: 1280,
+  height: 720,
+  alt: "CRM dashboard jisme kai businesses ke calls aur leads ek jagah dikh rahe hain.",
 };
 
 export const dynamic = "force-static";

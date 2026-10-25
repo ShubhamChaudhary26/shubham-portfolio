@@ -18,6 +18,19 @@ export function IndustryTemplate({ page }: { page: PresentedIndustry }) {
           {page.title}
         </h1>
         <p className="mt-4 max-w-3xl text-lg leading-relaxed text-foreground-500">{page.subtitle}</p>
+        {page.heroImage ? (
+          <Image
+            priority
+            unoptimized
+            alt={page.heroImage.alt}
+            className="mt-6 h-auto w-full max-w-3xl rounded-3xl border border-divider"
+            fetchPriority="high"
+            height={page.heroImage.height}
+            sizes="(max-width: 768px) 100vw, 720px"
+            src={page.heroImage.src}
+            width={page.heroImage.width}
+          />
+        ) : null}
         <div className="mt-6 max-w-3xl">
           {page.explainer ? (
             <DemoAudio

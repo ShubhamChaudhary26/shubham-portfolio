@@ -70,6 +70,7 @@ export type IndustryConfig = {
   audio: IndustryAudio;
   demoCall?: DemoCall;
   walkthroughVideo: WalkthroughVideo;
+  heroImage: AutomationImage;
   screenshots: AutomationImage[];
   seo: {
     title: string;
@@ -77,13 +78,6 @@ export type IndustryConfig = {
     serviceName: string;
     ogImage: AutomationImage;
   };
-};
-
-const callingOg: AutomationImage = {
-  src: "/og-ai-calling.png",
-  alt: "AI Calling Agent for Hindi business calls and CRM follow-up.",
-  width: 1200,
-  height: 630,
 };
 
 function industry(input: IndustryConfig): IndustryConfig {
@@ -109,13 +103,13 @@ export const INDUSTRIES: IndustryConfig[] = [
       headingId: "clinic-demo-heading",
     },
     walkthroughVideo: CRM_WALKTHROUGH,
+    heroImage: {
+      src: "/images/clinic/01_hero_clinic_night_ai_call_16x9.webp",
+      alt: "Raat ko clinic reception, counter pe phone pe AI call aa rahi hai.",
+      width: 1600,
+      height: 900,
+    },
     screenshots: [
-      {
-        src: "/images/clinic/01_hero_clinic_night_ai_call_16x9.webp",
-        alt: "Night clinic reception with a phone on the counter showing an incoming AI call.",
-        width: 1600,
-        height: 900,
-      },
       {
         src: "/images/clinic/02_how_it_works_flow_16x9.webp",
         alt: "Illustration of a clinic call becoming an appointment and a WhatsApp summary.",
@@ -169,13 +163,39 @@ export const INDUSTRIES: IndustryConfig[] = [
       headingId: "real-estate-demo-heading",
     },
     walkthroughVideo: CRM_WALKTHROUGH,
-    screenshots: [],
+    heroImage: {
+      src: "/images/ai-automation/real_estate/01_hero_real_estate_night_ai_call_16x9.webp",
+      alt: "Raat ko real estate desk, screen pe AI calling agent property enquiry le raha hai.",
+      width: 1280,
+      height: 720,
+    },
+    screenshots: [
+      {
+        src: "/images/ai-automation/real_estate/02_how_it_works_flow_16x9.webp",
+        alt: "Property enquiry se site visit aur WhatsApp summary tak ka flow.",
+        width: 1280,
+        height: 720,
+        caption: "Enquiry aati hai, site visit book hota hai, aur summary WhatsApp pe jaati hai.",
+      },
+      {
+        src: "/images/ai-automation/real_estate/03_whatsapp_site_visit_confirmation_4x5.webp",
+        alt: "WhatsApp pe site visit confirm hone ka message.",
+        width: 864,
+        height: 1080,
+        caption: "Owner ko site visit ki short confirmation.",
+      },
+    ],
     seo: {
       title: "AI Calling Agent for Real Estate",
       description:
         "AI calling agent for real estate that handles property enquiries in Hindi, notes budget and site visits, and saves a summary in the CRM. Real demo call on this page.",
       serviceName: "AI Calling Agent for Real Estate",
-      ogImage: callingOg,
+      ogImage: {
+        src: "/images/ai-automation/real_estate/01_hero_real_estate_night_ai_call_16x9.webp",
+        alt: "Raat ko real estate desk, screen pe AI calling agent property enquiry le raha hai.",
+        width: 1280,
+        height: 720,
+      },
     },
   }),
   industry({
@@ -190,13 +210,39 @@ export const INDUSTRIES: IndustryConfig[] = [
       headingId: "restaurant-explainer-heading",
     },
     walkthroughVideo: CRM_WALKTHROUGH,
-    screenshots: [],
+    heroImage: {
+      src: "/images/ai-automation/restaurant/01_hero_restaurant_night_ai_call_16x9.webp",
+      alt: "Raat ko restaurant, jahan phone pe AI call aa rahi hai.",
+      width: 1280,
+      height: 720,
+    },
+    screenshots: [
+      {
+        src: "/images/ai-automation/restaurant/02_how_it_works_flow_16x9.webp",
+        alt: "Restaurant call se table booking aur WhatsApp note tak ka flow.",
+        width: 1280,
+        height: 720,
+        caption: "Call aati hai, table book hota hai, aur note WhatsApp pe jaata hai.",
+      },
+      {
+        src: "/images/ai-automation/restaurant/03_whatsapp_table_booking_confirmation_4x5.webp",
+        alt: "WhatsApp pe table booking confirm hone ka message.",
+        width: 864,
+        height: 1080,
+        caption: "Table booking ki short confirmation.",
+      },
+    ],
     seo: {
       title: "AI Calling Agent for Restaurants",
       description:
-        "AI calling agent for restaurants that answers table, timing, and order questions in Hindi and saves the lead in the CRM. Demo audio is not published yet.",
+        "AI calling agent for restaurants that answers table, timing, and order questions in Hindi and saves the lead in the CRM. Sample voice explainer on this page.",
       serviceName: "AI Calling Agent for Restaurants",
-      ogImage: callingOg,
+      ogImage: {
+        src: "/images/ai-automation/restaurant/01_hero_restaurant_night_ai_call_16x9.webp",
+        alt: "Raat ko restaurant, jahan phone pe AI call aa rahi hai.",
+        width: 1280,
+        height: 720,
+      },
     },
   }),
   industry({
@@ -211,13 +257,39 @@ export const INDUSTRIES: IndustryConfig[] = [
       headingId: "salon-explainer-heading",
     },
     walkthroughVideo: CRM_WALKTHROUGH,
-    screenshots: [],
+    heroImage: {
+      src: "/images/ai-automation/salon/01_hero_salon_night_ai_call_16x9.webp",
+      alt: "Raat ko salon, jahan phone pe AI call aa rahi hai.",
+      width: 1280,
+      height: 720,
+    },
+    screenshots: [
+      {
+        src: "/images/ai-automation/salon/02_how_it_works_flow_16x9.webp",
+        alt: "Salon call se appointment aur WhatsApp note tak ka flow.",
+        width: 1280,
+        height: 720,
+        caption: "Call aati hai, appointment note hota hai, aur summary WhatsApp pe jaati hai.",
+      },
+      {
+        src: "/images/ai-automation/salon/03_whatsapp_appointment_confirmation_4x5.webp",
+        alt: "WhatsApp pe salon appointment confirm hone ka message.",
+        width: 864,
+        height: 1080,
+        caption: "Appointment ki short confirmation.",
+      },
+    ],
     seo: {
       title: "AI Calling Agent for Salons",
       description:
-        "AI calling agent for salons that answers service questions in Hindi and notes appointment slots you have opened. Demo audio is not published yet.",
+        "AI calling agent for salons that answers service questions in Hindi and notes appointment slots you have opened. Sample voice explainer on this page.",
       serviceName: "AI Calling Agent for Salons",
-      ogImage: callingOg,
+      ogImage: {
+        src: "/images/ai-automation/salon/01_hero_salon_night_ai_call_16x9.webp",
+        alt: "Raat ko salon, jahan phone pe AI call aa rahi hai.",
+        width: 1280,
+        height: 720,
+      },
     },
   }),
   industry({
@@ -232,13 +304,39 @@ export const INDUSTRIES: IndustryConfig[] = [
       headingId: "coaching-explainer-heading",
     },
     walkthroughVideo: CRM_WALKTHROUGH,
-    screenshots: [],
+    heroImage: {
+      src: "/images/ai-automation/coaching/01_hero_coaching_night_ai_call_16x9.webp",
+      alt: "Raat ko coaching centre, jahan phone pe AI call aa rahi hai.",
+      width: 1280,
+      height: 720,
+    },
+    screenshots: [
+      {
+        src: "/images/ai-automation/coaching/02_how_it_works_flow_16x9.webp",
+        alt: "Coaching enquiry se demo class aur WhatsApp note tak ka flow.",
+        width: 1280,
+        height: 720,
+        caption: "Enquiry aati hai, demo class book hoti hai, aur note WhatsApp pe jaata hai.",
+      },
+      {
+        src: "/images/ai-automation/coaching/03_whatsapp_demo_class_confirmation_4x5.webp",
+        alt: "WhatsApp pe demo class confirm hone ka message.",
+        width: 864,
+        height: 1080,
+        caption: "Demo class ki short confirmation.",
+      },
+    ],
     seo: {
       title: "AI Calling Agent for Coaching",
       description:
-        "AI calling agent for coaching and education that answers course and batch questions in Hindi and books a slot you have opened. Demo audio is not published yet.",
+        "AI calling agent for coaching and education that answers course and batch questions in Hindi and books a slot you have opened. Sample voice explainer on this page.",
       serviceName: "AI Calling Agent for Coaching and Education",
-      ogImage: callingOg,
+      ogImage: {
+        src: "/images/ai-automation/coaching/01_hero_coaching_night_ai_call_16x9.webp",
+        alt: "Raat ko coaching centre, jahan phone pe AI call aa rahi hai.",
+        width: 1280,
+        height: 720,
+      },
     },
   }),
   industry({
@@ -253,13 +351,39 @@ export const INDUSTRIES: IndustryConfig[] = [
       headingId: "gym-explainer-heading",
     },
     walkthroughVideo: CRM_WALKTHROUGH,
-    screenshots: [],
+    heroImage: {
+      src: "/images/ai-automation/gym/01_hero_gym_night_ai_call_16x9.webp",
+      alt: "Raat ko gym, jahan phone pe AI call aa rahi hai.",
+      width: 1280,
+      height: 720,
+    },
+    screenshots: [
+      {
+        src: "/images/ai-automation/gym/02_how_it_works_flow_16x9.webp",
+        alt: "Gym call se free trial aur WhatsApp note tak ka flow.",
+        width: 1280,
+        height: 720,
+        caption: "Call aati hai, trial note hota hai, aur summary WhatsApp pe jaati hai.",
+      },
+      {
+        src: "/images/ai-automation/gym/03_whatsapp_free_trial_confirmation_4x5.webp",
+        alt: "WhatsApp pe gym free trial confirm hone ka message.",
+        width: 864,
+        height: 1080,
+        caption: "Free trial ki short confirmation.",
+      },
+    ],
     seo: {
       title: "AI Calling Agent for Gyms",
       description:
-        "AI calling agent for gyms that answers membership and trial questions in Hindi and logs the lead for follow-up. Demo audio is not published yet.",
+        "AI calling agent for gyms that answers membership and trial questions in Hindi and logs the lead for follow-up. Sample voice explainer on this page.",
       serviceName: "AI Calling Agent for Gyms",
-      ogImage: callingOg,
+      ogImage: {
+        src: "/images/ai-automation/gym/01_hero_gym_night_ai_call_16x9.webp",
+        alt: "Raat ko gym, jahan phone pe AI call aa rahi hai.",
+        width: 1280,
+        height: 720,
+      },
     },
   }),
   industry({
@@ -274,13 +398,39 @@ export const INDUSTRIES: IndustryConfig[] = [
       headingId: "hotel-explainer-heading",
     },
     walkthroughVideo: CRM_WALKTHROUGH,
-    screenshots: [],
+    heroImage: {
+      src: "/images/ai-automation/hotel/01_hero_hotel_night_ai_call_16x9.webp",
+      alt: "Raat ko hotel front desk, jahan phone pe AI call aa rahi hai.",
+      width: 1280,
+      height: 720,
+    },
+    screenshots: [
+      {
+        src: "/images/ai-automation/hotel/02_how_it_works_flow_16x9.webp",
+        alt: "Hotel call se room booking aur WhatsApp note tak ka flow.",
+        width: 1280,
+        height: 720,
+        caption: "Call aati hai, room note hota hai, aur summary WhatsApp pe jaati hai.",
+      },
+      {
+        src: "/images/ai-automation/hotel/03_whatsapp_room_booking_confirmation_4x5.webp",
+        alt: "WhatsApp pe room booking confirm hone ka message.",
+        width: 864,
+        height: 1080,
+        caption: "Room booking ki short confirmation.",
+      },
+    ],
     seo: {
       title: "AI Calling Agent for Hotels",
       description:
-        "AI calling agent for hotels that answers room and timing questions in Hindi and notes a booking from the availability you set. Demo audio is not published yet.",
+        "AI calling agent for hotels that answers room and timing questions in Hindi and notes a booking from the availability you set. Sample voice explainer on this page.",
       serviceName: "AI Calling Agent for Hotels",
-      ogImage: callingOg,
+      ogImage: {
+        src: "/images/ai-automation/hotel/01_hero_hotel_night_ai_call_16x9.webp",
+        alt: "Raat ko hotel front desk, jahan phone pe AI call aa rahi hai.",
+        width: 1280,
+        height: 720,
+      },
     },
   }),
 ];
@@ -347,6 +497,13 @@ export const CRM_FEATURES = [
     text: "Appointment ya visit aapke diye gaye slots mein note ho sakta hai. Khali slot khud se nahi banta.",
   },
 ] as const;
+
+export const HUB_HERO: AutomationImage = {
+  src: "/images/ai-automation/general/01_hub_crm_dashboard_all_businesses_16x9.webp",
+  alt: "CRM dashboard jisme kai businesses ke calls aur leads ek jagah dikh rahe hain.",
+  width: 1280,
+  height: 720,
+};
 
 export function industryBySlug(slug: string) {
   return INDUSTRIES.find((item) => item.slug === slug);

@@ -2,13 +2,14 @@
 
 import type { VoiceoverAssets } from "@/lib/automation-media";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { AudioPending, DemoAudio } from "@/components/ai-automation/demo-audio";
 import { BusinessIcon } from "@/components/ai-automation/icons";
 import { LeadForm } from "@/components/ai-automation/lead-form";
-import { EXPLAINER_LABEL, INDUSTRIES } from "@/data/ai-automation";
+import { EXPLAINER_LABEL, HUB_HERO, INDUSTRIES } from "@/data/ai-automation";
 
 const cardClass =
   "flex min-h-28 w-full flex-col items-start justify-center gap-3 rounded-3xl border border-divider bg-content1/80 px-4 py-5 text-left shadow-[0_18px_50px_-40px_rgba(165,176,255,0.9)] motion-safe:transition-colors hover:border-primary/50";
@@ -35,6 +36,17 @@ export function HubPage({ audio }: { audio: VoiceoverAssets }) {
       <h1 className="mt-3 max-w-3xl font-display text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
         Aapke business ke liye AI Calling Agent — kaunsa business hai?
       </h1>
+      <Image
+        priority
+        unoptimized
+        alt={HUB_HERO.alt}
+        className="mt-6 h-auto w-full max-w-3xl rounded-3xl border border-divider"
+        fetchPriority="high"
+        height={HUB_HERO.height}
+        sizes="(max-width: 768px) 100vw, 720px"
+        src={HUB_HERO.src}
+        width={HUB_HERO.width}
+      />
       <div className="mt-6 max-w-3xl">
         {audio ? (
           <DemoAudio

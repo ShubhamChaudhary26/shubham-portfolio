@@ -52,6 +52,8 @@ export function presentIndustry(industry: IndustryConfig) {
     explainer: voiceoverAssets(industry.audio.src),
     demoSrc: demoSrc && publicFileExists(demoSrc) ? demoSrc : null,
     video: resolveVideo(industry.walkthroughVideo),
+    heroImage:
+      industry.heroImage && publicFileExists(industry.heroImage.src) ? industry.heroImage : null,
     screenshots: industry.screenshots.filter((image) => publicFileExists(image.src)),
   };
 }
