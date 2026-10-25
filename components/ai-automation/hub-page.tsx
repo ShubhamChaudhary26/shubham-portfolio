@@ -5,14 +5,16 @@ import type { VoiceoverAssets } from "@/lib/automation-media";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+import { BrandMark } from "@/components/ai-automation/brand-mark";
 import { AudioPending, DemoAudio } from "@/components/ai-automation/demo-audio";
 import { BusinessIcon } from "@/components/ai-automation/icons";
 import { LeadForm } from "@/components/ai-automation/lead-form";
-import { BrandMark } from "@/components/ai-automation/shell";
-import { EXPLAINER_LABEL, INDUSTRIES } from "@/data/ai-automation";
+import { Reveal } from "@/components/ai-automation/reveal";
+import { StatChips } from "@/components/ai-automation/stat-chips";
+import { INDUSTRIES } from "@/data/ai-automation";
 
 const cardClass =
-  "flex min-h-28 w-full flex-col items-start justify-center gap-3 rounded-3xl border border-divider bg-content1/80 px-4 py-5 text-left shadow-[0_18px_50px_-40px_rgba(165,176,255,0.9)] motion-safe:transition-colors hover:border-primary/50";
+  "flex min-h-32 w-full flex-col items-start justify-center gap-3 rounded-3xl border border-white/10 bg-white/[0.04] px-4 py-5 text-left motion-safe:transition-colors hover:border-teal-300/40";
 
 export function HubPage({ audio }: { audio: VoiceoverAssets }) {
   const [formOpen, setFormOpen] = useState(false);
@@ -29,51 +31,52 @@ export function HubPage({ audio }: { audio: VoiceoverAssets }) {
   }, [formOpen]);
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-10">
+    <div className="mx-auto max-w-3xl space-y-12 px-4 py-12 sm:space-y-16 sm:py-16">
       <div className="flex flex-col items-center text-center">
-        <BrandMark className="h-14 w-14 text-base" />
-        <h1 className="mt-4 font-display text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
+        <BrandMark className="h-16 w-16 text-lg" />
+        <h1 className="mt-5 font-display text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
           Aapka business type kya hai?
         </h1>
       </div>
-      <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         {INDUSTRIES.map((business) => (
           <Link key={business.slug} className={cardClass} href={business.path} prefetch={false}>
-            <span className="grid h-12 w-12 place-items-center rounded-2xl bg-primary/15 text-primary">
+            <span className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-teal-300/20 to-violet-500/25 text-teal-200">
               <BusinessIcon id={business.slug} />
             </span>
             <span className="font-display text-xl font-semibold leading-tight">{business.name}</span>
           </Link>
         ))}
         <button className={cardClass} type="button" onClick={() => setFormOpen(true)}>
-          <span className="grid h-12 w-12 place-items-center rounded-2xl bg-primary/15 text-primary">
+          <span className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-teal-300/20 to-violet-500/25 text-teal-200">
             <BusinessIcon id="other" />
           </span>
           <span className="font-display text-xl font-semibold">Other</span>
         </button>
       </div>
-      <div className="mt-8">
+      <Reveal>
+        <StatChips />
+      </Reveal>
+      <Reveal>
         {audio ? (
           <DemoAudio
             captionsSrc={audio.captionsSrc}
             headingId="hub-explainer-heading"
-            label={EXPLAINER_LABEL}
+            label="Sample voice"
             preload="metadata"
             src={audio.src}
             transcript={audio.transcript}
           />
         ) : (
-          <AudioPending label={EXPLAINER_LABEL} />
+          <AudioPending label="Sample voice" />
         )}
-      </div>
+      </Reveal>
       {formOpen ? (
-        <section className="mt-8 scroll-mt-24" id="lead-form">
-          <LeadForm
-            defaultBusinessType="Other"
-            pagePath="/ai-automation"
-            selectedBusiness="Other"
-          />
-        </section>
+        <Reveal>
+          <section className="scroll-mt-24" id="lead-form">
+            <LeadForm defaultBusinessType="Other" pagePath="/ai-automation" selectedBusiness="Other" />
+          </section>
+        </Reveal>
       ) : null}
     </div>
   );

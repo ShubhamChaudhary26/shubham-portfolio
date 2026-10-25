@@ -12,6 +12,44 @@ const svgProps = {
   "aria-hidden": true as const,
 };
 
+export function FeatureIcon({ name }: { name: string }) {
+  switch (name) {
+    case "Inbound calls":
+      return (
+        <svg {...svgProps}>
+          <path d="M8 4h3l1.5 3.5-2 1.2a12 12 0 0 0 5 5l1.2-2L20.5 13v3a2 2 0 0 1-2.2 2A16 16 0 0 1 6 6.2 2 2 0 0 1 8 4z" />
+          <path d="M15 5v4h4" />
+          <path d="M19 5l-4 4" />
+        </svg>
+      );
+    case "Outbound calls":
+      return (
+        <svg {...svgProps}>
+          <path d="M8 4h3l1.5 3.5-2 1.2a12 12 0 0 0 5 5l1.2-2L20.5 13v3a2 2 0 0 1-2.2 2A16 16 0 0 1 6 6.2 2 2 0 0 1 8 4z" />
+          <path d="M15 9V5h4" />
+          <path d="M15 5l4 4" />
+        </svg>
+      );
+    case "Instagram & Facebook Leads":
+      return (
+        <svg {...svgProps}>
+          <path d="M16 19v-1.2A3.2 3.2 0 0 0 12.8 14.6H7.2A3.2 3.2 0 0 0 4 17.8V19" />
+          <circle cx="10" cy="8" r="3" />
+          <path d="M20 19v-1a3 3 0 0 0-2.2-2.9" />
+          <path d="M16 5.1a3 3 0 0 1 0 5.8" />
+        </svg>
+      );
+    default:
+      return (
+        <svg {...svgProps}>
+          <rect height="14" rx="2" width="10" x="7" y="5" />
+          <path d="M11 5V4a1 1 0 0 1 1-1h0a1 1 0 0 1 1 1v1" />
+          <path d="M10 12h4" />
+        </svg>
+      );
+  }
+}
+
 export function BusinessIcon({ id }: IconProps) {
   switch (id) {
     case "clinic":

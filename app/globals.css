@@ -96,9 +96,61 @@ body {
   background: rgba(165, 176, 255, 0.35);
 }
 
+@keyframes wave-bar {
+  0%,
+  100% {
+    transform: scaleY(0.28);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes btn-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 16px rgba(45, 212, 191, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 34px rgba(139, 92, 246, 0.55);
+  }
+}
+
+.wave-bar {
+  transform-origin: bottom;
+  animation: wave-bar 0.9s ease-in-out infinite;
+}
+
+.glow-btn {
+  animation: btn-glow 2.6s ease-in-out infinite;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .wave-bar,
+  .glow-btn,
+  .reveal,
+  .reveal.is-in {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 
   .motion-safe-only,

@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { BrandMark } from "@/components/ai-automation/brand-mark";
 import { AUTOMATION_BRAND } from "@/lib/automation-brand";
 
 const NAV = [
@@ -7,17 +8,6 @@ const NAV = [
   { href: "/ai-automation/ai-chatbot", label: "AI Chatbot" },
   { href: "/ai-automation/whatsapp-automation", label: "WhatsApp" },
 ];
-
-export function BrandMark({ className = "h-11 w-11 text-sm" }: { className?: string }) {
-  return (
-    <span
-      aria-hidden="true"
-      className={`grid shrink-0 place-items-center rounded-full bg-primary font-bold text-primary-foreground ${className}`}
-    >
-      AI
-    </span>
-  );
-}
 
 export function AutomationHeader() {
   return (

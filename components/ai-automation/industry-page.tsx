@@ -3,25 +3,34 @@ import type { PresentedIndustry } from "@/lib/automation-media";
 import Image from "next/image";
 
 import { AudioPending, DemoAudio } from "@/components/ai-automation/demo-audio";
+import { PageHero } from "@/components/ai-automation/hero";
+import { FeatureIcon } from "@/components/ai-automation/icons";
 import { LeadForm } from "@/components/ai-automation/lead-form";
-import { CRM_FEATURES, CRM_STEPS, EXPLAINER_LABEL } from "@/data/ai-automation";
+import { Reveal } from "@/components/ai-automation/reveal";
+import { StatChips } from "@/components/ai-automation/stat-chips";
+import { CRM_FEATURES } from "@/data/ai-automation";
 
-const cardClass =
-  "rounded-3xl border border-divider bg-content1/80 p-5 shadow-[0_18px_50px_-40px_rgba(165,176,255,0.8)]";
+const FEATURES = [
+  "Inbound calls",
+  "Outbound calls",
+  "Instagram & Facebook Leads",
+  "Own number",
+] as const;
+
+const cardClass = "rounded-3xl border border-white/10 bg-white/[0.04] p-5";
 
 export function IndustryTemplate({ page }: { page: PresentedIndustry }) {
-  return (
-    <article className="pb-8">
-      <header className="mx-auto max-w-5xl px-4 pb-2 pt-8">
-        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">{page.name}</p>
-        <h1 className="mt-3 max-w-3xl font-display text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
-          {page.title}
-        </h1>
-        <p className="mt-4 max-w-3xl text-lg leading-relaxed text-foreground-500">{page.subtitle}</p>
-      </header>
+  const features = FEATURES.map((title) => CRM_FEATURES.find((feature) => feature.title === title)).filter(
+    (feature) => feature !== undefined,
+  );
+  const [flow, whatsapp, ...extra] = page.screenshots;
 
-      <div className="mx-auto max-w-5xl px-4">
-        <div className="max-w-3xl">
+  return (
+    <article className="pb-16">
+      <PageHero eyebrow={page.name} image={page.heroImage} subtitle={page.subtitle} title={page.title} />
+
+      <div className="mx-auto max-w-5xl space-y-16 px-4 py-12 sm:space-y-20 sm:py-16">
+        <Reveal className="mx-auto max-w-3xl">
           {page.demoSrc ? (
             <DemoAudio
               captionsSrc="/audio/captions-unavailable.vtt"
@@ -37,96 +46,100 @@ export function IndustryTemplate({ page }: { page: PresentedIndustry }) {
               <AudioPending label="Demo call" />
             </div>
           )}
-        </div>
+        </Reveal>
 
-        <div className="mt-6 max-w-3xl">
+        <Reveal className="mx-auto max-w-3xl">
           {page.explainer ? (
             <DemoAudio
               autoplay
               captionsSrc={page.explainer.captionsSrc}
               headingId={page.audio.headingId}
-              label={EXPLAINER_LABEL}
+              label="Sample voice"
               preload="metadata"
               src={page.explainer.src}
               transcript={page.explainer.transcript}
             />
           ) : (
-            <AudioPending label={EXPLAINER_LABEL} />
+            <AudioPending label="Sample voice" />
           )}
-        </div>
-      </div>
+        </Reveal>
 
-      <section className="mx-auto max-w-5xl px-4 py-8">
-        <h2 className="font-display text-3xl font-semibold tracking-tight">Images</h2>
-        {page.heroImage ? (
-          <Image
-            priority
-            unoptimized
-            alt={page.heroImage.alt}
-            className="mt-6 h-auto w-full max-w-3xl rounded-3xl border border-divider"
-            fetchPriority="high"
-            height={page.heroImage.height}
-            sizes="(max-width: 768px) 100vw, 720px"
-            src={page.heroImage.src}
-            width={page.heroImage.width}
-          />
+        {flow ? (
+          <Reveal>
+            <h2 className="font-display text-3xl font-semibold tracking-tight">Kaise kaam karta hai</h2>
+            <figure className="mt-6 overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03]">
+              <Image
+                unoptimized
+                alt={flow.alt}
+                className="h-auto w-full"
+                height={flow.height}
+                loading="lazy"
+                sizes="(max-width: 1024px) 100vw, 960px"
+                src={flow.src}
+                width={flow.width}
+              />
+              {flow.caption ? (
+                <figcaption className="px-5 py-4 text-sm leading-relaxed text-foreground-500">
+                  {flow.caption}
+                </figcaption>
+              ) : null}
+            </figure>
+          </Reveal>
         ) : null}
-        {page.screenshots.length ? (
-          <div className="mt-6 grid gap-4 sm:grid-cols-2">
-            {page.screenshots.map((image) => (
-              <figure key={image.src} className="overflow-hidden rounded-3xl border border-divider bg-content1">
-                <Image
-                  unoptimized
-                  alt={image.alt}
-                  className="h-auto w-full"
-                  height={image.height}
-                  loading="lazy"
-                  sizes="(max-width: 768px) 100vw, 480px"
-                  src={image.src}
-                  width={image.width}
-                />
-                {image.caption ? (
-                  <figcaption className="px-4 py-3 text-sm leading-relaxed text-foreground-500">
-                    {image.caption}
-                  </figcaption>
-                ) : null}
-              </figure>
-            ))}
-          </div>
-        ) : null}
-      </section>
 
-      <section className="mx-auto grid max-w-5xl gap-6 px-4 py-8 lg:grid-cols-[minmax(0,1.4fr)_minmax(16rem,0.8fr)]">
-        <div>
-          <h2 className="font-display text-3xl font-semibold tracking-tight">CRM kaise kaam karta hai</h2>
-          <ol className="mt-6 grid gap-4 md:grid-cols-6 md:gap-3">
-            {CRM_STEPS.map((step, index) => (
-              <li key={step.title} className="relative md:pt-8">
-                <span
-                  aria-hidden="true"
-                  className="absolute left-0 top-0 hidden h-px w-full bg-primary/30 md:block"
-                />
-                <div className="flex gap-3 md:block">
-                  <span className="relative z-10 grid h-9 w-9 shrink-0 place-items-center rounded-full bg-primary text-sm font-semibold text-primary-foreground md:-mt-4">
-                    {index + 1}
-                  </span>
-                  <div className="border-l border-primary/25 pl-3 md:mt-3 md:border-l-0 md:pl-0">
-                    <h3 className="text-sm font-semibold leading-snug">{step.title}</h3>
-                    <p className="mt-1 text-sm leading-relaxed text-foreground-500">{step.text}</p>
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </div>
-        <aside>
-          <h2 className="font-display text-2xl font-semibold tracking-tight">CRM walkthrough</h2>
+        {whatsapp ? (
+          <Reveal>
+            <h2 className="text-center font-display text-3xl font-semibold tracking-tight">WhatsApp summary</h2>
+            <figure className="mx-auto mt-6 max-w-sm overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03]">
+              <Image
+                unoptimized
+                alt={whatsapp.alt}
+                className="h-auto w-full"
+                height={whatsapp.height}
+                loading="lazy"
+                sizes="(max-width: 640px) 100vw, 384px"
+                src={whatsapp.src}
+                width={whatsapp.width}
+              />
+              {whatsapp.caption ? (
+                <figcaption className="px-5 py-4 text-sm leading-relaxed text-foreground-500">
+                  {whatsapp.caption}
+                </figcaption>
+              ) : null}
+            </figure>
+          </Reveal>
+        ) : null}
+
+        {extra.map((image) => (
+          <Reveal key={image.src}>
+            <figure className="mx-auto max-w-sm overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03]">
+              <Image
+                unoptimized
+                alt={image.alt}
+                className="h-auto w-full"
+                height={image.height}
+                loading="lazy"
+                sizes="(max-width: 640px) 100vw, 384px"
+                src={image.src}
+                width={image.width}
+              />
+              {image.caption ? (
+                <figcaption className="px-5 py-4 text-sm leading-relaxed text-foreground-500">
+                  {image.caption}
+                </figcaption>
+              ) : null}
+            </figure>
+          </Reveal>
+        ))}
+
+        <Reveal>
+          <h2 className="font-display text-3xl font-semibold tracking-tight">CRM walkthrough</h2>
           {page.video ? (
             <video
               controls
               muted
               playsInline
-              className="mt-4 aspect-video w-full rounded-3xl border border-divider bg-black"
+              className="mt-6 aspect-video w-full rounded-3xl border border-white/10 bg-black"
               poster={page.video.poster}
               preload="none"
               src={page.video.src}
@@ -134,45 +147,45 @@ export function IndustryTemplate({ page }: { page: PresentedIndustry }) {
               <track kind="captions" label="Captions" src="/audio/captions-unavailable.vtt" srcLang="hi" />
             </video>
           ) : (
-            <div className={`mt-4 ${cardClass}`}>
+            <div className={`mt-6 ${cardClass}`}>
               <p className="text-lg font-semibold">Walkthrough video jald aa raha hai</p>
               <p className="mt-2 text-sm leading-relaxed text-foreground-500">
                 CRM screens ka video is slot mein aayega.
               </p>
             </div>
           )}
-        </aside>
-      </section>
+        </Reveal>
 
-      <section className="mx-auto max-w-5xl px-4 py-8">
-        <h2 className="font-display text-3xl font-semibold tracking-tight">CRM mein kya hai</h2>
-        <ul className="mt-6 grid gap-4 sm:grid-cols-2">
-          {CRM_FEATURES.map((feature) => (
-            <li key={feature.title} className={cardClass}>
-              <h3 className="font-display text-xl font-semibold">{feature.title}</h3>
-              <p className="mt-2 text-base leading-relaxed text-foreground-500">{feature.text}</p>
-            </li>
-          ))}
-        </ul>
-      </section>
+        <Reveal>
+          <h2 className="font-display text-3xl font-semibold tracking-tight">CRM mein kya hai</h2>
+          <ul className="mt-6 grid gap-4 sm:grid-cols-2">
+            {features.map((feature) => (
+              <li key={feature.title} className={cardClass}>
+                <span className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-teal-300/20 to-violet-500/25 text-teal-200">
+                  <FeatureIcon name={feature.title} />
+                </span>
+                <h3 className="mt-4 font-display text-xl font-semibold">{feature.title}</h3>
+                <p className="mt-2 text-base leading-relaxed text-foreground-500">{feature.text}</p>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
 
-      <div className="sticky bottom-3 z-30 px-4 pb-3">
-        <a
-          className="mx-auto flex min-h-12 max-w-md items-center justify-center rounded-full bg-primary px-5 text-center text-sm font-semibold text-primary-foreground shadow-lg"
-          href="#lead-form"
-        >
-          Pasand aaya? Apni details bhejo
-        </a>
+        <Reveal>
+          <StatChips />
+        </Reveal>
+
+        <Reveal>
+          <section className="mx-auto max-w-3xl scroll-mt-24" id="lead-form">
+            <LeadForm
+              defaultBusinessType={page.name}
+              defaultServices={["AI Calling Agent"]}
+              pagePath={page.path}
+              selectedBusiness={page.name}
+            />
+          </section>
+        </Reveal>
       </div>
-
-      <section className="mx-auto max-w-3xl scroll-mt-24 px-4 py-8" id="lead-form">
-        <LeadForm
-          defaultBusinessType={page.name}
-          defaultServices={["AI Calling Agent"]}
-          pagePath={page.path}
-          selectedBusiness={page.name}
-        />
-      </section>
     </article>
   );
 }

@@ -2,7 +2,7 @@
 
 import { FormEvent, useEffect, useState } from "react";
 
-import { BrandMark } from "@/components/ai-automation/shell";
+import { BrandMark } from "@/components/ai-automation/brand-mark";
 import { AUTOMATION_SERVICES, BUSINESS_TYPES, CALL_TIMES } from "@/data/ai-automation";
 import { AUTOMATION_BRAND } from "@/lib/automation-brand";
 import {
@@ -159,7 +159,8 @@ export function LeadForm({
   };
 
   return (
-    <div className="rounded-3xl border border-divider bg-content1/90 p-5 shadow-[0_24px_70px_-46px_rgba(165,176,255,0.9)] md:p-8">
+    <div className="rounded-[1.75rem] bg-gradient-to-br from-teal-300 via-cyan-200 to-violet-500 p-px shadow-[0_28px_80px_-42px_rgba(139,92,246,0.75)]">
+    <div className="rounded-[1.7rem] bg-content1 p-5 md:p-8">
       <div className="flex flex-col items-center text-center">
         <BrandMark className="h-14 w-14 text-base" />
         <h2 className="mt-3 font-display text-2xl font-semibold">{AUTOMATION_BRAND.name}</h2>
@@ -314,6 +315,7 @@ export function LeadForm({
           </button>
         </form>
       )}
+    </div>
     </div>
   );
 }
