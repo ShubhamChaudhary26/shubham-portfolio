@@ -23,7 +23,7 @@ export function BrandMark({ className = "h-11 w-11" }: { className?: string }) {
       <Image
         unoptimized
         alt=""
-        className={`shrink-0 rounded-2xl object-cover ${className}`}
+        className={`shrink-0 rounded-full object-cover ${className}`}
         height={44}
         src={src}
         width={44}
@@ -34,7 +34,7 @@ export function BrandMark({ className = "h-11 w-11" }: { className?: string }) {
   return (
     <span
       aria-hidden="true"
-      className={`grid shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-teal-300 via-cyan-200 to-violet-500 text-sm font-bold text-slate-950 shadow-[0_8px_24px_-12px_rgba(139,92,246,0.9)] ${className}`}
+      className={`grid shrink-0 place-items-center rounded-full bg-gradient-to-br from-teal-300 via-cyan-200 to-violet-500 text-sm font-bold text-slate-950 shadow-[0_8px_24px_-12px_rgba(139,92,246,0.9)] ${className}`}
     >
       AI
     </span>

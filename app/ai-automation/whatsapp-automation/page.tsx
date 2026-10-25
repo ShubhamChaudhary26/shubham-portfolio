@@ -14,7 +14,7 @@ const image = {
 
 export const dynamic = "force-static";
 
-export const metadata = automationMetadata({ title, description, path, image });
+export const metadata = automationMetadata({ title, description, path });
 
 export default function WhatsAppAutomationPage() {
   return (

@@ -2,6 +2,7 @@ import type { PresentedIndustry } from "@/lib/automation-media";
 
 import Image from "next/image";
 
+import { DemoCta } from "@/components/ai-automation/demo-cta";
 import { AudioPending, DemoAudio } from "@/components/ai-automation/demo-audio";
 import { PageHero } from "@/components/ai-automation/hero";
 import { FeatureIcon } from "@/components/ai-automation/icons";
@@ -26,11 +27,11 @@ export function IndustryTemplate({ page }: { page: PresentedIndustry }) {
   const [flow, whatsapp, ...extra] = page.screenshots;
 
   return (
-    <article className="pb-16">
+    <article className="pb-[calc(7.5rem+env(safe-area-inset-bottom))]">
       <PageHero eyebrow={page.name} image={page.heroImage} subtitle={page.subtitle} title={page.title} />
 
       <div className="mx-auto max-w-5xl space-y-16 px-4 py-12 sm:space-y-20 sm:py-16">
-        <Reveal className="mx-auto max-w-3xl">
+        <Reveal className="mx-auto max-w-3xl scroll-mb-28">
           {page.demoSrc ? (
             <DemoAudio
               captionsSrc="/audio/captions-unavailable.vtt"
@@ -45,22 +46,6 @@ export function IndustryTemplate({ page }: { page: PresentedIndustry }) {
               <p className="mb-3 text-base leading-relaxed text-foreground-500">{page.demoCall.line}</p>
               <AudioPending label="Demo call" />
             </div>
-          )}
-        </Reveal>
-
-        <Reveal className="mx-auto max-w-3xl">
-          {page.explainer ? (
-            <DemoAudio
-              autoplay
-              captionsSrc={page.explainer.captionsSrc}
-              headingId={page.audio.headingId}
-              label="Sample voice"
-              preload="metadata"
-              src={page.explainer.src}
-              transcript={page.explainer.transcript}
-            />
-          ) : (
-            <AudioPending label="Sample voice" />
           )}
         </Reveal>
 
@@ -176,7 +161,7 @@ export function IndustryTemplate({ page }: { page: PresentedIndustry }) {
         </Reveal>
 
         <Reveal>
-          <section className="mx-auto max-w-3xl scroll-mt-24" id="lead-form">
+          <section className="mx-auto max-w-3xl scroll-mb-28 scroll-mt-24" id="lead-form">
             <LeadForm
               defaultBusinessType={page.name}
               defaultServices={["AI Calling Agent"]}
@@ -186,6 +171,12 @@ export function IndustryTemplate({ page }: { page: PresentedIndustry }) {
           </section>
         </Reveal>
       </div>
+      <DemoCta
+        defaultBusinessType={page.name}
+        defaultServices={["AI Calling Agent"]}
+        pagePath={page.path}
+        selectedBusiness={page.name}
+      />
     </article>
   );
 }

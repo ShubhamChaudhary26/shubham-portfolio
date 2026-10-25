@@ -13,6 +13,9 @@ const title = `${DATA.home.hero.name} | ${DATA.home.hero.title} in Vapi`;
 const description = SITE_DESCRIPTION;
 
 export const metadata: Metadata = {
+  icons: {
+    icon: "/favicon.png",
+  },
   title: {
     default: title,
     template: `%s | ${DATA.home.hero.name}`,

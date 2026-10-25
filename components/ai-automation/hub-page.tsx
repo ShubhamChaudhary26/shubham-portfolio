@@ -1,12 +1,9 @@
 "use client";
 
-import type { VoiceoverAssets } from "@/lib/automation-media";
-
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { BrandMark } from "@/components/ai-automation/brand-mark";
-import { AudioPending, DemoAudio } from "@/components/ai-automation/demo-audio";
 import { BusinessIcon } from "@/components/ai-automation/icons";
 import { LeadForm } from "@/components/ai-automation/lead-form";
 import { Reveal } from "@/components/ai-automation/reveal";
@@ -16,7 +13,7 @@ import { INDUSTRIES } from "@/data/ai-automation";
 const cardClass =
   "flex min-h-32 w-full flex-col items-start justify-center gap-3 rounded-3xl border border-white/10 bg-white/[0.04] px-4 py-5 text-left motion-safe:transition-colors hover:border-teal-300/40";
 
-export function HubPage({ audio }: { audio: VoiceoverAssets }) {
+export function HubPage() {
   const [formOpen, setFormOpen] = useState(false);
 
   useEffect(() => {
@@ -33,7 +30,7 @@ export function HubPage({ audio }: { audio: VoiceoverAssets }) {
   return (
     <div className="mx-auto max-w-3xl space-y-12 px-4 py-12 sm:space-y-16 sm:py-16">
       <div className="flex flex-col items-center text-center">
-        <BrandMark className="h-16 w-16 text-lg" />
+        <BrandMark className="h-14 w-14 text-base" />
         <h1 className="mt-5 font-display text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
           Aapka business type kya hai?
         </h1>
@@ -56,20 +53,6 @@ export function HubPage({ audio }: { audio: VoiceoverAssets }) {
       </div>
       <Reveal>
         <StatChips />
-      </Reveal>
-      <Reveal>
-        {audio ? (
-          <DemoAudio
-            captionsSrc={audio.captionsSrc}
-            headingId="hub-explainer-heading"
-            label="Sample voice"
-            preload="metadata"
-            src={audio.src}
-            transcript={audio.transcript}
-          />
-        ) : (
-          <AudioPending label="Sample voice" />
-        )}
       </Reveal>
       {formOpen ? (
         <Reveal>

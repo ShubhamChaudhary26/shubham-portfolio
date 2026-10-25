@@ -1,6 +1,5 @@
 import { HubPage } from "@/components/ai-automation/hub-page";
 import { automationJsonLd, automationMetadata } from "@/lib/automation-page";
-import { presentGeneralVoiceover } from "@/lib/automation-media";
 
 const title = "AI Calling Agent";
 const description =
@@ -19,12 +18,9 @@ export const metadata = automationMetadata({
   title,
   description,
   path,
-  image,
 });
 
 export default function AiAutomationPage() {
-  const audio = presentGeneralVoiceover();
-
   return (
     <>
       <script
@@ -40,7 +36,7 @@ export default function AiAutomationPage() {
         }}
         type="application/ld+json"
       />
-      <HubPage audio={audio} />
+      <HubPage />
     </>
   );
 }

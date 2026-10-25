@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import type { IndustryConfig } from "@/data/ai-automation";
 
-import { AUTOMATION_BRAND } from "@/lib/automation-brand";
+import { AUTOMATION_BRAND, BRAND_OG_IMAGE } from "@/lib/automation-brand";
 import { SITE_URL } from "@/lib/site";
 
 function absoluteImage(url: string) {
@@ -12,16 +12,15 @@ export function automationMetadata(input: {
   title: string;
   description: string;
   path: string;
-  image: { src: string; width: number; height: number; alt: string };
 }): Metadata {
   const url = `${SITE_URL}${input.path}`;
-  const imageUrl = absoluteImage(input.image.src);
+  const imageUrl = absoluteImage(BRAND_OG_IMAGE.src);
   const brandedTitle = `${input.title} | ${AUTOMATION_BRAND.name}`;
   const image = {
     url: imageUrl,
-    width: input.image.width,
-    height: input.image.height,
-    alt: input.image.alt,
+    width: BRAND_OG_IMAGE.width,
+    height: BRAND_OG_IMAGE.height,
+    alt: BRAND_OG_IMAGE.alt,
   };
 
   return {
@@ -51,7 +50,6 @@ export function industryMetadata(page: IndustryConfig): Metadata {
     title: page.seo.title,
     description: page.seo.description,
     path: page.path,
-    image: page.seo.ogImage,
   });
 }
 

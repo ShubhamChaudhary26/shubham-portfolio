@@ -244,7 +244,7 @@ export const INDUSTRIES: IndustryConfig[] = [
     seo: {
       title: "AI Calling Agent for Restaurants",
       description:
-        "AI calling agent for restaurants that answers table, timing, and order questions in Hindi and saves the lead in the CRM. Sample voice explainer on this page.",
+        "AI calling agent for restaurants that answers table, timing, and order questions in Hindi and saves the lead in the CRM.",
       serviceName: "AI Calling Agent for Restaurants",
       ogImage: {
         src: "/images/ai-automation/restaurant/01_hero_restaurant_night_ai_call_16x9.webp",
@@ -296,7 +296,7 @@ export const INDUSTRIES: IndustryConfig[] = [
     seo: {
       title: "AI Calling Agent for Salons",
       description:
-        "AI calling agent for salons that answers service questions in Hindi and notes appointment slots you have opened. Sample voice explainer on this page.",
+        "AI calling agent for salons that answers service questions in Hindi and notes appointment slots you have opened.",
       serviceName: "AI Calling Agent for Salons",
       ogImage: {
         src: "/images/ai-automation/salon/01_hero_salon_night_ai_call_16x9.webp",
@@ -348,7 +348,7 @@ export const INDUSTRIES: IndustryConfig[] = [
     seo: {
       title: "AI Calling Agent for Coaching",
       description:
-        "AI calling agent for coaching and education that answers course and batch questions in Hindi and books a slot you have opened. Sample voice explainer on this page.",
+        "AI calling agent for coaching and education that answers course and batch questions in Hindi and books a slot you have opened.",
       serviceName: "AI Calling Agent for Coaching and Education",
       ogImage: {
         src: "/images/ai-automation/coaching/01_hero_coaching_night_ai_call_16x9.webp",
@@ -400,7 +400,7 @@ export const INDUSTRIES: IndustryConfig[] = [
     seo: {
       title: "AI Calling Agent for Gyms",
       description:
-        "AI calling agent for gyms that answers membership and trial questions in Hindi and logs the lead for follow-up. Sample voice explainer on this page.",
+        "AI calling agent for gyms that answers membership and trial questions in Hindi and logs the lead for follow-up.",
       serviceName: "AI Calling Agent for Gyms",
       ogImage: {
         src: "/images/ai-automation/gym/01_hero_gym_night_ai_call_16x9.webp",
@@ -452,7 +452,7 @@ export const INDUSTRIES: IndustryConfig[] = [
     seo: {
       title: "AI Calling Agent for Hotels",
       description:
-        "AI calling agent for hotels that answers room and timing questions in Hindi and notes a booking from the availability you set. Sample voice explainer on this page.",
+        "AI calling agent for hotels that answers room and timing questions in Hindi and notes a booking from the availability you set.",
       serviceName: "AI Calling Agent for Hotels",
       ogImage: {
         src: "/images/ai-automation/hotel/01_hero_hotel_night_ai_call_16x9.webp",

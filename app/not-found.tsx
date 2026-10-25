@@ -1,7 +1,15 @@
+import type { Metadata } from "next";
+
 import { Footer } from "@/components/footer";
 import { Navigation } from "@/components/navbar";
 import { PageWrapper } from "@/components/page-wrapper";
 import { Providers } from "@/app/providers";
+
+export const metadata: Metadata = {
+  icons: {
+    icon: "/favicon.png",
+  },
+};
 
 export default function NotFound() {
   return (
