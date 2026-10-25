@@ -17,6 +17,7 @@ import {
   ymdKey,
   ymdValue,
 } from "@/lib/booking";
+import { sendFormSubmitBooking } from "@/lib/booking-fallback";
 import { sendPortfolioEmail } from "@/lib/email";
 import { SITE_URL } from "@/lib/site";
 
@@ -151,6 +152,12 @@ export function BlogBookingCTA({
     const startLabel = formatTime(selectedSlot.start, BOOKING_TIMEZONE);
     const endLabel = formatTime(selectedSlot.end, BOOKING_TIMEZONE);
 
+    if (honeypot.trim()) {
+      setSent(true);
+
+      return;
+    }
+
     setSubmitting(true);
 
     const result = await sendPortfolioEmail({
@@ -202,6 +209,51 @@ export function BlogBookingCTA({
             fallbackBody?.reason,
             fallbackBody?.detail,
           );
+
+          const direct = await sendFormSubmitBooking({
+            name: trimmedName,
+            phone: phone.trim(),
+            business: businessLabel,
+            date: dateLabel,
+            time: `${startLabel} – ${endLabel}`,
+            source: bookingSource,
+            page: `${SITE_URL}${bookingPath}`,
+          });
+
+          if (!direct.ok) {
+            // eslint-disable-next-line no-console
+            console.error(
+              "Booking fallback failed",
+              direct.status,
+              direct.reason,
+              direct.detail,
+            );
+            setSubmitting(false);
+            setDeliveryFailed(true);
+            setError(
+              "The booking did not go through. Email Shubham or send an Instagram DM with your name, phone, and time slot.",
+            );
+
+            return;
+          }
+        }
+      } catch (fallbackError) {
+        // eslint-disable-next-line no-console
+        console.error("Booking fallback failed", fallbackError);
+
+        const direct = await sendFormSubmitBooking({
+          name: trimmedName,
+          phone: phone.trim(),
+          business: businessLabel,
+          date: dateLabel,
+          time: `${startLabel} – ${endLabel}`,
+          source: bookingSource,
+          page: `${SITE_URL}${bookingPath}`,
+        });
+
+        if (!direct.ok) {
+          // eslint-disable-next-line no-console
+          console.error("Booking fallback failed", direct.status, direct.reason, direct.detail);
           setSubmitting(false);
           setDeliveryFailed(true);
           setError(
@@ -210,16 +262,6 @@ export function BlogBookingCTA({
 
           return;
         }
-      } catch (fallbackError) {
-        // eslint-disable-next-line no-console
-        console.error("Booking fallback failed", fallbackError);
-        setSubmitting(false);
-        setDeliveryFailed(true);
-        setError(
-          "The booking did not go through. Email Shubham or send an Instagram DM with your name, phone, and time slot.",
-        );
-
-        return;
       }
     }
 

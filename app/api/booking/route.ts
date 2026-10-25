@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { DATA } from "@/data";
+import { sendFormSubmitBooking } from "@/lib/booking-fallback";
 
 export const dynamic = "force-dynamic";
 
@@ -90,77 +90,30 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, reason: "invalid" }, { status: 400 });
   }
 
-  const inbox = DATA.footer.contact.email;
-  const message = [
-    `Demo booking (${source})`,
-    "",
-    `Name: ${name}`,
-    `Phone/WhatsApp: ${phone}`,
-    `Business type: ${business}`,
-    `Preferred date: ${date}`,
-    `Time slot (IST): ${time}`,
-    `Source: ${source}`,
-    `Page: ${page}`,
-  ].join("\n");
+  const upstream = await sendFormSubmitBooking({
+    name,
+    phone,
+    business,
+    date,
+    time,
+    source,
+    page,
+  });
 
-  try {
-    const upstream = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(inbox)}`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name,
-        email: inbox,
-        phone,
-        business,
-        date,
-        time,
-        source,
-        page,
-        message,
-        _subject: `Demo booking (${source})`,
-        _template: "box",
-        _captcha: "false",
-      }),
-      signal: AbortSignal.timeout(12000),
-    });
-    const detail = (await upstream.text()).slice(0, 500);
-    let success = false;
-    let activation = false;
-
-    try {
-      const parsed = JSON.parse(detail) as { success?: string | boolean; message?: string };
-
-      success = parsed.success === true || parsed.success === "true";
-      activation = /activat/i.test(parsed.message ?? "") || /activat/i.test(detail);
-    } catch {
-      success = false;
-    }
-
-    if (upstream.ok && success) {
-      return NextResponse.json({ ok: true });
-    }
-
-    // eslint-disable-next-line no-console
-    console.error("Booking fallback failed", upstream.status, detail);
-
-    return NextResponse.json(
-      {
-        ok: false,
-        reason: activation ? "activation" : "upstream",
-        status: upstream.status,
-        detail,
-      },
-      { status: 502 },
-    );
-  } catch (error) {
-    const detail = error instanceof Error ? error.message : "failed";
-
-    // eslint-disable-next-line no-console
-    console.error("Booking fallback failed", detail);
-
-    return NextResponse.json({ ok: false, reason: "upstream", detail }, { status: 502 });
+  if (upstream.ok) {
+    return NextResponse.json({ ok: true });
   }
+
+  // eslint-disable-next-line no-console
+  console.error("Booking fallback failed", upstream.status, upstream.detail);
+
+  return NextResponse.json(
+    {
+      ok: false,
+      reason: upstream.reason ?? "upstream",
+      status: upstream.status,
+      detail: upstream.detail,
+    },
+    { status: 502 },
+  );
 }
