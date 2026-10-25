@@ -27,8 +27,18 @@
   </url>
   <url>
     <loc>https://shubh.work/ai-calling-agent</loc>
-    <lastmod>2026-10-24</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://shubh.work/ai-calling-agent/real-estate</loc>
+    <lastmod>2026-10-25</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://shubh.work/ai-calling-agent/clinic</loc>
+    <lastmod>2026-10-25</lastmod>
+    <priority>0.80</priority>
   </url>
   <url>
     <loc>https://shubh.work/blog</loc>

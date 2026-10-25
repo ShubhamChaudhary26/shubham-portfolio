@@ -2,12 +2,12 @@
 
 import { Button } from "@heroui/react";
 import { Icon } from "@iconify/react";
-import { useTheme } from "@heroui/use-theme";
 import { motion } from "framer-motion";
+import { useTheme } from "next-themes";
 
 export const ThemeSwitcher = () => {
-  const { theme, setTheme } = useTheme();
-  const isDark = theme === "dark";
+  const { resolvedTheme, setTheme } = useTheme();
+  const isDark = resolvedTheme !== "light";
 
   return (
     <motion.div
@@ -22,10 +22,7 @@ export const ThemeSwitcher = () => {
         variant="light"
         onPress={() => setTheme(isDark ? "light" : "dark")}
       >
-        <Icon
-          className="w-5 h-5"
-          icon={isDark ? "lucide:sun" : "lucide:moon"}
-        />
+        <Icon className="h-5 w-5" icon={isDark ? "lucide:sun" : "lucide:moon"} />
       </Button>
     </motion.div>
   );

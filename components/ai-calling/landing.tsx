@@ -3,10 +3,13 @@
 import { Button } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { useReducedMotion } from "framer-motion";
+import Link from "next/link";
 import { useState } from "react";
 
+import { DemoAudioPlayer } from "@/components/ai-calling/demo-audio";
 import { BlogBookingCTA } from "@/components/blog/blog-booking-cta";
 import { Reveal } from "@/components/motion/reveal";
+import { CALLING_BUSINESS_TYPES } from "@/data/ai-calling-industries";
 
 const STEPS = [
   {
@@ -45,10 +48,12 @@ const USE_CASES = [
   {
     title: "Real estate",
     text: "Property ke sawal, budget, aur site visit ka time note karta hai.",
+    href: "/ai-calling-agent/real-estate",
   },
   {
     title: "Clinics",
     text: "Doctor available hai ya nahi, aur appointment ka slot poochhta hai.",
+    href: "/ai-calling-agent/clinic",
   },
   {
     title: "Coaching",
@@ -90,15 +95,6 @@ const FAQS = [
     answer:
       "Call ki detail aapke business ke liye use hoti hai: lead, appointment, aur summary. Customer ko recording ya data ke baare mein wahi batana chahiye jo aapke rules maangte hain. Data kahan store hota hai, ye demo pe seedha bataya jata hai.",
   },
-];
-
-const CALLING_BUSINESS_TYPES = [
-  { value: "real estate", label: "Real estate" },
-  { value: "clinic", label: "Clinic" },
-  { value: "coaching", label: "Coaching" },
-  { value: "salon", label: "Salon" },
-  { value: "service centre", label: "Service centre" },
-  { value: "other", label: "Other" },
 ];
 
 type AiCallingLandingProps = {
@@ -173,46 +169,49 @@ export function AiCallingLanding({ hasDemoAudio }: AiCallingLandingProps) {
           Kis business ke liye
         </h2>
         <ul className="mt-8 grid gap-4 sm:grid-cols-2">
-          {USE_CASES.map((item) => (
-            <li
-              key={item.title}
-              className="rounded-3xl border border-divider bg-content1/70 p-6"
-            >
-              <h3 className="font-display text-xl font-semibold">{item.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-foreground-500 md:text-base">
-                {item.text}
-              </p>
-            </li>
-          ))}
+          {USE_CASES.map((item) => {
+            const body = (
+              <>
+                <h3 className="font-display text-xl font-semibold">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-foreground-500 md:text-base">
+                  {item.text}
+                </p>
+                <p className="mt-4 text-sm font-medium text-primary">
+                  {item.href ? "Page dekho" : "Jald aa raha hai"}
+                </p>
+              </>
+            );
+
+            return (
+              <li key={item.title}>
+                {item.href ? (
+                  <Link
+                    className="block h-full rounded-3xl border border-divider bg-content1/70 p-6 transition-colors hover:border-primary/40"
+                    href={item.href}
+                  >
+                    {body}
+                  </Link>
+                ) : (
+                  <div className="h-full rounded-3xl border border-divider bg-content1/70 p-6">
+                    {body}
+                  </div>
+                )}
+              </li>
+            );
+          })}
         </ul>
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-16 md:py-24">
-        <h2 className="font-display text-3xl font-semibold tracking-tight md:text-4xl">
-          Demo call
-        </h2>
         {hasDemoAudio ? (
-          <figure className="mt-8 max-w-xl rounded-3xl border border-divider bg-content1/80 p-6">
-            <figcaption className="font-medium text-foreground">
-              Asli demo call: real estate
-            </figcaption>
-            <audio
-              controls
-              className="mt-4 w-full"
-              preload="none"
-              src="/audio/ai-calling-demo-real-estate.mp3"
-            >
-              <track
-                kind="captions"
-                label="Hindi"
-                src="/audio/ai-calling-demo-real-estate.vtt"
-                srcLang="hi"
-              />
-              <a href="/audio/ai-calling-demo-real-estate.mp3">Demo audio download</a>
-            </audio>
-          </figure>
+          <DemoAudioPlayer
+            heading="Real Estate Demo Call: AI agent ne property enquiry handle ki"
+            headingId="hub-real-estate-demo-heading"
+            line="Ye hamare real estate CRM ki ek asli call hai."
+            src="/audio/ai-calling-demo-real-estate.mp3"
+          />
         ) : (
-          <p className="mt-6 max-w-xl rounded-3xl border border-divider bg-content1/70 px-6 py-5 text-base text-foreground-500">
+          <p className="max-w-xl rounded-3xl border border-divider bg-content1/70 px-6 py-5 text-base text-foreground-500">
             Demo audio jald aa raha hai
           </p>
         )}
