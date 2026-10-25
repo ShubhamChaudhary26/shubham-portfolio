@@ -45,7 +45,7 @@ export function presentGeneralVoiceover() {
 }
 
 export function presentIndustry(industry: IndustryConfig) {
-  const demoSrc = industry.demoCall?.src;
+  const demoSrc = industry.demoCallSrc;
 
   return {
     ...industry,

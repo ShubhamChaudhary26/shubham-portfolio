@@ -1,0 +1,17 @@
+Gym demo call
+Agent voice: tarun_hi_sales | Customer voice: shreya_hi_conversational
+TTS: Sarvam bulbul:v4-flash, hi-IN, pace 1.1
+
+AI Receptionist (tarun_hi_sales): नमस्ते! फ़िटज़ोन जिम में आपका स्वागत है। मैं जिम का ए आई असिस्टेंट बोल रहा हूँ। बताइए, मैं आपकी क्या मदद कर सकता हूँ?
+Customer (shreya_hi_conversational): हाय... मैं जिम जॉइन करने का सोच रही थी। मेंबरशिप कितने की है?
+AI Receptionist (tarun_hi_sales): मंथली मेंबरशिप एक हज़ार चार सौ निन्यानवे रुपये की है, और तीन महीने का प्लान सिर्फ़ तीन हज़ार नौ सौ निन्यानवे रुपये में।
+Customer (shreya_hi_conversational): अच्छा। लेडीज़ के लिए कोई अलग टाइमिंग या ट्रेनर है?
+AI Receptionist (tarun_hi_sales): जी हाँ, हमारे पास लेडी ट्रेनर हैं, और ज़ुम्बा और योगा क्लासेज़ भी मेंबरशिप में शामिल हैं। जिम सुबह छह से रात दस बजे तक खुला रहता है।
+Customer (shreya_hi_conversational): बढ़िया। पहले ट्राई कर सकती हूँ?
+AI Receptionist (tarun_hi_sales): बिलकुल! आपको तीन दिन का फ़्री ट्रायल मिलेगा। कल सुबह सात बजे या शाम छह बजे, कौन सा टाइम ठीक रहेगा?
+Customer (shreya_hi_conversational): कल शाम छह बजे। मेरा नाम नेहा सिंह है।
+AI Receptionist (tarun_hi_sales): धन्यवाद नेहा जी। तो आपका फ़्री ट्रायल कल शाम छह बजे से शुरू होगा, और पहले दिन ट्रेनर आपका फ़िटनेस असेसमेंट करेंगे। क्या ये सही है?
+Customer (shreya_hi_conversational): हाँ, सही है।
+AI Receptionist (tarun_hi_sales): परफ़ेक्ट! बुकिंग हो गई है। कन्फ़र्मेशन और जिम का लोकेशन अभी आपको व्हाट्सऐप पर भेज रहा हूँ।
+Customer (shreya_hi_conversational): थैंक यू!
+AI Receptionist (tarun_hi_sales): आपका स्वागत है नेहा जी। कल मिलते हैं, आपका दिन शुभ रहे!

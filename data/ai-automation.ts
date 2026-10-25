@@ -5,8 +5,11 @@
  * The player shows only when that file exists. Matching transcript is the
  * sibling `.txt`. Hub and Other use `GENERAL_VOICEOVER` (`general.mp3`).
  *
- * Demo call: `demoCall.src` on clinic and real estate only. Those stay
- * separate players under the explainer. Do not point another industry at them.
+ * Demo call: `demoCallSrc` on every industry, played above the explainer.
+ * Clinic and real estate point at the files already in `public/audio/`.
+ * The others point at `public/audio/demo-calls/<voiceoverFile>_demo_call.mp3`.
+ * A missing file shows "Demo call jald aa raha hai". Dropping that mp3
+ * is enough to turn the player on. Do not reuse another industry's call.
  *
  * Video: `walkthroughVideo.src` and optional `poster`. The shared CRM
  * walkthrough is `CRM_WALKTHROUGH` (`public/videos/crm-walkthrough.mp4`,
@@ -45,7 +48,6 @@ export type IndustryAudio = {
 };
 
 export type DemoCall = {
-  src: string;
   line: string;
   headingId: string;
 };
@@ -68,7 +70,9 @@ export type IndustryConfig = {
   title: string;
   subtitle: string;
   audio: IndustryAudio;
-  demoCall?: DemoCall;
+  /** Public URL of the sample call. The player mounts when this file exists. */
+  demoCallSrc: string;
+  demoCall: DemoCall;
   walkthroughVideo: WalkthroughVideo;
   heroImage: AutomationImage;
   screenshots: AutomationImage[];
@@ -92,13 +96,13 @@ export const INDUSTRIES: IndustryConfig[] = [
     path: "/ai-automation/clinic",
     title: "Clinic ke liye AI Calling Agent",
     subtitle:
-      "Fee, timing, aur appointment. Jawab sirf wohi hota hai jo aap setup mein likhte ho. Upar wali call ek sample demo hai.",
+      "Fee, timing, aur appointment. Jawab sirf wohi hota hai jo aap setup mein likhte ho.",
     audio: {
       src: "/audio/voiceovers/clinic.mp3",
       headingId: "clinic-explainer-heading",
     },
+    demoCallSrc: "/audio/ai-calling-demo-clinic.mp3",
     demoCall: {
-      src: "/audio/ai-calling-demo-clinic.mp3",
       line: "Ye ek sample demo hai: AI receptionist raat ko patient ka appointment book kar rahi hai",
       headingId: "clinic-demo-heading",
     },
@@ -157,8 +161,8 @@ export const INDUSTRIES: IndustryConfig[] = [
       src: "/audio/voiceovers/real_estate.mp3",
       headingId: "real-estate-explainer-heading",
     },
+    demoCallSrc: "/audio/ai-calling-demo-real-estate.mp3",
     demoCall: {
-      src: "/audio/ai-calling-demo-real-estate.mp3",
       line: "Ye hamare real estate CRM ki ek asli call hai.",
       headingId: "real-estate-demo-heading",
     },
@@ -209,6 +213,11 @@ export const INDUSTRIES: IndustryConfig[] = [
       src: "/audio/voiceovers/restaurant.mp3",
       headingId: "restaurant-explainer-heading",
     },
+    demoCallSrc: "/audio/demo-calls/restaurant_demo_call.mp3",
+    demoCall: {
+      line: "Ye ek sample demo hai: AI receptionist raat ko table booking kar rahi hai",
+      headingId: "restaurant-demo-heading",
+    },
     walkthroughVideo: CRM_WALKTHROUGH,
     heroImage: {
       src: "/images/ai-automation/restaurant/01_hero_restaurant_night_ai_call_16x9.webp",
@@ -255,6 +264,11 @@ export const INDUSTRIES: IndustryConfig[] = [
     audio: {
       src: "/audio/voiceovers/salon.mp3",
       headingId: "salon-explainer-heading",
+    },
+    demoCallSrc: "/audio/demo-calls/salon_demo_call.mp3",
+    demoCall: {
+      line: "Ye ek sample demo hai: AI receptionist appointment book kar rahi hai",
+      headingId: "salon-demo-heading",
     },
     walkthroughVideo: CRM_WALKTHROUGH,
     heroImage: {
@@ -303,6 +317,11 @@ export const INDUSTRIES: IndustryConfig[] = [
       src: "/audio/voiceovers/coaching.mp3",
       headingId: "coaching-explainer-heading",
     },
+    demoCallSrc: "/audio/demo-calls/coaching_demo_call.mp3",
+    demoCall: {
+      line: "Ye ek sample demo hai: AI agent free demo class book kar raha hai",
+      headingId: "coaching-demo-heading",
+    },
     walkthroughVideo: CRM_WALKTHROUGH,
     heroImage: {
       src: "/images/ai-automation/coaching/01_hero_coaching_night_ai_call_16x9.webp",
@@ -350,6 +369,11 @@ export const INDUSTRIES: IndustryConfig[] = [
       src: "/audio/voiceovers/gym.mp3",
       headingId: "gym-explainer-heading",
     },
+    demoCallSrc: "/audio/demo-calls/gym_demo_call.mp3",
+    demoCall: {
+      line: "Ye ek sample demo hai: AI agent free trial book kar raha hai",
+      headingId: "gym-demo-heading",
+    },
     walkthroughVideo: CRM_WALKTHROUGH,
     heroImage: {
       src: "/images/ai-automation/gym/01_hero_gym_night_ai_call_16x9.webp",
@@ -396,6 +420,11 @@ export const INDUSTRIES: IndustryConfig[] = [
     audio: {
       src: "/audio/voiceovers/hotel.mp3",
       headingId: "hotel-explainer-heading",
+    },
+    demoCallSrc: "/audio/demo-calls/hotel_demo_call.mp3",
+    demoCall: {
+      line: "Ye ek sample demo hai: AI receptionist room booking kar rahi hai",
+      headingId: "hotel-demo-heading",
     },
     walkthroughVideo: CRM_WALKTHROUGH,
     heroImage: {

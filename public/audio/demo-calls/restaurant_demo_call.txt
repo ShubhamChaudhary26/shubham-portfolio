@@ -1,0 +1,17 @@
+Restaurant demo call
+Agent voice: shreya_hi_conversational | Customer voice: mohit_hi_conversational
+TTS: Sarvam bulbul:v4-flash, hi-IN, pace 1.1
+
+AI Receptionist (shreya_hi_conversational): नमस्ते! स्पाइस गार्डन रेस्टोरेंट में आपका स्वागत है। मैं रेस्टोरेंट की ए आई रिसेप्शनिस्ट बोल रही हूँ। बताइए, मैं आपकी क्या मदद कर सकती हूँ?
+Customer (mohit_hi_conversational): हाँ जी नमस्ते... आज रात के लिए चार लोगों की टेबल बुक करनी थी।
+AI Receptionist (shreya_hi_conversational): ज़रूर! आज रात आठ बजे, साढ़े आठ बजे और नौ बजे की टेबल खाली हैं। कौन सा टाइम ठीक रहेगा?
+Customer (mohit_hi_conversational): साढ़े आठ वाला। वैसे दो लोगों का एवरेज खर्चा कितना आता है?
+AI Receptionist (shreya_hi_conversational): दो लोगों का खर्चा लगभग बारह सौ रुपये आता है। और आज रात हमारा स्पेशल डिनर बुफ़े सिर्फ़ छह सौ निन्यानवे रुपये प्रति व्यक्ति है।
+Customer (mohit_hi_conversational): अच्छा। वेज और नॉन-वेज दोनों मिलते हैं? और पार्किंग है?
+AI Receptionist (shreya_hi_conversational): जी हाँ, वेज और नॉन-वेज दोनों मिलते हैं, और फ़्री पार्किंग भी है। अपना पूरा नाम बता दीजिए।
+Customer (mohit_hi_conversational): अमित वर्मा।
+AI Receptionist (shreya_hi_conversational): धन्यवाद अमित जी। आपकी चार लोगों की टेबल आज रात साढ़े आठ बजे बुक हो गई है। आप इसी नंबर से कॉल कर रहे हैं, क्या यही सही है?
+Customer (mohit_hi_conversational): हाँ जी, यही नंबर है।
+AI Receptionist (shreya_hi_conversational): परफ़ेक्ट! बुकिंग कन्फ़र्मेशन और रेस्टोरेंट का लोकेशन अभी आपको व्हाट्सऐप पर भेज रही हूँ।
+Customer (mohit_hi_conversational): अरे वाह, बहुत बढ़िया। थैंक यू!
+AI Receptionist (shreya_hi_conversational): आपका स्वागत है अमित जी। आज रात मिलते हैं, शुभ रात्रि!

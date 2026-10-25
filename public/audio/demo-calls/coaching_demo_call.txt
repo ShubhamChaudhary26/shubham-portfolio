@@ -1,0 +1,17 @@
+Coaching demo call
+Agent voice: aayan_hi_conversational | Customer voice: simran_hi_conversation
+TTS: Sarvam bulbul:v4-flash, hi-IN, pace 1.1
+
+AI Receptionist (aayan_hi_conversational): नमस्ते! ब्राइट फ्यूचर क्लासेज़ में आपका स्वागत है। मैं इंस्टीट्यूट का ए आई असिस्टेंट बोल रहा हूँ। बताइए, मैं आपकी क्या मदद कर सकता हूँ?
+Customer (simran_hi_conversation): नमस्ते जी... मेरा बेटा दसवीं में है, उसके लिए मैथ्स और साइंस की कोचिंग देख रही थी।
+AI Receptionist (aayan_hi_conversational): बहुत अच्छा! दसवीं के लिए हमारा मैथ्स और साइंस का बैच है, हफ़्ते में पाँच दिन क्लास होती है।
+Customer (simran_hi_conversation): फीस कितनी है? और एक बैच में कितने बच्चे होते हैं?
+AI Receptionist (aayan_hi_conversational): फीस दो हज़ार पाँच सौ रुपये महीना है, और पूरे साल का पैकेज पच्चीस हज़ार रुपये। एक बैच में सिर्फ़ बीस बच्चे होते हैं, ताकि हर बच्चे पर ध्यान दिया जा सके।
+Customer (simran_hi_conversation): अच्छा। कोई डेमो क्लास मिल सकती है पहले?
+AI Receptionist (aayan_hi_conversational): जी बिलकुल, पहली डेमो क्लास बिलकुल फ़्री है। इस शनिवार शाम चार बजे या रविवार सुबह ग्यारह बजे का स्लॉट है।
+Customer (simran_hi_conversation): शनिवार चार बजे ठीक रहेगा। बेटे का नाम आरव गुप्ता है।
+AI Receptionist (aayan_hi_conversational): धन्यवाद! तो आरव गुप्ता की फ़्री डेमो क्लास, इस शनिवार शाम चार बजे, दसवीं मैथ्स और साइंस। क्या ये सही है?
+Customer (simran_hi_conversation): हाँ जी, सही है।
+AI Receptionist (aayan_hi_conversational): परफ़ेक्ट! डेमो क्लास बुक हो गई है। कन्फ़र्मेशन और इंस्टीट्यूट का लोकेशन अभी आपको व्हाट्सऐप पर भेज रहा हूँ।
+Customer (simran_hi_conversation): ठीक है, बहुत धन्यवाद।
+AI Receptionist (aayan_hi_conversational): आपका स्वागत है। शनिवार को आरव से मिलते हैं, आपका दिन शुभ रहे!

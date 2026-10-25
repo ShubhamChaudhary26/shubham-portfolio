@@ -2,14 +2,14 @@
 
 import type { VoiceoverAssets } from "@/lib/automation-media";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { AudioPending, DemoAudio } from "@/components/ai-automation/demo-audio";
 import { BusinessIcon } from "@/components/ai-automation/icons";
 import { LeadForm } from "@/components/ai-automation/lead-form";
-import { EXPLAINER_LABEL, HUB_HERO, INDUSTRIES } from "@/data/ai-automation";
+import { BrandMark } from "@/components/ai-automation/shell";
+import { EXPLAINER_LABEL, INDUSTRIES } from "@/data/ai-automation";
 
 const cardClass =
   "flex min-h-28 w-full flex-col items-start justify-center gap-3 rounded-3xl border border-divider bg-content1/80 px-4 py-5 text-left shadow-[0_18px_50px_-40px_rgba(165,176,255,0.9)] motion-safe:transition-colors hover:border-primary/50";
@@ -29,38 +29,12 @@ export function HubPage({ audio }: { audio: VoiceoverAssets }) {
   }, [formOpen]);
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-8">
-      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
-        @aiautomation.hindi
-      </p>
-      <h1 className="mt-3 max-w-3xl font-display text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
-        Aapke business ke liye AI Calling Agent — kaunsa business hai?
-      </h1>
-      <Image
-        priority
-        unoptimized
-        alt={HUB_HERO.alt}
-        className="mt-6 h-auto w-full max-w-3xl rounded-3xl border border-divider"
-        fetchPriority="high"
-        height={HUB_HERO.height}
-        sizes="(max-width: 768px) 100vw, 720px"
-        src={HUB_HERO.src}
-        width={HUB_HERO.width}
-      />
-      <div className="mt-6 max-w-3xl">
-        {audio ? (
-          <DemoAudio
-            captionsSrc={audio.captionsSrc}
-            headingId="hub-explainer-heading"
-            label={EXPLAINER_LABEL}
-            line="Sample voice. Poora text neeche khol sakte ho."
-            preload="metadata"
-            src={audio.src}
-            transcript={audio.transcript}
-          />
-        ) : (
-          <AudioPending label={EXPLAINER_LABEL} />
-        )}
+    <div className="mx-auto max-w-3xl px-4 py-10">
+      <div className="flex flex-col items-center text-center">
+        <BrandMark className="h-14 w-14 text-base" />
+        <h1 className="mt-4 font-display text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
+          Aapka business type kya hai?
+        </h1>
       </div>
       <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
         {INDUSTRIES.map((business) => (
@@ -78,8 +52,22 @@ export function HubPage({ audio }: { audio: VoiceoverAssets }) {
           <span className="font-display text-xl font-semibold">Other</span>
         </button>
       </div>
+      <div className="mt-8">
+        {audio ? (
+          <DemoAudio
+            captionsSrc={audio.captionsSrc}
+            headingId="hub-explainer-heading"
+            label={EXPLAINER_LABEL}
+            preload="metadata"
+            src={audio.src}
+            transcript={audio.transcript}
+          />
+        ) : (
+          <AudioPending label={EXPLAINER_LABEL} />
+        )}
+      </div>
       {formOpen ? (
-        <section className="mx-auto mt-8 max-w-3xl scroll-mt-24" id="lead-form">
+        <section className="mt-8 scroll-mt-24" id="lead-form">
           <LeadForm
             defaultBusinessType="Other"
             pagePath="/ai-automation"
