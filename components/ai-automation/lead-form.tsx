@@ -287,6 +287,8 @@ export function LeadForm({ pagePath, selectedBusiness, defaultBusinessType = "" 
               <a
                 className="inline-flex min-h-12 items-center justify-center rounded-full bg-gradient-to-r from-teal-300 to-violet-500 px-5 text-base font-semibold text-slate-950"
                 href={DEMO_BOOKING_URL}
+                rel="noopener noreferrer"
+                target="_blank"
               >
                 Demo slot book karo
               </a>

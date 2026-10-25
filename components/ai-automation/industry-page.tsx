@@ -9,7 +9,7 @@ import { FeatureIcon } from "@/components/ai-automation/icons";
 import { LeadForm } from "@/components/ai-automation/lead-form";
 import { Reveal } from "@/components/ai-automation/reveal";
 import { StatChips } from "@/components/ai-automation/stat-chips";
-import { CRM_FEATURES } from "@/data/ai-automation";
+import { CRM_FEATURES, DEMO_BOOKING_URL } from "@/data/ai-automation";
 
 const FEATURES = [
   "Inbound calls",
@@ -47,6 +47,18 @@ export function IndustryTemplate({ page }: { page: PresentedIndustry }) {
               <AudioPending label="Demo call" />
             </div>
           )}
+          {DEMO_BOOKING_URL ? (
+            <p className="mt-6 text-center">
+              <a
+                className="inline-flex min-h-12 items-center justify-center rounded-full bg-gradient-to-r from-teal-300 to-violet-500 px-5 text-base font-semibold text-slate-950"
+                href={DEMO_BOOKING_URL}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Demo slot book karo
+              </a>
+            </p>
+          ) : null}
         </Reveal>
 
         {flow ? (
@@ -162,6 +174,18 @@ export function IndustryTemplate({ page }: { page: PresentedIndustry }) {
 
         <Reveal>
           <section className="mx-auto max-w-3xl scroll-mb-28 scroll-mt-24" id="lead-form">
+            {DEMO_BOOKING_URL ? (
+              <p className="mb-6 text-center">
+                <a
+                  className="inline-flex min-h-12 items-center justify-center rounded-full bg-gradient-to-r from-teal-300 to-violet-500 px-5 text-base font-semibold text-slate-950"
+                  href={DEMO_BOOKING_URL}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  Demo slot book karo
+                </a>
+              </p>
+            ) : null}
             <LeadForm
               defaultBusinessType={page.name}
               pagePath={page.path}

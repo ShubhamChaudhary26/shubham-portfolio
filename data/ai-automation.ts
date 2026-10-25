@@ -31,7 +31,8 @@ export const AUTOMATION_SERVICES = [
 export const CALL_TIMES = ["Morning", "Afternoon", "Evening"] as const;
 
 /** Public booking link. The success screen hides "Demo slot book karo" while this is empty. */
-export const DEMO_BOOKING_URL: string = "";
+export const DEMO_BOOKING_URL: string =
+  "https://calendar.google.com/calendar/appointments/schedules/AcZssZ2UdGx9E1fe9PNH7LY78kdDYRYmDYhnbCWGGnaWGDWhdp95ZF5qekA9okLS11N1PflLj-Pf8X27";
 
 export const LEAD_BUSINESSES = [
   "Real estate",
