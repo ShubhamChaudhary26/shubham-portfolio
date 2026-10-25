@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 import Image from "next/image";
 
 type HeroImage = {
@@ -12,11 +14,13 @@ export function PageHero({
   eyebrow,
   title,
   subtitle,
+  leading,
 }: {
   image: HeroImage | null;
   eyebrow?: string;
   title: string;
   subtitle?: string;
+  leading?: ReactNode;
 }) {
   return (
     <header className="relative isolate min-h-[32rem] overflow-hidden sm:min-h-[38rem]">
@@ -41,6 +45,7 @@ export function PageHero({
         className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-teal-300/70 to-violet-400/70"
       />
       <div className="relative z-10 mx-auto flex min-h-[32rem] max-w-5xl flex-col justify-end px-4 pb-12 pt-28 sm:min-h-[38rem] sm:pb-16">
+        {leading ? <div className="mb-4">{leading}</div> : null}
         {eyebrow ? (
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-200">{eyebrow}</p>
         ) : null}

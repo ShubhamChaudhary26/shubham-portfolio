@@ -3,12 +3,19 @@ import type { Metadata } from "next";
 import NextLink from "next/link";
 
 import { BLOG_POSTS, formatBlogDate } from "@/data/blog";
-import { OG_IMAGE } from "@/lib/seo";
+import { AUTOMATION_BRAND, BRAND_OG_IMAGE } from "@/lib/automation-brand";
 import { SITE_URL } from "@/lib/site";
 
 const title = "Blog";
 const description =
-  "Guides by Shubham Chaudhary for small shop owners, including a step-by-step WhatsApp reminder flow for udhaar.";
+  "Guides by AI Automation Hindi for small shop owners, including a step-by-step WhatsApp reminder flow for udhaar.";
+
+const image = {
+  url: BRAND_OG_IMAGE.src,
+  width: BRAND_OG_IMAGE.width,
+  height: BRAND_OG_IMAGE.height,
+  alt: BRAND_OG_IMAGE.alt,
+};
 
 export const metadata: Metadata = {
   title,
@@ -17,16 +24,16 @@ export const metadata: Metadata = {
     canonical: `${SITE_URL}/blog`,
   },
   openGraph: {
-    title: "Blog | Shubham Chaudhary",
+    title: `Blog | ${AUTOMATION_BRAND.name}`,
     description,
     url: `${SITE_URL}/blog`,
-    images: [OG_IMAGE],
+    images: [image],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Blog | Shubham Chaudhary",
+    title: `Blog | ${AUTOMATION_BRAND.name}`,
     description,
-    images: [OG_IMAGE.url],
+    images: [image.url],
   },
 };
 

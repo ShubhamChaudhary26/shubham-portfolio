@@ -1,54 +1,45 @@
-import type { Metadata } from "next";
-
-import { CallingAgentCta } from "@/components/home/calling-agent-cta";
-import { FocusSection } from "@/components/home/focus";
-import { HeroSection } from "@/components/home/hero";
-import { SkillsOverviewSection } from "@/components/home/skills-overview";
-import { TestimonialsSection } from "@/components/home/testimonials";
-import { WorkSection } from "@/components/home/work";
-import { DATA } from "@/data";
-import { homeJsonLd, OG_IMAGE, SEO_KEYWORDS, SITE_DESCRIPTION } from "@/lib/seo";
+import { HomePage } from "@/components/ai-automation/home-page";
+import { BRAND_DESCRIPTION, BRAND_OG_IMAGE } from "@/lib/automation-brand";
+import { brandHomeJsonLd } from "@/lib/automation-page";
 import { SITE_URL } from "@/lib/site";
 
-const title = `${DATA.home.hero.name} | Full Stack Developer in Vapi, Gujarat`;
+const title = "AI Automation Hindi";
 
-export const metadata: Metadata = {
-  title: {
-    absolute: title,
-  },
-  description: SITE_DESCRIPTION,
-  keywords: SEO_KEYWORDS,
-  alternates: {
-    canonical: SITE_URL,
-  },
+export const metadata = {
+  title: { absolute: title },
+  description: BRAND_DESCRIPTION,
+  alternates: { canonical: SITE_URL },
   openGraph: {
     title,
-    description: SITE_DESCRIPTION,
+    description: BRAND_DESCRIPTION,
     url: SITE_URL,
-    siteName: "shubh.work",
-    images: [OG_IMAGE],
+    siteName: title,
+    type: "website" as const,
+    images: [
+      {
+        url: BRAND_OG_IMAGE.src,
+        width: BRAND_OG_IMAGE.width,
+        height: BRAND_OG_IMAGE.height,
+        alt: BRAND_OG_IMAGE.alt,
+      },
+    ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary_large_image" as const,
     title,
-    description: SITE_DESCRIPTION,
-    images: [OG_IMAGE.url],
+    description: BRAND_DESCRIPTION,
+    images: [`${SITE_URL}${BRAND_OG_IMAGE.src}`],
   },
 };
 
-export default function HomePage() {
+export default function Page() {
   return (
     <>
       <script
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(brandHomeJsonLd(BRAND_DESCRIPTION)) }}
         type="application/ld+json"
       />
-      <HeroSection />
-      <CallingAgentCta />
-      <FocusSection />
-      <SkillsOverviewSection />
-      <WorkSection />
-      <TestimonialsSection />
+      <HomePage />
     </>
   );
 }

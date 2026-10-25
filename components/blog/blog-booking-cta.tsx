@@ -3,7 +3,6 @@
 import { Button } from "@heroui/react";
 import { FormEvent, useEffect, useState } from "react";
 
-import { DATA } from "@/data";
 import {
   BOOKING_TIMEZONE,
   Slot,
@@ -52,10 +51,8 @@ export function BlogBookingCTA({
   pagePath,
   businessTypes = DEFAULT_BUSINESS_TYPES,
 }: BlogBookingCTAProps) {
-  const emailAddress = DATA.footer.contact.email;
   const bookingSource = source ?? `blog: ${slug}`;
   const bookingPath = pagePath ?? `/blog/${slug}`;
-  const whatsAppNumber = phoneDigits(DATA.footer.contact.phone);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [businessType, setBusinessType] = useState("");
@@ -231,7 +228,7 @@ export function BlogBookingCTA({
             setSubmitting(false);
             setDeliveryFailed(true);
             setError(
-              "The booking did not go through. Email Shubham or send an Instagram DM with your name, phone, and time slot.",
+              "The booking did not go through. Send an Instagram DM with your name, phone, and time slot.",
             );
 
             return;
@@ -257,7 +254,7 @@ export function BlogBookingCTA({
           setSubmitting(false);
           setDeliveryFailed(true);
           setError(
-            "The booking did not go through. Email Shubham or send an Instagram DM with your name, phone, and time slot.",
+            "The booking did not go through. Send an Instagram DM with your name, phone, and time slot.",
           );
 
           return;
@@ -281,13 +278,13 @@ export function BlogBookingCTA({
         {heading}
       </h2>
       <p className="mt-3 text-base leading-relaxed text-foreground-500">
-        Weekday slots, 10:00 to 19:00 IST. Shubham gets the request by email and
+        Weekday slots, 10:00 to 19:00 IST. AI Automation Hindi gets the request by email and
         will reply on your phone or WhatsApp.
       </p>
 
       {sent && selectedSlot ? (
         <p className="mt-6 rounded-2xl border border-primary/30 bg-primary/10 px-4 py-3 text-base leading-relaxed text-foreground">
-          Request mil gaya. Shubham aapko {phone.trim()} pe contact karega.{" "}
+          Request mil gaya. AI Automation Hindi aapko {phone.trim()} pe contact karega.{" "}
           {formatLongDate(selectedSlot.start, BOOKING_TIMEZONE)},{" "}
           {formatTime(selectedSlot.start, BOOKING_TIMEZONE)} IST.
         </p>
@@ -394,10 +391,7 @@ export function BlogBookingCTA({
             <div className="text-sm text-danger" role="alert">
               <p>{error}</p>
               {deliveryFailed ? (
-                <p className="mt-2 flex flex-col gap-2 sm:flex-row">
-                  <a className={secondaryClass} href={`mailto:${emailAddress}`}>
-                    Email {emailAddress}
-                  </a>
+                <p className="mt-2">
                   <a
                     className={secondaryClass}
                     href="https://ig.me/m/aiautomation.hindi"
@@ -447,19 +441,6 @@ export function BlogBookingCTA({
         >
           Instagram DM
         </a>
-        <a className={secondaryClass} href={`mailto:${emailAddress}`}>
-          {emailAddress}
-        </a>
-        {whatsAppNumber ? (
-          <a
-            className={secondaryClass}
-            href={`https://wa.me/${whatsAppNumber}`}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            WhatsApp
-          </a>
-        ) : null}
       </div>
     </section>
   );

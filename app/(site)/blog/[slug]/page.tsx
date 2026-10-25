@@ -4,9 +4,8 @@ import NextLink from "next/link";
 import { notFound } from "next/navigation";
 
 import { BlogBookingCTA } from "@/components/blog/blog-booking-cta";
-import { DATA } from "@/data";
 import { BLOG_POSTS, formatBlogDate, getBlogPost } from "@/data/blog";
-import { OG_IMAGE } from "@/lib/seo";
+import { AUTOMATION_BRAND, BRAND_OG_IMAGE } from "@/lib/automation-brand";
 import { SITE_URL } from "@/lib/site";
 
 type ArticlePageProps = {
@@ -39,14 +38,21 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
       description: post.description,
       url,
       publishedTime: post.date,
-      authors: [DATA.about.profile.name],
-      images: [OG_IMAGE],
+      authors: [AUTOMATION_BRAND.name],
+      images: [
+        {
+          url: BRAND_OG_IMAGE.src,
+          width: BRAND_OG_IMAGE.width,
+          height: BRAND_OG_IMAGE.height,
+          alt: BRAND_OG_IMAGE.alt,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.description,
-      images: [OG_IMAGE.url],
+      images: [BRAND_OG_IMAGE.src],
     },
   };
 }
@@ -70,15 +76,15 @@ export default async function BlogArticlePage({ params }: ArticlePageProps) {
     inLanguage: "hi-Latn",
     mainEntityOfPage: url,
     url,
-    image: `${SITE_URL}${OG_IMAGE.url}`,
+    image: `${SITE_URL}${BRAND_OG_IMAGE.src}`,
     author: {
-      "@type": "Person",
-      name: "Shubham Chaudhary",
+      "@type": "Organization",
+      name: AUTOMATION_BRAND.name,
       url: SITE_URL,
     },
     publisher: {
-      "@type": "Person",
-      name: "Shubham Chaudhary",
+      "@type": "Organization",
+      name: AUTOMATION_BRAND.name,
       url: SITE_URL,
     },
   };
@@ -101,7 +107,7 @@ export default async function BlogArticlePage({ params }: ArticlePageProps) {
         <p className="mt-4 text-sm text-foreground-500">
           <time dateTime={post.date}>{formatBlogDate(post.date)}</time>
           <span aria-hidden="true"> · </span>
-          <span>{DATA.about.profile.name}</span>
+          <span>{AUTOMATION_BRAND.name}</span>
         </p>
       </header>
 

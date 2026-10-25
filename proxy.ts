@@ -7,6 +7,15 @@ const LEGACY: Record<string, string> = {
   "/ai-calling-agent/real-estate": "/ai-automation/real-estate",
 };
 
+const PORTFOLIO = new Set([
+  "/about",
+  "/projects",
+  "/contact",
+  "/schedule",
+  "/resume",
+  "/experience",
+]);
+
 function redirectTo(request: NextRequest, pathname: string) {
   const url = new URL(request.url);
 
@@ -23,6 +32,10 @@ export function proxy(request: NextRequest) {
 
   if (destination) {
     return redirectTo(request, destination);
+  }
+
+  if (PORTFOLIO.has(normalized)) {
+    return redirectTo(request, "/");
   }
 
   if (normalized !== pathname) {

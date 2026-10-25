@@ -50,6 +50,37 @@ export function FeatureIcon({ name }: { name: string }) {
   }
 }
 
+export function ServiceIcon({ id }: { id: string }) {
+  switch (id) {
+    case "calling":
+      return (
+        <svg {...svgProps}>
+          <path d="M8 4h3l1.5 3.5-2 1.2a12 12 0 0 0 5 5l1.2-2L20.5 13v3a2 2 0 0 1-2.2 2A16 16 0 0 1 6 6.2 2 2 0 0 1 8 4z" />
+        </svg>
+      );
+    case "chatbot":
+      return (
+        <svg {...svgProps}>
+          <path d="M6 16.5 4 20l4.2-1.4A8 8 0 1 0 6 16.5z" />
+        </svg>
+      );
+    case "whatsapp":
+      return (
+        <svg {...svgProps}>
+          <path d="M6 18.5 4.5 21l2.2-1A8 8 0 1 0 6 18.5z" />
+          <path d="M9 10.5c.2 1.6 1.8 3 3.4 3.3" />
+        </svg>
+      );
+    default:
+      return (
+        <svg {...svgProps}>
+          <rect height="14" rx="3" width="14" x="5" y="5" />
+          <circle cx="12" cy="12" r="2.5" />
+        </svg>
+      );
+  }
+}
+
 export function BusinessIcon({ id }: IconProps) {
   switch (id) {
     case "clinic":

@@ -1,7 +1,10 @@
+import type { ReactNode } from "react";
+
 import Link from "next/link";
 
-import { BrandMark } from "@/components/ai-automation/brand-mark";
-import { AUTOMATION_BRAND } from "@/lib/automation-brand";
+import { BrandLogoProvider, BrandMark } from "@/components/ai-automation/brand-mark";
+import { AUTOMATION_BRAND, BRAND_LOGO_PATH } from "@/lib/automation-brand";
+import { publicFileExists } from "@/lib/automation-media";
 
 const NAV = [
   { href: "/ai-automation", label: "AI Calling" },
@@ -41,7 +44,7 @@ export function AutomationHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-divider/80 bg-background/85 backdrop-blur">
       <div className="mx-auto flex max-w-5xl items-center gap-3 px-4 py-2.5">
-        <Link className="flex min-w-0 flex-1 items-center gap-2.5" href="/ai-automation">
+        <Link className="flex min-w-0 flex-1 items-center gap-2.5" href="/">
           <BrandMark className="h-10 w-10 sm:h-11 sm:w-11" />
           <span className="min-w-0">
             <span className="block truncate font-display text-base font-semibold leading-tight">
@@ -82,7 +85,7 @@ export function AutomationFooter() {
   return (
     <footer className="border-t border-divider px-4 py-10">
       <div className="mx-auto flex max-w-5xl flex-col gap-4">
-        <Link className="flex items-center gap-3" href="/ai-automation">
+        <Link className="flex items-center gap-3" href="/">
           <BrandMark />
           <span>
             <span className="block font-display text-lg font-semibold">{AUTOMATION_BRAND.name}</span>
@@ -95,6 +98,9 @@ export function AutomationFooter() {
               {item.label}
             </Link>
           ))}
+          <Link className="text-foreground-600 hover:text-foreground" href="/blog">
+            Blog
+          </Link>
           <a
             className="text-primary"
             href={AUTOMATION_BRAND.instagram}
@@ -106,5 +112,23 @@ export function AutomationFooter() {
         </nav>
       </div>
     </footer>
+  );
+}
+
+export function BrandFrame({ children }: { children: ReactNode }) {
+  const logo = publicFileExists(BRAND_LOGO_PATH) ? BRAND_LOGO_PATH : null;
+
+  return (
+    <BrandLogoProvider src={logo}>
+      <div className="relative min-h-screen bg-background text-foreground">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,rgba(45,212,191,0.12),transparent_46%),radial-gradient(ellipse_at_85%_0%,rgba(139,92,246,0.16),transparent_42%)]"
+        />
+        <AutomationHeader />
+        <main id="content">{children}</main>
+        <AutomationFooter />
+      </div>
+    </BrandLogoProvider>
   );
 }

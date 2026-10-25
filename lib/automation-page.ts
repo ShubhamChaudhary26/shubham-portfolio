@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import type { IndustryConfig } from "@/data/ai-automation";
 
-import { AUTOMATION_BRAND, BRAND_OG_IMAGE } from "@/lib/automation-brand";
+import { AUTOMATION_BRAND, BRAND_LOGO_PATH, BRAND_OG_IMAGE } from "@/lib/automation-brand";
 import { SITE_URL } from "@/lib/site";
 
 function absoluteImage(url: string) {
@@ -51,6 +51,32 @@ export function industryMetadata(page: IndustryConfig): Metadata {
     description: page.seo.description,
     path: page.path,
   });
+}
+
+export function brandHomeJsonLd(description: string) {
+  const organization = {
+    "@type": "Organization",
+    "@id": `${SITE_URL}/#organization`,
+    name: AUTOMATION_BRAND.name,
+    url: SITE_URL,
+    logo: absoluteImage(BRAND_LOGO_PATH),
+    sameAs: [AUTOMATION_BRAND.instagram],
+  };
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      organization,
+      {
+        "@type": "WebSite",
+        "@id": `${SITE_URL}/#website`,
+        url: SITE_URL,
+        name: AUTOMATION_BRAND.name,
+        description,
+        publisher: { "@id": `${SITE_URL}/#organization` },
+      },
+    ],
+  };
 }
 
 export function automationJsonLd(input: {

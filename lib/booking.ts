@@ -1,16 +1,9 @@
-import { DATA } from "@/data";
+/** Weekday slots for the blog demo meeting form. */
+export const BOOKING_TIMEZONE = "Asia/Kolkata";
 
-/**
- * Point this at a Cal.com or Calendly URL to replace the custom scheduler
- * with an embed. Leave it empty to use the built-in booking form.
- *
- * Set NEXT_PUBLIC_BOOKING_EMBED_URL in the environment (Vercel or .env.local).
- */
-export const BOOKING_EMBED_URL = (
-  process.env.NEXT_PUBLIC_BOOKING_EMBED_URL || ""
-).trim();
-
-export const BOOKING_TIMEZONE = DATA.booking.timezone;
+const WORK_START_HOUR = 10;
+const WORK_END_HOUR = 19;
+const SLOT_MINUTES = 30;
 
 const IST_OFFSET_MS = 5.5 * 60 * 60 * 1000;
 
@@ -98,16 +91,15 @@ export function isWeekday(date: Ymd) {
 }
 
 export function buildSlots(date: Ymd): Slot[] {
-  const { workStartHour, workEndHour, slotMinutes } = DATA.booking;
   const slots: Slot[] = [];
-  const startMinutes = workStartHour * 60;
-  const endMinutes = workEndHour * 60;
+  const startMinutes = WORK_START_HOUR * 60;
+  const endMinutes = WORK_END_HOUR * 60;
 
-  for (let cursor = startMinutes; cursor + slotMinutes <= endMinutes; cursor += slotMinutes) {
+  for (let cursor = startMinutes; cursor + SLOT_MINUTES <= endMinutes; cursor += SLOT_MINUTES) {
     const hour = Math.floor(cursor / 60);
     const minute = cursor % 60;
     const start = istDateTime(date.year, date.month, date.day, hour, minute);
-    const end = new Date(start.getTime() + slotMinutes * 60 * 1000);
+    const end = new Date(start.getTime() + SLOT_MINUTES * 60 * 1000);
 
     slots.push({ start, end });
   }
