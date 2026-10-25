@@ -63,6 +63,8 @@ export function BlogBookingCTA({
   const [time, setTime] = useState("");
   const [slots, setSlots] = useState<Slot[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [deliveryFailed, setDeliveryFailed] = useState(false);
+  const [honeypot, setHoneypot] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [sent, setSent] = useState(false);
   const [minDate, setMinDate] = useState("");
@@ -112,29 +114,34 @@ export function BlogBookingCTA({
 
   const submit = async () => {
     setError(null);
+    setDeliveryFailed(false);
 
     const trimmedName = name.trim();
     const digits = phoneDigits(phone);
 
     if (trimmedName.length < 2) {
+      setDeliveryFailed(false);
       setError("Please enter your name.");
 
       return;
     }
 
     if (digits.length < 10) {
+      setDeliveryFailed(false);
       setError("Please enter a phone or WhatsApp number.");
 
       return;
     }
 
     if (!businessLabel || businessLabel.length < 2) {
+      setDeliveryFailed(false);
       setError("Please choose a business type.");
 
       return;
     }
 
     if (!selectedSlot) {
+      setDeliveryFailed(false);
       setError("Please choose a weekday and an IST time slot.");
 
       return;
@@ -163,14 +170,61 @@ export function BlogBookingCTA({
       ].join("\n"),
     });
 
-    setSubmitting(false);
-
     if (!result.ok) {
-      setError("Something went wrong sending your request. Please try again.");
+      // eslint-disable-next-line no-console
+      console.error("EmailJS booking failed", result.status, result.detail);
 
-      return;
+      try {
+        const fallback = await fetch("/api/booking", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: trimmedName,
+            phone: phone.trim(),
+            business: businessLabel,
+            date: dateLabel,
+            time: `${startLabel} – ${endLabel}`,
+            source: bookingSource,
+            page: `${SITE_URL}${bookingPath}`,
+            company_website: honeypot,
+          }),
+        });
+        const fallbackBody = (await fallback.json().catch(() => null)) as {
+          detail?: string;
+          reason?: string;
+        } | null;
+
+        if (!fallback.ok) {
+          // eslint-disable-next-line no-console
+          console.error(
+            "Booking fallback failed",
+            fallback.status,
+            fallbackBody?.reason,
+            fallbackBody?.detail,
+          );
+          setSubmitting(false);
+          setDeliveryFailed(true);
+          setError(
+            "The booking did not go through. Email Shubham or send an Instagram DM with your name, phone, and time slot.",
+          );
+
+          return;
+        }
+      } catch (fallbackError) {
+        // eslint-disable-next-line no-console
+        console.error("Booking fallback failed", fallbackError);
+        setSubmitting(false);
+        setDeliveryFailed(true);
+        setError(
+          "The booking did not go through. Email Shubham or send an Instagram DM with your name, phone, and time slot.",
+        );
+
+        return;
+      }
     }
 
+    setSubmitting(false);
+    setDeliveryFailed(false);
     setSent(true);
   };
 
@@ -196,7 +250,19 @@ export function BlogBookingCTA({
           {formatTime(selectedSlot.start, BOOKING_TIMEZONE)} IST.
         </p>
       ) : (
-        <form className="mt-6 space-y-4" onSubmit={onSubmit}>
+        <form className="relative mt-6 space-y-4" onSubmit={onSubmit}>
+          <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
+            <label>
+              Company website
+              <input
+                autoComplete="off"
+                name="company_website"
+                tabIndex={-1}
+                value={honeypot}
+                onChange={(event) => setHoneypot(event.target.value)}
+              />
+            </label>
+          </div>
           <div className="grid gap-4 sm:grid-cols-2">
             <label className="block text-sm">
               <span className="mb-1 block text-foreground-600">Name</span>
@@ -283,9 +349,24 @@ export function BlogBookingCTA({
           </div>
 
           {error ? (
-            <p className="text-sm text-danger" role="alert">
-              {error}
-            </p>
+            <div className="text-sm text-danger" role="alert">
+              <p>{error}</p>
+              {deliveryFailed ? (
+                <p className="mt-2 flex flex-col gap-2 sm:flex-row">
+                  <a className={secondaryClass} href={`mailto:${emailAddress}`}>
+                    Email {emailAddress}
+                  </a>
+                  <a
+                    className={secondaryClass}
+                    href="https://ig.me/m/aiautomation.hindi"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    Instagram DM
+                  </a>
+                </p>
+              ) : null}
+            </div>
           ) : null}
 
           <div className="flex flex-col gap-3 sm:flex-row">

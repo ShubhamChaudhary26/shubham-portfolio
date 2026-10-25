@@ -58,7 +58,21 @@ export async function sendPortfolioEmail(payload: PortfolioEmail) {
     );
 
     return { ok: true as const };
-  } catch {
-    return { ok: false as const, reason: "failed" as const };
+  } catch (error) {
+    const status =
+      error && typeof error === "object" && "status" in error
+        ? Number(error.status)
+        : undefined;
+    const detail =
+      error && typeof error === "object" && "text" in error && typeof error.text === "string"
+        ? error.text
+        : "failed";
+
+    return {
+      ok: false as const,
+      reason: "failed" as const,
+      status: Number.isFinite(status) ? status : undefined,
+      detail,
+    };
   }
 }
