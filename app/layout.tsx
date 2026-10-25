@@ -4,13 +4,6 @@ import { clsx } from "clsx";
 import { type Metadata, type Viewport } from "next";
 import { Manrope, Syne } from "next/font/google";
 
-import { DATA } from "@/data";
-import { Footer } from "@/components/footer";
-import { Navigation } from "@/components/navbar";
-import { PageWrapper } from "@/components/page-wrapper";
-import { Providers } from "@/app/providers";
-import ChatBot from "@/components/ChatBot";
-import { OG_IMAGE, SEO_KEYWORDS, SITE_DESCRIPTION } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
 
 const sans = Manrope({
@@ -25,37 +18,8 @@ const display = Syne({
   display: "swap",
 });
 
-const title = `${DATA.home.hero.name} | ${DATA.home.hero.title} in Vapi`;
-const description = SITE_DESCRIPTION;
-
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: {
-    default: title,
-    template: `%s | ${DATA.home.hero.name}`,
-  },
-  description,
-  keywords: SEO_KEYWORDS,
-  applicationName: DATA.home.hero.name,
-  authors: [{ name: DATA.home.hero.name, url: SITE_URL }],
-  alternates: {
-    canonical: SITE_URL,
-  },
-  openGraph: {
-    title,
-    description,
-    url: SITE_URL,
-    siteName: "shubh.work",
-    locale: "en_US",
-    type: "website",
-    images: [OG_IMAGE],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title,
-    description,
-    images: [OG_IMAGE.url],
-  },
   robots: {
     index: true,
     follow: true,
@@ -79,13 +43,9 @@ export const viewport: Viewport = {
   ],
 };
 
-type RootLayoutProps = {
-  children: React.ReactNode;
-};
-
-export default function RootLayout({ children }: RootLayoutProps) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html suppressHydrationWarning lang="en">
+    <html suppressHydrationWarning className="dark" lang="en">
       <body
         className={clsx(
           "min-h-screen bg-background font-sans antialiased",
@@ -93,26 +53,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
           display.variable,
         )}
       >
-        <Providers
-          themeProps={{
-            attribute: "class",
-            defaultTheme: "dark",
-            enableSystem: false,
-          }}
+        <a
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[80] focus:rounded-full focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
+          href="#content"
         >
-          <a
-            className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[80] focus:rounded-full focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
-            href="#content"
-          >
-            Skip to content
-          </a>
-          <div className="min-h-screen bg-background">
-            <Navigation />
-            <PageWrapper>{children}</PageWrapper>
-            <Footer />
-          </div>
-          <ChatBot />
-        </Providers>
+          Skip to content
+        </a>
+        {children}
       </body>
     </html>
   );

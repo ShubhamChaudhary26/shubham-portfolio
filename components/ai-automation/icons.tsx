@@ -1,0 +1,76 @@
+type IconProps = { id: string };
+
+const svgProps = {
+  width: 28,
+  height: 28,
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 1.75,
+  strokeLinecap: "round" as const,
+  strokeLinejoin: "round" as const,
+  "aria-hidden": true as const,
+};
+
+export function BusinessIcon({ id }: IconProps) {
+  switch (id) {
+    case "clinic":
+      return (
+        <svg {...svgProps}>
+          <rect height="16" rx="3" width="16" x="4" y="4" />
+          <path d="M12 8v8M8 12h8" />
+        </svg>
+      );
+    case "real-estate":
+      return (
+        <svg {...svgProps}>
+          <path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z" />
+          <path d="M10 21v-6h4v6" />
+        </svg>
+      );
+    case "restaurant":
+      return (
+        <svg {...svgProps}>
+          <path d="M6 3v8a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V3" />
+          <path d="M8 3v18M16 3v7c0 2 2 3 2 3v8" />
+        </svg>
+      );
+    case "salon":
+      return (
+        <svg {...svgProps}>
+          <circle cx="6" cy="6" r="2.5" />
+          <circle cx="6" cy="18" r="2.5" />
+          <path d="M8 7.5 18 17.5M8 16.5 18 6.5" />
+        </svg>
+      );
+    case "coaching":
+      return (
+        <svg {...svgProps}>
+          <path d="M4 5.5h7v13H4zM13 5.5h7v13h-7z" />
+          <path d="M11 5.5v13" />
+        </svg>
+      );
+    case "gym":
+      return (
+        <svg {...svgProps}>
+          <path d="M7 8v8M17 8v8M4 10v4M20 10v4M7 12h10" />
+        </svg>
+      );
+    case "hotel":
+      return (
+        <svg {...svgProps}>
+          <path d="M3 18V9a2 2 0 0 1 2-2h7v11" />
+          <path d="M12 11h7a2 2 0 0 1 2 2v5" />
+          <path d="M3 18h18" />
+        </svg>
+      );
+    default:
+      return (
+        <svg {...svgProps}>
+          <circle cx="6" cy="12" fill="currentColor" r="1.2" />
+          <circle cx="12" cy="12" fill="currentColor" r="1.2" />
+          <circle cx="18" cy="12" fill="currentColor" r="1.2" />
+        </svg>
+      );
+  }
+}

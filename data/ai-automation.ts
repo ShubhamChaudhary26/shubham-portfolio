@@ -1,0 +1,353 @@
+/**
+ * AI Automation pages. Config for audio, video, and screenshots lives here.
+ *
+ * Explainer voiceover: `audio.src` (default `public/audio/voiceovers/<file>.mp3`).
+ * The player shows only when that file exists. Matching transcript is the
+ * sibling `.txt`. Hub and Other use `GENERAL_VOICEOVER` (`general.mp3`).
+ *
+ * Demo call: `demoCall.src` on clinic and real estate only. Those stay
+ * separate players under the explainer. Do not point another industry at them.
+ *
+ * Video: `walkthroughVideo.src` and optional `poster`. The shared CRM
+ * walkthrough is `CRM_WALKTHROUGH` (`public/videos/crm-walkthrough.mp4`,
+ * 720p). Poster is `public/images/crm-walkthrough-poster.webp`.
+ * Empty or missing files keep the "Walkthrough video jald aa raha hai" slot.
+ *
+ * Screenshots: `screenshots`. The gallery stays hidden while empty.
+ */
+
+export const AUTOMATION_SERVICES = [
+  "AI Calling Agent",
+  "AI Chatbot",
+  "WhatsApp Automation",
+  "Instagram DM Automation",
+  "Instagram/Facebook Lead Automation",
+  "Other",
+] as const;
+
+export const CALL_TIMES = ["Morning", "Afternoon", "Evening"] as const;
+
+export const GENERAL_VOICEOVER = "/audio/voiceovers/general.mp3";
+
+export type AutomationImage = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  caption?: string;
+};
+
+export const EXPLAINER_LABEL = "AI Agent explainer (sample voice)";
+
+export type IndustryAudio = {
+  src: string;
+  headingId: string;
+};
+
+export type DemoCall = {
+  src: string;
+  line: string;
+  headingId: string;
+};
+
+export type WalkthroughVideo = {
+  src?: string;
+  poster?: string;
+};
+
+export const CRM_WALKTHROUGH: WalkthroughVideo = {
+  src: "/videos/crm-walkthrough.mp4",
+  poster: "/images/crm-walkthrough-poster.webp",
+};
+
+export type IndustryConfig = {
+  slug: string;
+  voiceoverFile: string;
+  name: string;
+  path: string;
+  title: string;
+  subtitle: string;
+  audio: IndustryAudio;
+  demoCall?: DemoCall;
+  walkthroughVideo: WalkthroughVideo;
+  screenshots: AutomationImage[];
+  seo: {
+    title: string;
+    description: string;
+    serviceName: string;
+    ogImage: AutomationImage;
+  };
+};
+
+const callingOg: AutomationImage = {
+  src: "/og-ai-calling.png",
+  alt: "AI Calling Agent for Hindi business calls and CRM follow-up.",
+  width: 1200,
+  height: 630,
+};
+
+function industry(input: IndustryConfig): IndustryConfig {
+  return input;
+}
+
+export const INDUSTRIES: IndustryConfig[] = [
+  industry({
+    slug: "clinic",
+    voiceoverFile: "clinic",
+    name: "Clinic",
+    path: "/ai-automation/clinic",
+    title: "Clinic ke liye AI Calling Agent",
+    subtitle:
+      "Fee, timing, aur appointment. Jawab sirf wohi hota hai jo aap setup mein likhte ho. Upar wali call ek sample demo hai.",
+    audio: {
+      src: "/audio/voiceovers/clinic.mp3",
+      headingId: "clinic-explainer-heading",
+    },
+    demoCall: {
+      src: "/audio/ai-calling-demo-clinic.mp3",
+      line: "Ye ek sample demo hai: AI receptionist raat ko patient ka appointment book kar rahi hai",
+      headingId: "clinic-demo-heading",
+    },
+    walkthroughVideo: CRM_WALKTHROUGH,
+    screenshots: [
+      {
+        src: "/images/clinic/01_hero_clinic_night_ai_call_16x9.webp",
+        alt: "Night clinic reception with a phone on the counter showing an incoming AI call.",
+        width: 1600,
+        height: 900,
+      },
+      {
+        src: "/images/clinic/02_how_it_works_flow_16x9.webp",
+        alt: "Illustration of a clinic call becoming an appointment and a WhatsApp summary.",
+        width: 1600,
+        height: 900,
+        caption: "Call aati hai, appointment book hota hai, aur summary WhatsApp pe jaati hai.",
+      },
+      {
+        src: "/images/clinic/03_whatsapp_booking_summary_4x5.webp",
+        alt: "Phone showing a WhatsApp message that confirms a clinic appointment.",
+        width: 1080,
+        height: 1350,
+        caption: "Clinic aur patient, dono ko booking ki summary.",
+      },
+      {
+        src: "/images/clinic/04_ai_receptionist_24x7_hindi_4x5.webp",
+        alt: "Clinic desk at night with a phone that says the AI receptionist answers in Hindi, 24x7.",
+        width: 1080,
+        height: 1350,
+        caption: "Hindi mein, 24x7, call uthane ke liye.",
+      },
+    ],
+    seo: {
+      title: "AI Calling Agent for Clinics",
+      description:
+        "AI calling agent for clinics that answers in Hindi, shares the fee and timing you set, and books appointment slots. Sample demo audio on this page.",
+      serviceName: "AI Calling Agent for Clinics",
+      ogImage: {
+        src: "/images/clinic/01_hero_clinic_night_ai_call_16x9.webp",
+        alt: "Night clinic reception with a phone on the counter showing an incoming AI call.",
+        width: 1600,
+        height: 900,
+      },
+    },
+  }),
+  industry({
+    slug: "real-estate",
+    voiceoverFile: "real_estate",
+    name: "Real Estate",
+    path: "/ai-automation/real-estate",
+    title: "Real estate ke liye AI Calling Agent",
+    subtitle:
+      "Property enquiry, budget, aur site visit. Is page ki call hamare real estate CRM ki ek asli call hai.",
+    audio: {
+      src: "/audio/voiceovers/real_estate.mp3",
+      headingId: "real-estate-explainer-heading",
+    },
+    demoCall: {
+      src: "/audio/ai-calling-demo-real-estate.mp3",
+      line: "Ye hamare real estate CRM ki ek asli call hai.",
+      headingId: "real-estate-demo-heading",
+    },
+    walkthroughVideo: CRM_WALKTHROUGH,
+    screenshots: [],
+    seo: {
+      title: "AI Calling Agent for Real Estate",
+      description:
+        "AI calling agent for real estate that handles property enquiries in Hindi, notes budget and site visits, and saves a summary in the CRM. Real demo call on this page.",
+      serviceName: "AI Calling Agent for Real Estate",
+      ogImage: callingOg,
+    },
+  }),
+  industry({
+    slug: "restaurant",
+    voiceoverFile: "restaurant",
+    name: "Restaurant",
+    path: "/ai-automation/restaurant",
+    title: "Restaurant ke liye AI Calling Agent",
+    subtitle: "Table, timing, aur order ke sawal. Agent wahi bolta hai jo aap setup mein likhte ho.",
+    audio: {
+      src: "/audio/voiceovers/restaurant.mp3",
+      headingId: "restaurant-explainer-heading",
+    },
+    walkthroughVideo: CRM_WALKTHROUGH,
+    screenshots: [],
+    seo: {
+      title: "AI Calling Agent for Restaurants",
+      description:
+        "AI calling agent for restaurants that answers table, timing, and order questions in Hindi and saves the lead in the CRM. Demo audio is not published yet.",
+      serviceName: "AI Calling Agent for Restaurants",
+      ogImage: callingOg,
+    },
+  }),
+  industry({
+    slug: "salon",
+    voiceoverFile: "salon",
+    name: "Salon",
+    path: "/ai-automation/salon",
+    title: "Salon ke liye AI Calling Agent",
+    subtitle: "Service aur appointment ke sawal. Slot sirf aapke diye gaye time mein note hota hai.",
+    audio: {
+      src: "/audio/voiceovers/salon.mp3",
+      headingId: "salon-explainer-heading",
+    },
+    walkthroughVideo: CRM_WALKTHROUGH,
+    screenshots: [],
+    seo: {
+      title: "AI Calling Agent for Salons",
+      description:
+        "AI calling agent for salons that answers service questions in Hindi and notes appointment slots you have opened. Demo audio is not published yet.",
+      serviceName: "AI Calling Agent for Salons",
+      ogImage: callingOg,
+    },
+  }),
+  industry({
+    slug: "coaching",
+    voiceoverFile: "coaching",
+    name: "Coaching/Education",
+    path: "/ai-automation/coaching",
+    title: "Coaching aur education ke liye AI Calling Agent",
+    subtitle: "Course, batch, aur demo class ke sawal. Jo detail aapne nahi di, uska andaza nahi lagta.",
+    audio: {
+      src: "/audio/voiceovers/coaching.mp3",
+      headingId: "coaching-explainer-heading",
+    },
+    walkthroughVideo: CRM_WALKTHROUGH,
+    screenshots: [],
+    seo: {
+      title: "AI Calling Agent for Coaching",
+      description:
+        "AI calling agent for coaching and education that answers course and batch questions in Hindi and books a slot you have opened. Demo audio is not published yet.",
+      serviceName: "AI Calling Agent for Coaching and Education",
+      ogImage: callingOg,
+    },
+  }),
+  industry({
+    slug: "gym",
+    voiceoverFile: "gym",
+    name: "Gym",
+    path: "/ai-automation/gym",
+    title: "Gym ke liye AI Calling Agent",
+    subtitle: "Membership aur trial ke sawal. Follow-up call aapke rule se ja sakti hai.",
+    audio: {
+      src: "/audio/voiceovers/gym.mp3",
+      headingId: "gym-explainer-heading",
+    },
+    walkthroughVideo: CRM_WALKTHROUGH,
+    screenshots: [],
+    seo: {
+      title: "AI Calling Agent for Gyms",
+      description:
+        "AI calling agent for gyms that answers membership and trial questions in Hindi and logs the lead for follow-up. Demo audio is not published yet.",
+      serviceName: "AI Calling Agent for Gyms",
+      ogImage: callingOg,
+    },
+  }),
+  industry({
+    slug: "hotel",
+    voiceoverFile: "hotel",
+    name: "Hotel",
+    path: "/ai-automation/hotel",
+    title: "Hotel ke liye AI Calling Agent",
+    subtitle: "Room, timing, aur booking ke sawal. Availability wahi hoti hai jo aap dete ho.",
+    audio: {
+      src: "/audio/voiceovers/hotel.mp3",
+      headingId: "hotel-explainer-heading",
+    },
+    walkthroughVideo: CRM_WALKTHROUGH,
+    screenshots: [],
+    seo: {
+      title: "AI Calling Agent for Hotels",
+      description:
+        "AI calling agent for hotels that answers room and timing questions in Hindi and notes a booking from the availability you set. Demo audio is not published yet.",
+      serviceName: "AI Calling Agent for Hotels",
+      ogImage: callingOg,
+    },
+  }),
+];
+
+export const BUSINESS_TYPES = [
+  ...INDUSTRIES.map((item) => item.name),
+  "Other",
+] as const;
+
+export const CRM_STEPS = [
+  {
+    title: "Lead aata hai",
+    text: "Call, Instagram, ya Facebook se.",
+  },
+  {
+    title: "AI agent Hindi mein baat karta hai",
+    text: "Call karta hai, ya aayi hui call uthata hai.",
+  },
+  {
+    title: "Jawab aur booking",
+    text: "Sawal ka jawab milta hai, aur booking ho jati hai.",
+  },
+  {
+    title: "CRM mein save",
+    text: "Recording aur summary CRM mein save hoti hai.",
+  },
+  {
+    title: "Follow-up call",
+    text: "Aapke rule ke hisaab se dobara call ja sakti hai.",
+  },
+  {
+    title: "Owner dashboard",
+    text: "Owner sab calls, notes, aur agla step ek jagah dekhta hai.",
+  },
+] as const;
+
+export const CRM_FEATURES = [
+  {
+    title: "Inbound calls",
+    text: "Aayi hui call AI agent Hindi mein utha sakta hai. Jawab sirf aapke setup se aata hai.",
+  },
+  {
+    title: "Outbound calls",
+    text: "Aapki list pe follow-up call ja sakti hai, jis rule ko aap on karte ho.",
+  },
+  {
+    title: "Instagram add-on",
+    text: "Instagram pe aaya sawal CRM mein aa sakta hai, aur agent us lead pe call kar sakta hai.",
+  },
+  {
+    title: "Instagram & Facebook Leads",
+    text: "IG aur Facebook ads, comments, aur DMs ke leads CRM mein aa jate hain. AI unhe minutes mein call karta hai.",
+  },
+  {
+    title: "Own number",
+    text: "Agent aapke diye gaye number pe chal sakta hai, taaki customer aapka number dekhe.",
+  },
+  {
+    title: "Voice",
+    text: "Baat Hindi mein hoti hai. Industry voiceover alag se lagti hai, jab file ready ho.",
+  },
+  {
+    title: "Scheduler",
+    text: "Appointment ya visit aapke diye gaye slots mein note ho sakta hai. Khali slot khud se nahi banta.",
+  },
+] as const;
+
+export function industryBySlug(slug: string) {
+  return INDUSTRIES.find((item) => item.slug === slug);
+}

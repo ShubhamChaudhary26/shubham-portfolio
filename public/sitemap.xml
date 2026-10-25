@@ -26,19 +26,54 @@
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://shubh.work/ai-calling-agent</loc>
+    <loc>https://shubh.work/ai-automation</loc>
     <lastmod>2026-10-25</lastmod>
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://shubh.work/ai-calling-agent/real-estate</loc>
+    <loc>https://shubh.work/ai-automation/clinic</loc>
     <lastmod>2026-10-25</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://shubh.work/ai-calling-agent/clinic</loc>
+    <loc>https://shubh.work/ai-automation/real-estate</loc>
     <lastmod>2026-10-25</lastmod>
     <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://shubh.work/ai-automation/restaurant</loc>
+    <lastmod>2026-10-25</lastmod>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://shubh.work/ai-automation/salon</loc>
+    <lastmod>2026-10-25</lastmod>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://shubh.work/ai-automation/coaching</loc>
+    <lastmod>2026-10-25</lastmod>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://shubh.work/ai-automation/gym</loc>
+    <lastmod>2026-10-25</lastmod>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://shubh.work/ai-automation/hotel</loc>
+    <lastmod>2026-10-25</lastmod>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://shubh.work/ai-automation/ai-chatbot</loc>
+    <lastmod>2026-10-25</lastmod>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://shubh.work/ai-automation/whatsapp-automation</loc>
+    <lastmod>2026-10-25</lastmod>
+    <priority>0.70</priority>
   </url>
   <url>
     <loc>https://shubh.work/blog</loc>
