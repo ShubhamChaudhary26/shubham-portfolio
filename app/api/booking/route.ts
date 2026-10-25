@@ -101,7 +101,11 @@ export async function POST(request: Request) {
   });
 
   if (upstream.ok) {
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({
+      ok: true,
+      status: upstream.status,
+      detail: upstream.detail,
+    });
   }
 
   // eslint-disable-next-line no-console

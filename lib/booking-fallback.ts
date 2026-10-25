@@ -1,4 +1,14 @@
-import { DATA } from "@/data";
+const DEFAULT_FORMSUBMIT_ID = "15d820f7455ac5ff511b6f18cdd24024";
+
+export function formSubmitId() {
+  const fromEnv = process.env.NEXT_PUBLIC_FORMSUBMIT_ID?.trim();
+
+  return fromEnv || DEFAULT_FORMSUBMIT_ID;
+}
+
+export function formSubmitEndpoint() {
+  return `https://formsubmit.co/ajax/${formSubmitId()}`;
+}
 
 export type BookingFallbackInput = {
   name: string;
@@ -20,7 +30,6 @@ export type BookingFallbackResult = {
 export async function sendFormSubmitBooking(
   input: BookingFallbackInput,
 ): Promise<BookingFallbackResult> {
-  const inbox = DATA.footer.contact.email;
   const message = [
     `Demo booking (${input.source})`,
     "",
@@ -34,31 +43,27 @@ export async function sendFormSubmitBooking(
   ].join("\n");
 
   try {
-    const response = await fetch(
-      `https://formsubmit.co/ajax/${encodeURIComponent(inbox)}`,
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: input.name,
-          email: inbox,
-          phone: input.phone,
-          business: input.business,
-          date: input.date,
-          time: input.time,
-          source: input.source,
-          page: input.page,
-          message,
-          _subject: `Demo booking (${input.source})`,
-          _template: "box",
-          _captcha: "false",
-        }),
-        signal: AbortSignal.timeout(12000),
+    const response = await fetch(formSubmitEndpoint(), {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
       },
-    );
+      body: JSON.stringify({
+        name: input.name,
+        phone: input.phone,
+        business: input.business,
+        date: input.date,
+        time: input.time,
+        source: input.source,
+        page: input.page,
+        message,
+        _subject: `Demo booking (${input.source} / ${input.page})`,
+        _template: "table",
+        _captcha: false,
+      }),
+      signal: AbortSignal.timeout(12000),
+    });
     const detail = (await response.text()).slice(0, 500);
     let success = false;
     let activation = false;
