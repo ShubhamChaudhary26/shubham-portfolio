@@ -34,7 +34,7 @@ export function proxy(request: NextRequest) {
     return redirectTo(request, destination);
   }
 
-  if (PORTFOLIO.has(normalized)) {
+  if (PORTFOLIO.has(normalized) || normalized === "/blog" || normalized.startsWith("/blog/")) {
     return redirectTo(request, "/");
   }
 

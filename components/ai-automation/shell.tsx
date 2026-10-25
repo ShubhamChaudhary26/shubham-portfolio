@@ -98,9 +98,6 @@ export function AutomationFooter() {
               {item.label}
             </Link>
           ))}
-          <Link className="text-foreground-600 hover:text-foreground" href="/blog">
-            Blog
-          </Link>
           <a
             className="text-primary"
             href={AUTOMATION_BRAND.instagram}

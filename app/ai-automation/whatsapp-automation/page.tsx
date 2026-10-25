@@ -3,7 +3,7 @@ import { automationJsonLd, automationMetadata } from "@/lib/automation-page";
 
 const title = "WhatsApp Automation";
 const description =
-  "WhatsApp reminders, follow-ups, and booking summaries that you write. Includes a guide for udhaar reminders.";
+  "WhatsApp reminders, follow-ups, and booking summaries that you write.";
 const path = "/ai-automation/whatsapp-automation";
 const image = {
   src: "/og-ai-calling.png",
@@ -28,14 +28,11 @@ export default function WhatsAppAutomationPage() {
         type="application/ld+json"
       />
       <ServicePage
-        blogHref="/blog/udhaar-whatsapp-automatic-reminder-guide"
-        blogLabel="Udhaar reminder ka step-by-step guide"
         defaultServices={["WhatsApp Automation"]}
         eyebrow="WhatsApp Automation"
         pagePath={path}
         paragraphs={[
           "WhatsApp pe reminder, follow-up, aur booking summary ja sakti hai. Message wahi hota hai jo aap likhte ho.",
-          "Udhaar ke reminder ka ek guide neeche hai. Usme koi rate ya client ka naam nahi hai, sirf steps.",
         ]}
         selectedBusiness="WhatsApp Automation"
         title="WhatsApp pe reminder aur follow-up"
