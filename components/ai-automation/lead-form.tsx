@@ -16,6 +16,7 @@ const fieldClass =
   "w-full rounded-2xl border border-divider bg-background px-4 py-3 text-base outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary";
 
 const TOTAL_STEPS = 5;
+const EMAILJS_WAIT_MS = 5000;
 
 const BUSINESS_ALIAS: Record<string, (typeof LEAD_BUSINESSES)[number]> = {
   "Real Estate": "Real estate",
@@ -150,63 +151,62 @@ export function LeadForm({ pagePath, selectedBusiness, defaultBusinessType = "" 
       import("@/lib/email"),
       import("@/lib/booking-fallback"),
     ]);
-    const emailed = await sendPortfolioEmail({
-      name: trimmedName,
-      email: trimmedEmail,
-      subject,
-      message: body,
+    const emailResult = Promise.race([
+      sendPortfolioEmail({
+        name: trimmedName,
+        email: trimmedEmail,
+        subject,
+        message: body,
+      }),
+      new Promise<{ ok: false; detail: string }>((resolve) => {
+        setTimeout(() => resolve({ ok: false, detail: "timeout" }), EMAILJS_WAIT_MS);
+      }),
+    ]);
+
+    void emailResult.then((emailed) => {
+      if (!emailed.ok) {
+        // eslint-disable-next-line no-console
+        console.error("EmailJS lead failed", "status" in emailed ? emailed.status : undefined, emailed.detail);
+      }
     });
 
-    if (!emailed.ok) {
-      // eslint-disable-next-line no-console
-      console.error("EmailJS lead failed", emailed.status, emailed.detail);
+    const payload = { intent: "lead", ...lead, company_website: honeypot };
 
-      const payload = { intent: "lead", ...lead, company_website: honeypot };
+    try {
+      const fallback = await fetch("/api/booking", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
 
-      try {
-        const fallback = await fetch("/api/booking", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        });
-
-        if (!fallback.ok) {
-          const fallbackBody = (await fallback.json().catch(() => null)) as {
-            detail?: string;
-            reason?: string;
-          } | null;
-
-          // eslint-disable-next-line no-console
-          console.error("Lead fallback failed", fallback.status, fallbackBody?.reason, fallbackBody?.detail);
-          const direct = await sendFormSubmitLead({ ...lead, subject });
-
+      if (fallback.ok) {
+        // Server FormSubmit has been blocked by Cloudflare. Send from the browser too, without waiting.
+        void sendFormSubmitLead({ ...lead, subject }).then((direct) => {
           if (!direct.ok) {
             // eslint-disable-next-line no-console
             console.error("Lead fallback failed", direct.status, direct.reason, direct.detail);
-            setSubmitting(false);
-            setError("Request nahi gayi. Dobara bhejo.");
-
-            return;
           }
-        }
-      } catch (fallbackError) {
-        // eslint-disable-next-line no-console
-        console.error("Lead fallback failed", fallbackError);
-        const direct = await sendFormSubmitLead({ ...lead, subject });
+        });
+        setSubmitting(false);
+        setSent(true);
 
-        if (!direct.ok) {
-          // eslint-disable-next-line no-console
-          console.error("Lead fallback failed", direct.status, direct.reason, direct.detail);
-          setSubmitting(false);
-          setError("Request nahi gayi. Dobara bhejo.");
-
-          return;
-        }
+        return;
       }
+
+      const fallbackBody = (await fallback.json().catch(() => null)) as {
+        detail?: string;
+        reason?: string;
+      } | null;
+
+      // eslint-disable-next-line no-console
+      console.error("Lead fallback failed", fallback.status, fallbackBody?.reason, fallbackBody?.detail);
+    } catch (fallbackError) {
+      // eslint-disable-next-line no-console
+      console.error("Lead fallback failed", fallbackError);
     }
 
     setSubmitting(false);
-    setSent(true);
+    setError("Request nahi gayi. Dobara bhejo.");
   };
 
   const advance = () => {

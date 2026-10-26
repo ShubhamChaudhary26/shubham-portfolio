@@ -1,6 +1,7 @@
 import { formatLeadMessage, type LeadInput } from "@/lib/automation-lead";
 
 const DEFAULT_FORMSUBMIT_ID = "15d820f7455ac5ff511b6f18cdd24024";
+const FORMSUBMIT_TIMEOUT_MS = 60_000;
 
 export function formSubmitId() {
   const fromEnv = process.env.NEXT_PUBLIC_FORMSUBMIT_ID?.trim();
@@ -62,7 +63,7 @@ export async function sendFormSubmitLead(
         _template: "table",
         _captcha: false,
       }),
-      signal: AbortSignal.timeout(12000),
+      signal: AbortSignal.timeout(FORMSUBMIT_TIMEOUT_MS),
     });
     const detail = (await response.text()).slice(0, 500);
     let success = false;
@@ -131,7 +132,7 @@ export async function sendFormSubmitBooking(
         _template: "table",
         _captcha: false,
       }),
-      signal: AbortSignal.timeout(12000),
+      signal: AbortSignal.timeout(FORMSUBMIT_TIMEOUT_MS),
     });
     const detail = (await response.text()).slice(0, 500);
     let success = false;

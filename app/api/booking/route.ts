@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { after, NextResponse } from "next/server";
 
 import { sendFormSubmitBooking, sendFormSubmitLead } from "@/lib/booking-fallback";
 import {
@@ -11,6 +11,7 @@ import {
   normalizeLeadServices,
 } from "@/lib/automation-lead";
 export const dynamic = "force-dynamic";
+export const maxDuration = 60;
 
 const WINDOW_MS = 15 * 60 * 1000;
 const MAX_REQUESTS = 5;
@@ -58,6 +59,29 @@ function clientIp(request: Request) {
 
 function cleanLine(value: string) {
   return value.replace(/[\r\n]+/g, " ").trim();
+}
+
+function deliverInBackground(send: () => Promise<{ ok: boolean; status?: number; detail: string }>) {
+  after(async () => {
+    try {
+      const upstream = await send();
+
+      if (!upstream.ok) {
+        // eslint-disable-next-line no-console
+        console.error("FormSubmit background send failed", upstream.status, upstream.detail);
+
+        return;
+      }
+
+      // eslint-disable-next-line no-console
+      console.log("FormSubmit background send ok", upstream.status);
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error("FormSubmit background send failed", error);
+    }
+  });
+
+  return NextResponse.json({ ok: true });
 }
 
 function isRateLimited(ip: string) {
@@ -149,28 +173,8 @@ export async function POST(request: Request) {
       query,
       subject: leadSubject(businessType, page),
     };
-    const upstream = await sendFormSubmitLead(lead);
 
-    if (upstream.ok) {
-      return NextResponse.json({
-        ok: true,
-        status: upstream.status,
-        detail: upstream.detail,
-      });
-    }
-
-    // eslint-disable-next-line no-console
-    console.error("Lead fallback failed", upstream.status, upstream.detail);
-
-    return NextResponse.json(
-      {
-        ok: false,
-        reason: upstream.reason ?? "upstream",
-        status: upstream.status,
-        detail: upstream.detail,
-      },
-      { status: 502 },
-    );
+    return deliverInBackground(() => sendFormSubmitLead(lead));
   }
 
   const name = text(body.name, 80);
@@ -195,34 +199,15 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, reason: "invalid" }, { status: 400 });
   }
 
-  const upstream = await sendFormSubmitBooking({
-    name,
-    phone,
-    business,
-    date,
-    time,
-    source,
-    page,
-  });
-
-  if (upstream.ok) {
-    return NextResponse.json({
-      ok: true,
-      status: upstream.status,
-      detail: upstream.detail,
-    });
-  }
-
-  // eslint-disable-next-line no-console
-  console.error("Booking fallback failed", upstream.status, upstream.detail);
-
-  return NextResponse.json(
-    {
-      ok: false,
-      reason: upstream.reason ?? "upstream",
-      status: upstream.status,
-      detail: upstream.detail,
-    },
-    { status: 502 },
+  return deliverInBackground(() =>
+    sendFormSubmitBooking({
+      name,
+      phone,
+      business,
+      date,
+      time,
+      source,
+      page,
+    }),
   );
 }
